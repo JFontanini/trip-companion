@@ -5,7 +5,9 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;background:var(--gcc-bg)}
-body{margin:0;background:var(--gcc-bg);color:var(--gcc-ink);font-family:var(--gcc-font);font-size:var(--gcc-fs-body);line-height:var(--gcc-lh-body);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+body{margin:0;background:var(--gcc-bg);color:var(--gcc-ink);font-family:var(--gcc-font);font-size:var(--gcc-fs-body);line-height:var(--gcc-lh-body);-webkit-font-smoothing:antialiased}
+/* No tabular figures: in Schibsted Grotesk the tnum feature also widens commas, periods and colons,
+   which put gaps in "Mon, Oct 5" and "6:08". Times sit right-aligned, so proportional figures read fine. */
 img{display:block;max-width:100%}
 a{color:var(--gcc-lagoon-text)}
 button,input,select,textarea{font:inherit;color:inherit}
