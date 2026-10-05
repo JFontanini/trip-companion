@@ -11,7 +11,8 @@ permissions:
 
 jobs:
   check:
-    if: vars.DEPLOY_ENABLED == 'true'
+    # contains(): the variable was pasted from a phone and carries invisible characters
+    if: contains(vars.DEPLOY_ENABLED, 'true')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,4 +20,6 @@ jobs:
         with: { node-version: "22", cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npm run build
-      - run: bin/check-deployed.sh "${{ vars.LIVE_URL || 'https://guam.techsavvy.dad' }}"
+      - env:
+          LIVE_URL: ${{ vars.LIVE_URL || 'https://guam.techsavvy.dad' }}
+        run: bin/check-deployed.sh "$(printf '%s' "$LIVE_URL" | LC_ALL=C tr -cd 'A-Za-z0-9@./:_-')"
