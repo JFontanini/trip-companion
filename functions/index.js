@@ -5,7 +5,7 @@ import { onSchedule } from "firebase-functions/v2/scheduler";
 import { logger } from "firebase-functions";
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore, FieldValue } from "firebase-admin/firestore";
-import { parseRitidianText } from "./parse.js";
+import { parseRitidianText, excerpt } from "./parse.js";
 
 initializeApp();
 const FWS_URL = "https://www.fws.gov/refuge/guam";
@@ -16,7 +16,11 @@ export const ritidianStatus = onSchedule(
     let result;
     try {
       const res = await fetch(FWS_URL, { headers: { "user-agent": "trip-companion status check (techsavvy.dad)" } });
-      result = res.ok ? parseRitidianText(await res.text()) : { parseOk: false, httpStatus: res.status };
+      const html = res.ok ? await res.text() : "";
+      result = res.ok ? parseRitidianText(html) : { parseOk: false, httpStatus: res.status };
+      // Keep a short excerpt of what the page said when the banner was not found, so a format
+      // change shows up in the status document instead of only in the logs.
+      if (res.ok && !result.parseOk) result = { ...result, httpStatus: res.status, pageLength: html.length, excerpt: excerpt(html) };
     } catch (err) {
       result = { parseOk: false, error: String(err) };
     }
