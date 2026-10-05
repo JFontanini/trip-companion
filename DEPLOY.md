@@ -12,7 +12,15 @@ authorized, web app `Guam Coastal Circuit` registered.
 Status 2026-10-05, later: keyless deploy is set up. Workload identity pool `github-pool` and provider
 `github-provider` exist, the `deployer` service account holds the four roles, the Firebase browser key
 is restricted to the app's domains and Firebase APIs, `guam.techsavvy.dad` is verified, and the four
-repository variables are set with DEPLOY_ENABLED last. Cloud Functions are not deployed yet.
+repository variables are set with DEPLOY_ENABLED last.
+
+Functions deploy log:
+- 2026-10-05, from The Beast, firebase-tools 15: `ritidianStatus` (us-east1, every 2 hours, Pacific/Guam)
+  at commit 6437bcc. First build failed: the project's default compute service account
+  (36520514480-compute@developer.gserviceaccount.com) had no roles, because the organization blocks
+  automatic grants. Granted it roles/cloudbuild.builds.builder, roles/datastore.user,
+  roles/run.invoker and roles/logging.logWriter. Artifact cleanup policy: 1 day. First run at
+  06:33 UTC wrote status/ritidian with parseOk true, label CLOSED, source updated 10/04/2026.
 
 1. Create project `techsavvy-dad` in the Firebase console. Analytics off.
 2. Upgrade to Blaze (pay as you go). Done 2026-10-05. Cloud Storage for new projects and scheduled
