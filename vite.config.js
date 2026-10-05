@@ -4,7 +4,7 @@ import { VitePWA } from "vite-plugin-pwa";
 // One build per trip for now (trips/guam). When a second trip or brand arrives,
 // TRIP selects the content pack and brand, and each gets its own Firebase Hosting target.
 export default defineConfig({
-  build: { target: "es2022", sourcemap: true },
+  build: { target: "es2022", sourcemap: true, rollupOptions: { input: { main: "index.html", v0: "v0.html" } } },
   plugins: [
     VitePWA({
       registerType: "autoUpdate",
@@ -13,8 +13,8 @@ export default defineConfig({
         name: "Guam Coastal Circuit",
         short_name: "Guam Circuit",
         description: "A guided island drive from Asan to the edge of the Pacific.",
-        theme_color: "#073B5C",
-        background_color: "#F6F0E5",
+        theme_color: "#0C2530",
+        background_color: "#FFFFFF",
         display: "standalone",
         start_url: "/",
         icons: [

@@ -1,7 +1,106 @@
-/* techsavvy.dad trip brand. Palette from the Guam Coastal Circuit brief. Claude Design's tokens replace this file. */
-:root{
-  --brand-primary:#073B5C; --brand-accent:#16B7B0; --brand-accent-2:#E76F51; --brand-warn:#E9B44C;
-  --brand-ground:#F6F0E5; --brand-ink:#263238; --brand-neutral:#E6D9C2; --brand-forest:#255A3E;
-  --font-display:"Fraunces", Georgia, "Times New Roman", serif;
-  --font-body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+/* Guam Coastal Circuit · Reef Atlas tokens.
+   Light is default. Dark follows the phone. Day-of mode always uses [data-mode="dayof"].
+   Source: Claude Design handoff tokens-reef-atlas.css (2026-10-05). The build additions at the
+   end are the only changes: tokens the components need that the handoff left implicit. */
+:root, .gcc-light {
+  --gcc-bg: #FFFFFF;
+  --gcc-surface: #F4F9FA;
+  --gcc-surface-2: #E3F1F2;   /* shallows */
+  --gcc-line: #D5E3E6;
+  --gcc-rule: #0C2530;        /* 2px section rules */
+  --gcc-ink: #0C2530;         /* deep */
+  --gcc-ink-2: #3E5661;
+  --gcc-ink-3: #56707A;
+  --gcc-primary: #0C2530;
+  --gcc-on-primary: #FFFFFF;
+  --gcc-lagoon: #17B3AA;      /* fills; navy text on top */
+  --gcc-lagoon-display: #0E968E; /* large numerals on white */
+  --gcc-lagoon-text: #0B7A75;
+  --gcc-sunset: #FF7051;      /* fills; #2A0E06 text on top */
+  --gcc-on-sunset: #2A0E06;
+  --gcc-sunset-text: #B23E22;
+  --gcc-sunset-bg: #FFE9E3;
+  --gcc-info-bg: #E3F1F2;
+  --gcc-ok: #1F6B45;
+  --gcc-ok-bg: #E1F1E8;
+  --gcc-tabbar: #0C2530;
+  --gcc-cat-view: #1F6FA3;
+  --gcc-cat-nature: #2F7D4F;
+  --gcc-cat-swim: #0B7A75;
+  --gcc-cat-ancient: #8A5632;
+  --gcc-cat-spanish: #C2462B;
+  --gcc-cat-wwii: #3A464C;
+  --gcc-cat-food: #C46614;
+  --gcc-cat-off: #9AA8AD;
+  --gcc-on-marker: #FFFFFF;
+  --gcc-map-sea: #E3F1F2;
+  --gcc-map-land: #F7F4EC;
+
+  --gcc-font: "Schibsted Grotesk", system-ui, sans-serif;
+  --gcc-fs-numeral-xl: 180px; /* day-of stop number */
+  --gcc-fs-numeral-l: 120px;  /* stop hero number */
+  --gcc-fs-display: 56px;     /* screen headline, tracking -0.055em, lh .9 */
+  --gcc-fs-h1: 40px;          /* stop title, -0.05em */
+  --gcc-fs-h2: 30px;          /* section, -0.04em */
+  --gcc-fs-h3: 22px;          /* -0.03em */
+  --gcc-fs-list-num: 32px;    /* timeline number, -0.05em */
+  --gcc-fs-stop: 18px;
+  --gcc-fs-body: 16px;
+  --gcc-fs-meta: 13px;
+  --gcc-fs-credit: 12px;
+  --gcc-fw-regular: 400; --gcc-fw-semibold: 600; --gcc-fw-bold: 700; --gcc-fw-heavy: 800;
+  --gcc-lh-body: 1.45;
+
+  --gcc-space-1: 4px; --gcc-space-2: 8px; --gcc-space-3: 12px; --gcc-space-4: 16px;
+  --gcc-space-5: 24px;  /* screen gutter */
+  --gcc-space-6: 32px;  /* section gap */
+  --gcc-gap-buttons: 2px;
+  --gcc-touch-min: 44px;
+  --gcc-touch-car: 64px;
+
+  --gcc-radius-none: 0;       /* all controls */
+  --gcc-radius-crop: 20px;    /* inner edge of bleed crops only */
+  --gcc-rule-w: 2px;
+  --gcc-shadow-1: 0 10px 30px rgba(12,37,48,.12);
+  --gcc-scrim: rgba(6,24,32,.6);
+
+  /* Build additions */
+  --gcc-on-lagoon: #0C2530;        /* lagoon fills always take navy text */
+  --gcc-on-tabbar: #B9D2D8;        /* inactive tab label on the navy bar */
+  --gcc-on-tabbar-active: #4FD1C9; /* active tab label and indicator */
+  --gcc-cat-food-text: #9A4A0A;    /* meal kicker text; cat-food is 3.4:1 on shallows */
+  --gcc-sunset-chip: #FFB3A1;      /* Cause row inside a solid sunset alert */
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gcc-bg: #061820; --gcc-surface: #0C2530; --gcc-surface-2: #12303D; --gcc-line: #1F4352;
+    --gcc-rule: #E3F1F2; --gcc-ink: #EEF6F7; --gcc-ink-2: #B5CBD1; --gcc-ink-3: #8FB3BD;
+    --gcc-primary: #17B3AA; --gcc-on-primary: #0C2530;
+    --gcc-lagoon-display: #17B3AA; --gcc-lagoon-text: #4FD1C9;
+    --gcc-sunset-text: #FF8E74; --gcc-sunset-bg: #33201B; --gcc-info-bg: #0F2F38;
+    --gcc-ok: #7CC497; --gcc-ok-bg: #13291E;
+    --gcc-cat-view: #6FB7E6; --gcc-cat-nature: #7CC497; --gcc-cat-swim: #4FD1C9; --gcc-cat-ancient: #D6A57C;
+    --gcc-cat-spanish: #FF8E74; --gcc-cat-wwii: #AEBBC1; --gcc-cat-food: #F5A65B; --gcc-cat-off: #6F8189;
+    --gcc-on-marker: #061820; --gcc-map-sea: #0A2530; --gcc-map-land: #143441;
+    --gcc-shadow-1: 0 10px 30px rgba(0,0,0,.4);
+    --gcc-cat-food-text: #F5A65B;
+    color-scheme: dark;
+  }
+}
+
+[data-mode="dayof"] {
+  --gcc-bg: #0C2530; --gcc-surface: #12303D; --gcc-surface-2: #183A48; --gcc-line: #2A4F60;
+  --gcc-rule: #E3F1F2; --gcc-ink: #FFFFFF; --gcc-ink-2: #B9D2D8; --gcc-ink-3: #8FB3BD;
+  --gcc-primary: #17B3AA; --gcc-on-primary: #0C2530;
+  --gcc-lagoon-display: #17B3AA; --gcc-lagoon-text: #4FD1C9;
+  --gcc-sunset-text: #FF8E74; --gcc-sunset-bg: #3A2420;
+  /* Build additions: day-of keeps the dark category and map values in both phone themes */
+  --gcc-ok: #7CC497; --gcc-ok-bg: #13291E; --gcc-info-bg: #0F2F38;
+  --gcc-cat-view: #6FB7E6; --gcc-cat-nature: #7CC497; --gcc-cat-swim: #4FD1C9; --gcc-cat-ancient: #D6A57C;
+  --gcc-cat-spanish: #FF8E74; --gcc-cat-wwii: #AEBBC1; --gcc-cat-food: #F5A65B; --gcc-cat-off: #6F8189;
+  --gcc-on-marker: #061820; --gcc-map-sea: #0A2530; --gcc-map-land: #143441;
+  --gcc-cat-food-text: #F5A65B;
+  color-scheme: dark;
 }

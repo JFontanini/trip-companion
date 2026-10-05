@@ -20,8 +20,18 @@ export async function currentUser() {
 export async function signIn() {
   const f = await fb();
   const { GoogleAuthProvider, signInWithPopup } = f.authMod;
-  const cred = await signInWithPopup(f.auth, new GoogleAuthProvider());
-  return cred.user;
+  const { signInWithRedirect } = f.authMod;
+  try {
+    const cred = await signInWithPopup(f.auth, new GoogleAuthProvider());
+    return cred.user;
+  } catch (err) {
+    // Installed iOS web apps block popups; the redirect flow returns to this page signed in.
+    if (err && (err.code === "auth/popup-blocked" || err.code === "auth/operation-not-supported-in-this-environment")) {
+      await signInWithRedirect(f.auth, new GoogleAuthProvider());
+      return null;
+    }
+    throw err;
+  }
 }
 
 export async function signOut() { const f = await fb(); await f.authMod.signOut(f.auth); }
@@ -74,4 +84,35 @@ export async function watchEntries(tripId, onChange, onError = () => {}) {
   const { collection, query, orderBy, onSnapshot } = f.firestore;
   return onSnapshot(query(collection(f.db, "trips", tripId, "entries"), orderBy("createdAt", "asc")),
     snap => onChange(snap.docs.map(d => ({ id: d.id, ...d.data() }))), onError);
+}
+
+// Upload one already-resized photo. onProgress(fraction) fires as bytes move.
+export async function uploadPhoto(tripId, photoId, blob, onProgress = () => {}) {
+  const f = await fb();
+  const u = f.auth.currentUser; if (!u) throw new Error("Sign in first.");
+  const { ref, uploadBytesResumable, getDownloadURL } = f.storageMod;
+  const path = `trips/${tripId}/photos/${u.uid}/${photoId}.jpg`;
+  const task = uploadBytesResumable(ref(f.storage, path), blob, { contentType: "image/jpeg" });
+  await new Promise((resolve, reject) => task.on("state_changed", s => onProgress(s.bytesTransferred / (s.totalBytes || 1)), reject, resolve));
+  return { path, url: await getDownloadURL(task.snapshot.ref) };
+}
+
+// Create or replace an entry under a known id, so an entry saved mid-upload can be written
+// again as its photos finish. Field names match the entry validation in firestore.rules.
+export async function putEntry(tripId, entryId, { stopId, note = "", rating = null, photos = [], loggedAt }) {
+  const f = await fb();
+  const u = f.auth.currentUser; if (!u) throw new Error("Sign in first.");
+  const { doc, setDoc, Timestamp } = f.firestore;
+  await setDoc(doc(f.db, "trips", tripId, "entries", entryId), {
+    authorUid: u.uid, authorName: u.displayName || u.email, stopId, note: note.slice(0, 2000),
+    rating: rating == null ? null : Math.max(1, Math.min(5, Math.round(rating))), photos: photos.slice(0, 10),
+    createdAt: Timestamp.fromMillis(loggedAt || Date.now())
+  });
+}
+
+export async function getTrip(tripId) {
+  const f = await fb();
+  const { doc, getDoc } = f.firestore;
+  const snap = await getDoc(doc(f.db, "trips", tripId));
+  return snap.exists() ? { id: snap.id, ...snap.data() } : null;
 }

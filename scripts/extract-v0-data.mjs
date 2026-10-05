@@ -1,7 +1,7 @@
 // One-time extraction of the v0 planner's content into the trip content pack.
 // From here on, trips/guam/*.json is canonical; the v0 page is a frozen reference build.
 import fs from "node:fs";
-const html = fs.readFileSync(new URL("../index.html", import.meta.url), "utf8");
+const html = fs.readFileSync(new URL("../v0.html", import.meta.url), "utf8");
 const code = html.split("// ==LOGIC==")[1].split("// ==END LOGIC==")[0];
 const pack = new Function(code + "; return {S, STOPS, RESTAURANTS, NODES, SHORT, L, HOME, PROFILES, MOODS, FED_HOLIDAYS:[...FED_HOLIDAYS], CATS};")();
 const out = new URL("../trips/guam/", import.meta.url);
