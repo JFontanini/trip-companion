@@ -1,6 +1,7 @@
 // Planner state. Same storage key and shape as the v0 planner so a saved plan carries over;
 // fields added for the redesign have defaults and are ignored by v0.
 import { guamNow } from "./util.js";
+import { rollForward } from "./roll-forward.js";
 
 const KEY = "gcc-v1";
 const NOW = guamNow();
@@ -22,7 +23,7 @@ function load() {
         cond: Object.assign({}, DEFAULT.cond, o.cond || {}), trip: Object.assign(EMPTY_TRIP(), o.trip || {})
       });
       if (s.tab === "route") s.tab = "today";
-      return s;
+      return rollForward(s, NOW.date).state;
     }
   } catch { /* storage is optional */ }
   return structuredClone(DEFAULT);
