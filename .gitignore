@@ -7,3 +7,4 @@ dev-dist/
 functions/node_modules/
 *.log
 .DS_Store
+public/icons/*.png
