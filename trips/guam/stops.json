@@ -41,15 +41,13 @@
     "sources": [
       "phParks",
       "npsWapa"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "two-lovers",
-    "name": "Two Lovers Point",
+    "name": "Puntan Dos Amantes",
     "alt": [
-      "Puntan Dos Amantes"
+      "Two Lovers Point"
     ],
     "village": "Tamuning",
     "lat": 13.5297,
@@ -98,9 +96,7 @@
       "visitTLP",
       "visitTLP2",
       "tlpFee"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "spmp",
@@ -143,15 +139,13 @@
     "alt_text": "Illustration of a white memorial tower among dark green trees.",
     "sources": [
       "gpWWII"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "ritidian",
-    "name": "Ritidian Point",
+    "name": "Litekyan",
     "alt": [
-      "Puntan Litekyan",
+      "Ritidian Point",
       "Guam National Wildlife Refuge"
     ],
     "village": "Yigo",
@@ -212,9 +206,7 @@
       "fwsLoc",
       "visitRit",
       "postRit"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "pago",
@@ -257,9 +249,7 @@
     "alt_text": "Illustration of a wide bay between two green headlands.",
     "sources": [
       "pago"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "jeffs",
@@ -334,9 +324,7 @@
     "sources": [
       "jeffs",
       "talofofo"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "talofofo",
@@ -380,9 +368,7 @@
     "alt_text": "Illustration of a dark-sand bay with surf lines.",
     "sources": [
       "talofofo"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "talofofo-falls",
@@ -431,9 +417,7 @@
     "sources": [
       "fallsWiki",
       "fallsPrice"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "inalahan-village",
@@ -489,9 +473,7 @@
       "visitInaV",
       "gefpago",
       "afarGef"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "inalahan-pools",
@@ -549,9 +531,7 @@
       "inaPools",
       "visitIna",
       "pacWorlds"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "merizo",
@@ -606,9 +586,7 @@
       "postSouth",
       "merizoGuide",
       "merizoWiki"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "soledad",
@@ -659,9 +637,7 @@
       "gpSoledad",
       "nrhpSoledad",
       "gpUmatac"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "cetti",
@@ -715,9 +691,7 @@
       "cettiGuide",
       "gpCetti",
       "visitPhoto"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "gaan",
@@ -766,9 +740,7 @@
       "npsGaan",
       "phParks",
       "npsWapa"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   },
   {
     "id": "fisheye",
@@ -813,8 +785,6 @@
     "sources": [
       "fisheye",
       "fisheyeBook"
-    ],
-    "imageUrls": [],
-    "imageAttributions": []
+    ]
   }
 ]

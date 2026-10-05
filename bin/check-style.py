@@ -5,7 +5,7 @@ Mirrors the writing rules in fontanini-advisor-os knowledge/working-method/writi
 as applied in catalyst-academy-site: no em or en dashes, straight quotes only. Runs on every
 push in CI. Exits non-zero with file:line for each finding.
 """
-import pathlib, sys
+import pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SCAN = [".html", ".js", ".mjs", ".json", ".css", ".md", ".rules", ".yml"]
@@ -19,6 +19,7 @@ BANNED = {
 }
 
 findings = []
+HEX = re.compile(r"(?<![&\w])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b")
 for path in ROOT.rglob("*"):
     if not path.is_file() or path.suffix not in SCAN or path.name in SKIP_FILES:
         continue
@@ -28,6 +29,10 @@ for path in ROOT.rglob("*"):
         for ch, why in BANNED.items():
             if ch in line:
                 findings.append(f"{path.relative_to(ROOT)}:{n}: {why}")
+        # CLAUDE.md: no colors outside the brand tokens. App code and styles use var(--gcc-*) only.
+        rel = path.relative_to(ROOT).parts
+        if rel[0] == "src" and path.suffix in (".js", ".css") and HEX.search(line):
+            findings.append(f"{path.relative_to(ROOT)}:{n}: hard-coded color: use a token from brands/<brand>/tokens.css")
 
 if findings:
     print("\n".join(findings))

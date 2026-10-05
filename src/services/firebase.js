@@ -13,14 +13,16 @@ const config = {
 let cached = null;
 export const firebaseConfigured = Boolean(config.apiKey && config.projectId);
 
-export async function getFirebase() {
-  if (!firebaseConfigured) return null;
-  if (cached) return cached;
-  const [{ initializeApp }, firestore, auth, storage] = await Promise.all([
-    import("firebase/app"), import("firebase/firestore"), import("firebase/auth"), import("firebase/storage")
-  ]);
-  const app = initializeApp(config);
-  const db = firestore.initializeFirestore(app, { localCache: firestore.persistentLocalCache() });
-  cached = { app, db, firestore, auth: auth.getAuth(app), authMod: auth, storage: storage.getStorage(app), storageMod: storage };
+export function getFirebase() {
+  if (!firebaseConfigured) return Promise.resolve(null);
+  // Cache the promise, not the result: the journal and the status watcher ask at the same time.
+  if (!cached) cached = (async () => {
+    const [{ initializeApp }, firestore, auth, storage] = await Promise.all([
+      import("firebase/app"), import("firebase/firestore"), import("firebase/auth"), import("firebase/storage")
+    ]);
+    const app = initializeApp(config);
+    const db = firestore.initializeFirestore(app, { localCache: firestore.persistentLocalCache() });
+    return { app, db, firestore, auth: auth.getAuth(app), authMod: auth, storage: storage.getStorage(app), storageMod: storage };
+  })();
   return cached;
 }

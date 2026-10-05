@@ -8,9 +8,13 @@ what already went wrong in the sibling repos; follow them rather than rediscover
 - `trips/<slug>/*.json` is the canonical content. Every factual claim carries a source in
   `sources.json` with an access date. Hours, fees and status are time-sensitive: never present
   them as current without a "last checked" date.
-- `index.html` is the v0 planner, frozen. Fix bugs in it; do not grow it. New views are built in
-  `src/` from Claude Design's tokens and component specs, then replace v0 screen by screen.
-- Brand styling comes from `brands/<brand>/tokens.css`. No colors outside the tokens.
+- `v0.html` is the first planner, frozen. It stays for reference and for `tests/engine-parity.test.js`,
+  which runs its engine block against `src/engine/loop-drive.js`. Do not edit it.
+- The app is `index.html` plus `src/`, built from Claude Design's Reef Atlas handoff. Timing changes go
+  in `src/engine/` deliberately, with the parity test updated to name the change.
+- Brand styling comes from `brands/<brand>/tokens.css`. No colors outside the tokens; `npm run check`
+  fails on a hex color in `src/`. `tests/contrast.test.js` holds every text pairing to WCAG AA in
+  light, dark and day-of.
 - Photos come only from `trips/<slug>/photos.json`, which holds human-approved, licensed images
   with their attribution. `photo-candidates.json` is a review queue, never a source.
 

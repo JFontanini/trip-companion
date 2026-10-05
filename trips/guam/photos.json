@@ -1,4 +1,75 @@
 {
-  "note": "Approved photos only. Each entry: stopId -> { hero, detail }, each with imageUrl, pageUrl, license, licenseUrl, artist, alt. Empty until reviewed from photo-candidates.json.",
-  "photos": {}
+  "note": "Approved photos only. stopId -> { hero, detail }. Each photo: file (Commons file name), thumbBase (upload.wikimedia.org thumb path without the width prefix), width, height, pageUrl, artist, source, license, licenseUrl, alt, focus (CSS object-position). Licenses were read from each file's Commons metadata on licenseCheckedAt. Re-check before reuse elsewhere. needed lists slots that stay as labeled empty slots until a licensed photo is approved.",
+  "licenseCheckedAt": "2026-10-05",
+  "photos": {
+    "cetti": {
+      "hero": {
+        "file": "Cetti Bay, Guam - DSC00912.JPG",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Cetti_Bay%2C_Guam_-_DSC00912.JPG",
+        "thumbName": "Cetti_Bay%2C_Guam_-_DSC00912.JPG",
+        "width": 4320, "height": 3240,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cetti_Bay,_Guam_-_DSC00912.JPG",
+        "artist": "Daderot", "source": "Wikimedia Commons", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "alt": "Grassy volcanic ridges and a forested valley falling to the curved shore of Cetti Bay, with open sea beyond.",
+        "focus": "50% 45%"
+      }
+    },
+    "soledad": {
+      "hero": {
+        "file": "Fort Nuestra Señora de la Soledåd - Umatac, Guam - DSC00948.JPG",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Fort_Nuestra_Se%C3%B1ora_de_la_Soled%C3%A5d_-_Umatac%2C_Guam_-_DSC00948.JPG",
+        "thumbName": "Fort_Nuestra_Se%C3%B1ora_de_la_Soled%C3%A5d_-_Umatac%2C_Guam_-_DSC00948.JPG",
+        "width": 4320, "height": 3240,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Fort_Nuestra_Se%C3%B1ora_de_la_Soled%C3%A5d_-_Umatac,_Guam_-_DSC00948.JPG",
+        "artist": "Daderot", "source": "Wikimedia Commons", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "alt": "The domed stone sentry box at Fort Soledad on its parapet, looking over Humåtak Bay and a green headland.",
+        "focus": "65% 50%"
+      }
+    },
+    "inalahan-pools": {
+      "hero": {
+        "file": "Salaglula Pools - Inarajan, Guam - DSC00985.JPG",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Salaglula_Pools_-_Inarajan%2C_Guam_-_DSC00985.JPG",
+        "thumbName": "Salaglula_Pools_-_Inarajan%2C_Guam_-_DSC00985.JPG",
+        "width": 4320, "height": 3240,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Salaglula_Pools_-_Inarajan,_Guam_-_DSC00985.JPG",
+        "artist": "Daderot", "source": "Wikimedia Commons", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "alt": "Calm seawater pools at Inalåhan inside dark rock outcrops, with an old stone arch and surf breaking on the reef behind.",
+        "focus": "40% 55%"
+      }
+    },
+    "two-lovers": {
+      "hero": {
+        "file": "Puntan Dos Amantes (Two Lovers Point) in Guam in June 2017.jpg",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Puntan_Dos_Amantes_%28Two_Lovers_Point%29_in_Guam_in_June_2017.jpg",
+        "thumbName": "Puntan_Dos_Amantes_%28Two_Lovers_Point%29_in_Guam_in_June_2017.jpg",
+        "width": 5312, "height": 2988,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Puntan_Dos_Amantes_(Two_Lovers_Point)_in_Guam_in_June_2017.jpg",
+        "artist": "Eddy23", "source": "Wikimedia Commons", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "alt": "The sheer limestone cliff of Puntan Dos Amantes above a jungle slope and the shallow reef of Tumon Bay, with hotels along the far shore.",
+        "focus": "45% 50%"
+      }
+    },
+    "ritidian": {
+      "hero": {
+        "file": "Ritidian Beach - Guam NWR.jpg",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Ritidian_Beach_-_Guam_NWR.jpg",
+        "thumbName": "Ritidian_Beach_-_Guam_NWR.jpg",
+        "width": 2048, "height": 1536,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Ritidian_Beach_-_Guam_NWR.jpg",
+        "artist": "Laura Beauregard, USFWS", "source": "Wikimedia Commons", "license": "CC BY 2.0", "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+        "alt": "A sandy path through beach shrubs at Litekyan opening onto white sand and a turquoise reef flat.",
+        "focus": "50% 55%"
+      }
+    }
+  },
+  "needed": {
+    "inalahan-village": { "hero": "St. Joseph Church facade" },
+    "gaan": { "hero": "Ga'an Point" },
+    "cetti": { "detail": "Attelong Acho hills" },
+    "merizo": { "hero": "Malesso' pier view" }
+  },
+  "declined": [
+    { "file": "MERIZO BELL TOWER MALESSO GUAM.jpg", "license": "CC0", "reason": "A seasonal float decoration fills most of the frame and the tower sits to one side, so it would misrepresent the stop." }
+  ]
 }
