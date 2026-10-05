@@ -23,12 +23,6 @@ jobs:
   deploy:
     if: vars.DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
-    env:
-      VITE_FIREBASE_API_KEY: ${{ vars.VITE_FIREBASE_API_KEY }}
-      VITE_FIREBASE_AUTH_DOMAIN: ${{ vars.VITE_FIREBASE_AUTH_DOMAIN }}
-      VITE_FIREBASE_PROJECT_ID: ${{ vars.VITE_FIREBASE_PROJECT_ID }}
-      VITE_FIREBASE_STORAGE_BUCKET: ${{ vars.VITE_FIREBASE_STORAGE_BUCKET }}
-      VITE_FIREBASE_APP_ID: ${{ vars.VITE_FIREBASE_APP_ID }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -48,7 +42,7 @@ jobs:
       - name: Deploy hosting and rules
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.auth.outputs.credentials_file_path }}
-        run: npx --yes firebase-tools@13 deploy --only hosting:guam,firestore:rules,storage --project "${{ vars.VITE_FIREBASE_PROJECT_ID }}" --non-interactive
+        run: npx --yes firebase-tools@13 deploy --only hosting:guam,firestore:rules,storage --project techsavvy-dad --non-interactive
 
       - name: Verify the live site is this commit
         run: bin/check-deployed.sh "${{ vars.LIVE_URL || 'https://guam.techsavvy.dad' }}"

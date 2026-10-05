@@ -5,16 +5,20 @@ interactive login or DNS). Everything after step 7 is automatic on push to `main
 
 ## 1. Firebase project (Jay)
 
+Status 2026-10-05: steps 1.1 to 1.6 done. Firestore `(default)` in us-east1 (Standard),
+bucket `techsavvy-dad.firebasestorage.app` in US-EAST1, Google sign-in on, `guam.techsavvy.dad`
+authorized, web app `Guam Coastal Circuit` registered.
+
 1. Create project `techsavvy-dad` in the Firebase console. Analytics off.
-2. Upgrade to Blaze (pay as you go). Cloud Storage for new projects and scheduled
+2. Upgrade to Blaze (pay as you go). Done 2026-10-05. Cloud Storage for new projects and scheduled
    functions both require it. Expected cost at family scale: effectively zero, but set a
    budget alert at $5.
 3. Firestore: create in production mode, location `us-east1` (permanent; matches the other
    projects). The app's offline cache hides the distance from Guam.
 4. Storage: create the default bucket in the same location.
 5. Authentication: enable the Google provider. Add `guam.techsavvy.dad` under Authorized domains.
-6. Project settings, Your apps: add a Web app. Copy its config into GitHub repository variables
-   (step 6) and into `.env.local` for local work.
+6. Project settings, Your apps: add a Web app. Its config is committed in `.env.production`
+   and `.env.development` (public identifiers, not secrets). Project number: 36520514480.
 
 ## 2. Hosting site and custom domain (Jay, at GoDaddy)
 
@@ -57,8 +61,7 @@ a permission error on the bucket, the message names the missing permission.
 
 | Variable | Value |
 |---|---|
-| `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_STORAGE_BUCKET`, `VITE_FIREBASE_APP_ID` | From step 1.6 |
-| `WIF_PROVIDER` | `projects/<PROJECT_NUMBER>/locations/global/workloadIdentityPools/github-pool/providers/github-provider` |
+| `WIF_PROVIDER` | `projects/36520514480/locations/global/workloadIdentityPools/github-pool/providers/github-provider` |
 | `DEPLOY_SERVICE_ACCOUNT` | `deployer@techsavvy-dad.iam.gserviceaccount.com` |
 | `LIVE_URL` | `https://guam.techsavvy.dad` |
 | `DEPLOY_ENABLED` | `true`, last, once everything above is set |
