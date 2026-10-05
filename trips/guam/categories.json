@@ -1,0 +1,37 @@
+{
+  "viewpoint": {
+    "label": "Viewpoint",
+    "v": "--c-view",
+    "shape": "c"
+  },
+  "nature": {
+    "label": "Nature",
+    "v": "--c-nature",
+    "shape": "c"
+  },
+  "swimming": {
+    "label": "Swimming",
+    "v": "--c-swim",
+    "shape": "c"
+  },
+  "chamoru-history": {
+    "label": "Ancient CHamoru",
+    "v": "--c-chamoru",
+    "shape": "s"
+  },
+  "spanish-history": {
+    "label": "Spanish era",
+    "v": "--c-spanish",
+    "shape": "s"
+  },
+  "wwii-history": {
+    "label": "WWII",
+    "v": "--c-wwii",
+    "shape": "s"
+  },
+  "seafood": {
+    "label": "Food",
+    "v": "--c-food",
+    "shape": "d"
+  }
+}

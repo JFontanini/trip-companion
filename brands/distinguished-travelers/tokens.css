@@ -1,0 +1,8 @@
+/* Distinguished Travelers trip brand. Values copied from JFontanini/distinguished-travelers tailwind.config.mjs (2026-10-05).
+   Not in use yet; ready for the first DT group-trip pack. */
+:root{
+  --brand-primary:#2d2926; --brand-accent:#c17f59; --brand-accent-2:#a66b47; --brand-warn:#d4a384;
+  --brand-ground:#faf9f7; --brand-ink:#2d2926; --brand-neutral:#6b6560; --brand-forest:#2d2926;
+  --font-display:"Cormorant Garamond", Georgia, serif;
+  --font-body:"Source Sans 3", system-ui, sans-serif;
+}

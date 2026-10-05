@@ -1,0 +1,48 @@
+rules_version = '2';
+// Trip companion. Default deny. Two areas:
+//   status/{id}  public read-only, written by Cloud Functions (Admin SDK bypasses rules)
+//   trips/{id}   a shared trip journal, readable and writable only by its invited emails
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null && request.auth.token.email_verified == true; }
+    function myEmail() { return request.auth.token.email.lower(); }
+
+    match /status/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /trips/{tripId} {
+      allow read: if signedIn() && myEmail() in resource.data.memberEmails;
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['title', 'tripSlug', 'ownerUid', 'memberEmails', 'createdAt'])
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.memberEmails is list
+        && request.resource.data.memberEmails.size() <= 40
+        && myEmail() in request.resource.data.memberEmails;
+      allow update: if signedIn()
+        && resource.data.ownerUid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['title', 'memberEmails'])
+        && request.resource.data.memberEmails.size() <= 40
+        && myEmail() in request.resource.data.memberEmails;
+      allow delete: if false;
+
+      match /entries/{entryId} {
+        function tripMember() {
+          return signedIn() && myEmail() in get(/databases/$(database)/documents/trips/$(tripId)).data.memberEmails;
+        }
+        function validEntry(d) {
+          return d.keys().hasOnly(['authorUid', 'authorName', 'stopId', 'note', 'rating', 'photos', 'createdAt'])
+            && d.authorUid == request.auth.uid
+            && d.note is string && d.note.size() <= 2000
+            && (d.rating == null || (d.rating is int && d.rating >= 1 && d.rating <= 5))
+            && d.photos is list && d.photos.size() <= 10;
+        }
+        allow read: if tripMember();
+        allow create: if tripMember() && validEntry(request.resource.data);
+        allow update: if tripMember() && resource.data.authorUid == request.auth.uid && validEntry(request.resource.data);
+        allow delete: if signedIn() && resource.data.authorUid == request.auth.uid;
+      }
+    }
+  }
+}

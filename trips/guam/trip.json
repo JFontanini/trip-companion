@@ -1,0 +1,20 @@
+{
+  "slug": "guam",
+  "title": "Guam Coastal Circuit",
+  "tagline": "A guided island drive from Asan to the edge of the Pacific.",
+  "brand": "techsavvy",
+  "engine": "loop-drive",
+  "timezone": "Pacific/Guam",
+  "utcOffsetHours": 10,
+  "start": { "name": "Oceanview Drive, Asan", "lat": 13.4705, "lon": 144.7135 },
+  "map": { "center": [144.79, 13.45], "zoom": 10, "bounds": [[144.60, 13.22], [144.97, 13.68]] },
+  "conditions": {
+    "forecastPoint": { "lat": 13.47, "lon": 144.75, "label": "Central Guam" },
+    "marinePoints": [
+      { "id": "east", "lat": 13.27, "lon": 144.77, "label": "Inalåhan coast" },
+      { "id": "north", "lat": 13.66, "lon": 144.86, "label": "Ritidian" }
+    ],
+    "thresholds": { "rainProbabilityPct": 60, "waveHeightM": 2.0 }
+  },
+  "lastVerified": "2026-10-05"
+}

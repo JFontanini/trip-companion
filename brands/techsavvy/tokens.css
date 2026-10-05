@@ -1,0 +1,7 @@
+/* techsavvy.dad trip brand. Palette from the Guam Coastal Circuit brief. Claude Design's tokens replace this file. */
+:root{
+  --brand-primary:#073B5C; --brand-accent:#16B7B0; --brand-accent-2:#E76F51; --brand-warn:#E9B44C;
+  --brand-ground:#F6F0E5; --brand-ink:#263238; --brand-neutral:#E6D9C2; --brand-forest:#255A3E;
+  --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+}

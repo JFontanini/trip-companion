@@ -1,0 +1,310 @@
+{
+  "fws": {
+    "title": "Guam National Wildlife Refuge: status and hours",
+    "publisher": "U.S. Fish & Wildlife Service",
+    "url": "https://www.fws.gov/refuge/guam",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "fwsLoc": {
+    "title": "Refuge location, hours and closures",
+    "publisher": "U.S. Fish & Wildlife Service",
+    "url": "https://fws.gov/refuge/guam/visit-us/locations/guam-national-wildlife-refuge",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "visitRit": {
+    "title": "Guam National Wildlife Refuge listing",
+    "publisher": "Guam Visitors Bureau",
+    "url": "https://www.visitguam.com/listing/guam-national-wildlife-refuge/2132/",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "postRit": {
+    "title": "Refuge closed Mondays and Tuesdays; entry free",
+    "publisher": "The Guam Daily Post",
+    "url": "https://www.postguam.com/news/local/guam-national-wildlife-refuge-closed-mondays-tuesdays/article_fc9fcc32-cacc-11e9-8847-ab466f0cae4d.html",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "gpSoledad": {
+    "title": "Fort Soledad",
+    "publisher": "Guampedia",
+    "url": "https://www.guampedia.com/fort-soledad/",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "nrhpSoledad": {
+    "title": "NRHP nomination: Fort Nuestra Señora de la Soledad",
+    "publisher": "National Park Service",
+    "url": "https://npgallery.nps.gov/NRHP/GetAsset/NRHP/74002042_text",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "gpUmatac": {
+    "title": "Humåtak/Umatac",
+    "publisher": "Guampedia",
+    "url": "https://www.guampedia.com/?p=1293",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "cettiGuide": {
+    "title": "Cetti Bay Overlook",
+    "publisher": "The Guam Guide",
+    "url": "https://archives.theguamguide.com/cetti-bay-overlook",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "gpCetti": {
+    "title": "Cetti",
+    "publisher": "Guampedia",
+    "url": "https://www.guampedia.com/?p=17330",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "visitPhoto": {
+    "title": "Picture-perfect places (Cetti coconut stand, Fort Soledad)",
+    "publisher": "Guam Visitors Bureau",
+    "url": "https://www.visitguam.com/blog/post/3268/",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "merizoWiki": {
+    "title": "Merizo Bell Tower",
+    "publisher": "Wikipedia (NRHP data)",
+    "url": "https://en.wikipedia.org/wiki/Merizo_Bell_Tower",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "postSouth": {
+    "title": "Strolling down south, part 2",
+    "publisher": "The Guam Daily Post",
+    "url": "https://www.postguam.com/island_life/spots_on_the_rock/strolling-down-south---part-2/article_237f4a72-9b9d-11e8-8fc9-2bc3089a64f7.html",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "merizoGuide": {
+    "title": "Merizo Pier",
+    "publisher": "The Guam Guide",
+    "url": "https://archives.theguamguide.com/merizo-pier/",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "inaPools": {
+    "title": "Inarajan Pools Beach",
+    "publisher": "The Guam Guide",
+    "url": "https://theguamguide.com/inarajan-pools-beach",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "visitIna": {
+    "title": "Uncovering the wonders of Inarajan",
+    "publisher": "Guam Visitors Bureau",
+    "url": "https://www.visitguam.com/blog/post/2840/",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "visitInaV": {
+    "title": "Inarajan village history",
+    "publisher": "Guam Visitors Bureau",
+    "url": "https://www.visitguam.com/about-guam/villages/inarajan/",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "gefpago": {
+    "title": "Gef Pa'go",
+    "publisher": "Guam Visitors Bureau",
+    "url": "https://www.visitguam.com/chamorro-culture/cultural-presentations/gef-pago/",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "afarGef": {
+    "title": "Gef Pa'go admission",
+    "publisher": "Afar",
+    "url": "https://www.afar.com/places/gef-pago-inarajan",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "pacWorlds": {
+    "title": "Inarajan beaches and pool history",
+    "publisher": "Pacific Worlds",
+    "url": "https://pacificworlds.com/guam/sea/beaches.cfm",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "talofofo": {
+    "title": "Quick trip to Talofofo",
+    "publisher": "Stripes Guam / The Guam Guide",
+    "url": "https://www.theguamguide.com/quick-trip-talofofo-guam-history-caves-and-waterfalls",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "fallsWiki": {
+    "title": "Talofofo Falls",
+    "publisher": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Talofofo_Falls",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "fallsPrice": {
+    "title": "Talofofo Falls admission and hours",
+    "publisher": "mom-mom.net listing",
+    "url": "https://mom-mom.net/en/travel/places/696756f9a635b9e792dd9094",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "pago": {
+    "title": "Gazing at Guam in all its splendor (Pago Bay)",
+    "publisher": "Stripes Guam",
+    "url": "https://guam.stripes.com/travel/gazing-at-guam-in-all-its-splendor.html",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "gpWWII": {
+    "title": "WWII monuments and sites map",
+    "publisher": "Guampedia",
+    "url": "https://www.guampedia.com/wwii-monuments-and-sites-map/",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "phParks": {
+    "title": "Visit War in the Pacific",
+    "publisher": "Pacific Historic Parks",
+    "url": "https://www.pacifichistoricparks.org/plan-your-visit/visit-war-in-the-pacific",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "npsGaan": {
+    "title": "Ga'an Point",
+    "publisher": "National Park Service",
+    "url": "https://www.nps.gov/parkhistory/online_books/npswapa/extContent/wapa/gaan_point.htm",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "npsWapa": {
+    "title": "War in the Pacific National Historical Park",
+    "publisher": "National Park Service",
+    "url": "https://www.nps.gov/wapa/index.htm",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "npsAlerts": {
+    "title": "Alerts and conditions",
+    "publisher": "National Park Service",
+    "url": "https://www.nps.gov/wapa/planyourvisit/conditions.htm",
+    "claimType": "safety",
+    "accessedAt": "2026-10-05"
+  },
+  "visitTLP": {
+    "title": "Two Lovers Point history and legend",
+    "publisher": "Guam Visitors Bureau",
+    "url": "https://www.visitguam.com/blog/post/2174/",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "visitTLP2": {
+    "title": "Two Lovers Point legend (GVB telling)",
+    "publisher": "Guam Visitors Bureau",
+    "url": "https://www.visitguam.com/blog/post/2320/",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  },
+  "tlpFee": {
+    "title": "Two Lovers Point visitor reviews (fee)",
+    "publisher": "Wanderlog",
+    "url": "https://wanderlog.com/place/details/3062/恋人岬",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "fisheye": {
+    "title": "Fish Eye observatory reopens",
+    "publisher": "The Guam Daily Post",
+    "url": "https://www.postguam.com/fish-eye-marine-park-observatory-reopens-with-crystal-clear-views/article_3e5e8bcf-d763-420d-b202-eb41ac37609b.html",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "fisheyeBook": {
+    "title": "Fish Eye observatory admission",
+    "publisher": "Fish Eye Marine Park",
+    "url": "https://fisheyemarinepark.book.ntmg.com/products/ab0bb377-8b66-5bc2-b937-342ce0984ec3?lng=en-US",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "nws": {
+    "title": "NWS Forecast Office Tiyan, Guam",
+    "publisher": "National Weather Service",
+    "url": "https://www.weather.gov/gum/",
+    "claimType": "safety",
+    "accessedAt": "2026-10-05"
+  },
+  "epa": {
+    "title": "Monitoring and Analytical Services (Beach Report)",
+    "publisher": "Guam EPA",
+    "url": "https://epa.guam.gov/monitoring-and-analytical/",
+    "claimType": "safety",
+    "accessedAt": "2026-10-05"
+  },
+  "marina": {
+    "title": "Marina Grill reviews",
+    "publisher": "Wanderlog",
+    "url": "https://wanderlog.com/place/details/3198250/marina-grill",
+    "claimType": "food",
+    "accessedAt": "2026-10-05"
+  },
+  "portMarina": {
+    "title": "Agat Marina",
+    "publisher": "Port Authority of Guam",
+    "url": "https://portofguam.com/node/75",
+    "claimType": "location",
+    "accessedAt": "2026-10-05"
+  },
+  "crab": {
+    "title": "Crab Daddy brings Southern-style seafood boil to Guam",
+    "publisher": "The Guam Daily Post",
+    "url": "https://www.postguam.com/business/local/crab-daddy-brings-southern-style-seafood-boil-to-guam/article_e1f215ca-0758-11ea-8074-5b60878ad6e0.html",
+    "claimType": "food",
+    "accessedAt": "2026-10-05"
+  },
+  "fcOT": {
+    "title": "Fisherman's Cove",
+    "publisher": "OpenTable",
+    "url": "https://opentable.com/r/fishermans-cove-hilton-guam-resort-and-spa-tumon-bay",
+    "claimType": "food",
+    "accessedAt": "2026-10-05"
+  },
+  "fcHrs": {
+    "title": "Hilton Guam restaurant hours",
+    "publisher": "Stripes Guam",
+    "url": "https://guam.stripes.com/food-drink/where-to-eat-sweets-on-guam---hilton-guam-resort-spa.html",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "beachin": {
+    "title": "Recommended eats in Tumon (Beachin' Shrimp)",
+    "publisher": "Trip.com",
+    "url": "https://ca.trip.com/moments/destination-tamuning-17248/",
+    "claimType": "food",
+    "accessedAt": "2026-10-05"
+  },
+  "jeffs": {
+    "title": "Jeff's Pirates Cove hours",
+    "publisher": "4travel.jp",
+    "url": "https://4travel.jp/os_shisetsu/10310311",
+    "claimType": "hours",
+    "accessedAt": "2026-10-05"
+  },
+  "cvMarket": {
+    "title": "Chamorro Village Wednesday Night Market",
+    "publisher": "The Guam Guide",
+    "url": "https://theguamguide.com/chamorro-village-wednesday-night-market",
+    "claimType": "food",
+    "accessedAt": "2026-10-05"
+  },
+  "dcaCV": {
+    "title": "Chamorro Village",
+    "publisher": "Department of Chamorro Affairs",
+    "url": "https://dca.guam.gov/?p=2589",
+    "claimType": "history",
+    "accessedAt": "2026-10-05"
+  }
+}

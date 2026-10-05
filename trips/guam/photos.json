@@ -1,0 +1,4 @@
+{
+  "note": "Approved photos only. Each entry: stopId -> { hero, detail }, each with imageUrl, pageUrl, license, licenseUrl, artist, alt. Empty until reviewed from photo-candidates.json.",
+  "photos": {}
+}

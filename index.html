@@ -1,0 +1,1527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#073B5C">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Guam Coastal Circuit</title>
+<meta name="description" content="A full-day island drive planner from Asan, Guam: route timeline, drawn map, stop guide, seafood picks and safety.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: phone-first single column under a fixed bottom tab bar; the Map view becomes map + side panel at >= 980px */
+:root{
+  --bg:#F6F0E5; --surface:#FFFCF6; --surface-2:#EFE6D6; --ink:#1F2A30; --ink-2:#4F5E66; --line:#DCCFB7;
+  --accent:#073B5C; --accent-ink:#FFFFFF; --accent-soft:#DCEBEF; --link:#0B5A86; --focus:#16B7B0;
+  --ok:#2F7A4F; --ok-bg:#E2F0E6; --warn:#8A5D00; --warn-bg:#FBF0D5; --crit:#A93820; --crit-bg:#F9E2DA; --info:#0B5A86; --info-bg:#E3F0F2;
+  --c-view:#0B4F7A; --c-nature:#255A3E; --c-swim:#0B827D; --c-chamoru:#85653A; --c-spanish:#C04A2B; --c-wwii:#37474F; --c-food:#C25E16; --c-off:#9AA3A7;
+  --marker-ink:#FFFFFF;
+  --map-sea:#CFE7EA; --map-reef:#B2DCE0; --map-land:#EADFC8; --map-land-2:#DCCFB2; --map-coast:#86A2A9; --map-label:#5A6B72; --route:#073B5C; --route-alt:#16B7B0;
+  --f-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --f-body:"Source Sans 3", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --r:12px; --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1A24; --surface:#102836; --surface-2:#163447; --ink:#E8EEF0; --ink-2:#A6B8C0; --line:#24465B;
+    --accent:#64C7D1; --accent-ink:#06222F; --accent-soft:#163E4E; --link:#7FD3DC; --focus:#E9B44C;
+    --ok:#7CCB98; --ok-bg:#15342A; --warn:#E9B44C; --warn-bg:#2E2610; --crit:#F2917A; --crit-bg:#3A1C15; --info:#7FD3DC; --info-bg:#12313A;
+    --c-view:#74B8E6; --c-nature:#72C08E; --c-swim:#45D1C9; --c-chamoru:#D2B27E; --c-spanish:#F2917A; --c-wwii:#B7C4CA; --c-food:#F3A65C; --c-off:#5B6B73;
+    --marker-ink:#06222F;
+    --map-sea:#0D2C3D; --map-reef:#123B4F; --map-land:#24362F; --map-land-2:#2C4238; --map-coast:#4D7080; --map-label:#A6B8C0; --route:#64C7D1; --route-alt:#E9B44C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1A24; --surface:#102836; --surface-2:#163447; --ink:#E8EEF0; --ink-2:#A6B8C0; --line:#24465B;
+  --accent:#64C7D1; --accent-ink:#06222F; --accent-soft:#163E4E; --link:#7FD3DC; --focus:#E9B44C;
+  --ok:#7CCB98; --ok-bg:#15342A; --warn:#E9B44C; --warn-bg:#2E2610; --crit:#F2917A; --crit-bg:#3A1C15; --info:#7FD3DC; --info-bg:#12313A;
+  --c-view:#74B8E6; --c-nature:#72C08E; --c-swim:#45D1C9; --c-chamoru:#D2B27E; --c-spanish:#F2917A; --c-wwii:#B7C4CA; --c-food:#F3A65C; --c-off:#5B6B73;
+  --marker-ink:#06222F;
+  --map-sea:#0D2C3D; --map-reef:#123B4F; --map-land:#24362F; --map-land-2:#2C4238; --map-coast:#4D7080; --map-label:#A6B8C0; --route:#64C7D1; --route-alt:#E9B44C;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.9rem);letter-spacing:-.01em}
+h2{font-size:1.5rem}
+h3{font-size:1.2rem}
+p{margin:0}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:0}
+main{padding-bottom:calc(var(--nav-h) + 96px + env(safe-area-inset-bottom,0px))}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2)}
+.muted{color:var(--ink-2)}
+.small{font-size:.9rem}
+.tnum{font-variant-numeric:tabular-nums}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.section{display:flex;flex-direction:column;gap:14px;padding-block:22px}
+.section + .section{border-top:1px solid var(--line)}
+
+/* header */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
+.brand{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.brand b{font-family:var(--f-display);font-weight:600;font-size:1.15rem}
+.brand span{font-size:.8rem;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer;font-weight:600;text-decoration:none;color:var(--ink);white-space:nowrap}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.ghost{background:transparent}
+.btn.sm{min-height:40px;padding:0 13px;font-size:.92rem}
+.btn.block{width:100%}
+.btn svg{width:18px;height:18px;flex:none}
+.iconbtn{width:44px;height:44px;padding:0;border-radius:50%}
+
+/* bottom nav */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar ul{list-style:none;margin:0 auto;padding:0 8px;max-width:760px;display:grid;grid-template-columns:repeat(5,1fr);height:var(--nav-h)}
+.tabbar button{width:100%;height:100%;border:0;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.78rem;font-weight:600;color:var(--ink-2);cursor:pointer}
+.tabbar button svg{width:24px;height:24px}
+.tabbar button[aria-current="page"]{color:var(--accent)}
+.tabbar button[aria-current="page"] svg{stroke-width:2.4}
+
+/* now bar (day-of) */
+.nowbar{position:fixed;left:0;right:0;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px));z-index:29;padding:0 12px 10px}
+.nowbar .card{max-width:736px;margin:0 auto;background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.nowbar .k{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.85}
+.nowbar .n{font-weight:700;font-size:1.05rem;line-height:1.2}
+.nowbar .t{font-size:.9rem;opacity:.9}
+.nowbar .acts{display:flex;gap:6px}
+.nowbar .btn{background:var(--accent-ink);color:var(--accent);border-color:transparent}
+.nowbar .btn.ghost{background:transparent;color:var(--accent-ink);border-color:color-mix(in srgb,var(--accent-ink) 50%,transparent)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:14px;padding-block:18px 8px}
+.plate{position:relative;border-radius:16px;overflow:hidden;background:var(--surface-2);aspect-ratio:16/8;max-width:100%}
+.plate svg{display:block;width:100%;height:100%}
+.plate .cap{position:absolute;right:8px;bottom:6px;font-size:.7rem;color:#fff;background:rgba(0,0,0,.35);padding:2px 7px;border-radius:999px}
+.lede{font-size:1.08rem;color:var(--ink-2);max-width:62ch}
+
+/* controls */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field > label,.field > .lbl{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.seg{display:grid;gap:6px}
+.seg.c3{grid-template-columns:repeat(3,1fr)}
+.seg.c2{grid-template-columns:repeat(2,1fr)}
+.seg button{min-height:52px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;padding:6px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;text-align:center}
+.seg button b{font-size:.95rem}
+.seg button span{font-size:.78rem;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.seg button[aria-pressed="true"] span{color:inherit;opacity:.85}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+input[type=date],input[type=time]{min-height:46px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:0 10px;width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 13px;border-radius:999px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:.92rem;font-weight:600}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.chip .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.chip .sq{width:10px;height:10px;border-radius:2px;flex:none}
+.chip .dm{width:9px;height:9px;transform:rotate(45deg);flex:none}
+.cond{display:flex;flex-direction:column;gap:8px}
+.cond label{display:flex;align-items:flex-start;gap:10px;min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer}
+.cond input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.fact{background:var(--surface);padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fact .k{font-size:.74rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--ink-2)}
+.fact .v{font-size:1.2rem;font-weight:700;font-variant-numeric:tabular-nums}
+.fact .s{font-size:.82rem;color:var(--ink-2)}
+
+/* alerts */
+.alerts{display:flex;flex-direction:column;gap:8px}
+.alert{display:grid;grid-template-columns:6px 1fr;border-radius:12px;overflow:hidden;background:var(--info-bg)}
+.alert::before{content:"";background:var(--info)}
+.alert.warn{background:var(--warn-bg)}.alert.warn::before{background:var(--warn)}
+.alert.crit{background:var(--crit-bg)}.alert.crit::before{background:var(--crit)}
+.alert.ok{background:var(--ok-bg)}.alert.ok::before{background:var(--ok)}
+.alert > div{padding:10px 12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.alert b{font-weight:700}
+
+/* why */
+details.why{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+details.why summary{cursor:pointer;list-style:none;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:700}
+details.why summary::-webkit-details-marker{display:none}
+details.why summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--ink-2)}
+details.why[open] summary::after{content:"\2212"}
+details.why .body{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px}
+.why ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tl > li{display:grid;grid-template-columns:62px 22px 1fr;column-gap:10px}
+.tl .time{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;padding-top:10px;font-size:.98rem;line-height:1.15}
+.tl .time small{display:block;font-weight:400;color:var(--ink-2);font-size:.78rem}
+.tl .rail{position:relative;display:flex;justify-content:center}
+.tl .rail::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--line)}
+.tl .node{position:relative;margin-top:10px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--marker-ink);z-index:1}
+.tl .node.sq{border-radius:5px}
+.tl .node.dm{border-radius:4px;transform:rotate(45deg) scale(.86)}
+.tl .node.dm span{transform:rotate(-45deg)}
+.tl .node.home{background:var(--ink);color:var(--bg)}
+.tl .node.done{background:var(--ok)!important}
+.tl .body{padding:8px 0 16px;min-width:0}
+.tl .leg{grid-column:3;display:flex;gap:8px;align-items:center;font-size:.86rem;color:var(--ink-2);padding:2px 0 10px}
+.tl .legrow .rail::before{background:repeating-linear-gradient(var(--line) 0 4px,transparent 4px 8px)}
+.stopcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.stopcard.done{opacity:.72}
+.stopcard h3{font-size:1.18rem}
+.stopcard .meta{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:.85rem;color:var(--ink-2)}
+.stopcard .acts{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:.76rem;font-weight:700;letter-spacing:.03em;padding:2px 8px;border-radius:999px;border:1px solid currentColor;line-height:1.5}
+.pill.ess{color:var(--accent)}
+.pill.rec{color:var(--ok)}
+.pill.opt{color:var(--ink-2)}
+.tag{font-size:.78rem;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--surface-2);color:var(--ink)}
+.flag{font-size:.86rem;padding:6px 10px;border-radius:8px;background:var(--warn-bg);color:var(--ink);border-left:4px solid var(--warn)}
+.flag.crit{background:var(--crit-bg);border-left-color:var(--crit)}
+.flag.info{background:var(--info-bg);border-left-color:var(--info)}
+.skipped{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 12px;border:1px dashed var(--line);border-radius:12px;color:var(--ink-2);font-size:.92rem}
+
+/* stop list */
+.cards{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:640px){.cards{grid-template-columns:1fr 1fr}}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.scard .plate{border-radius:0;aspect-ratio:16/7}
+.scard .in{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.scard .in .row:last-child{margin-top:auto}
+.scard.off .plate{filter:grayscale(.7) opacity(.7)}
+
+/* sheet */
+.sheet{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:rgba(5,15,22,.5)}
+.sheet .box{background:var(--bg);width:100%;max-width:760px;max-height:92%;overflow:auto;border-radius:20px 20px 0 0;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+@media (min-width:760px){.sheet{align-items:center}.sheet .box{border-radius:20px;max-height:88%}}
+.sheet .head{position:sticky;top:0;z-index:2;display:flex;justify-content:flex-end;padding:10px 10px 0}
+.sheet .head .btn{background:var(--surface)}
+.sheet .content{padding:0 18px;display:flex;flex-direction:column;gap:18px}
+.sheet .plate{margin-top:-54px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.95rem}
+.kv dt{color:var(--ink-2);font-weight:600}
+.kv dd{margin:0}
+.block h3{font-size:1.05rem;margin-bottom:6px;font-family:var(--f-body);font-weight:700;letter-spacing:.01em}
+.block ul{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:5px}
+.navgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.navgrid .btn{border-radius:12px;min-height:52px;flex-direction:column;gap:0;font-size:.95rem}
+.navgrid .btn span{font-size:.75rem;font-weight:400;color:var(--ink-2)}
+.srcs{font-size:.85rem;color:var(--ink-2);display:flex;flex-direction:column;gap:4px;padding-left:1.1em;margin:0}
+
+/* map */
+.mapwrap{display:flex;flex-direction:column;gap:12px;padding-block:12px}
+.mapbox{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--map-sea);height:min(64vh,620px);touch-action:none}
+#mapsvg{width:100%;height:100%;display:block;cursor:grab}
+#mapsvg:active{cursor:grabbing}
+.mapctl{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:8px}
+.mapctl .btn{width:48px;height:48px;padding:0;border-radius:12px;font-size:1.4rem;background:var(--surface)}
+.maplegend{position:absolute;left:10px;bottom:10px;background:color-mix(in srgb,var(--surface) 92%,transparent);border:1px solid var(--line);border-radius:10px;padding:6px 9px;font-size:.75rem;display:flex;flex-direction:column;gap:3px;max-width:60%}
+.maplegend div{display:flex;align-items:center;gap:6px}
+.maplegend svg{width:14px;height:14px;flex:none}
+.mk{cursor:pointer}
+.mk text{font-family:var(--f-body);font-weight:700;pointer-events:none}
+.drawer{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.maplist{display:none}
+@media (min-width:980px){
+  .mapview .wrap{max-width:1240px}
+  .mapwrap{display:grid;grid-template-columns:minmax(0,1fr) 380px;align-items:start}
+  .mapbox{height:calc(100vh - 200px)}
+  .mapside{display:flex;flex-direction:column;gap:12px;max-height:calc(100vh - 200px);overflow:auto}
+  .maplist{display:flex;flex-direction:column;gap:6px}
+}
+.mrow{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);cursor:pointer;text-align:left;width:100%;min-height:44px}
+.mrow[aria-current="true"]{border-color:var(--accent);background:var(--accent-soft)}
+
+/* eat */
+.rcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.rcard.sel{border:2px solid var(--accent)}
+.rank{font-family:var(--f-display);font-size:1.6rem;line-height:1;color:var(--ink-2)}
+.rhead{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.fits{display:flex;flex-wrap:wrap;gap:6px}
+.fit{font-size:.78rem;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--ok-bg);color:var(--ink)}
+.fit.no{background:var(--surface-2);color:var(--ink-2);text-decoration:line-through}
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.numbers div{background:var(--bg);border-radius:10px;padding:8px;display:flex;flex-direction:column}
+.numbers b{font-size:1.05rem;font-variant-numeric:tabular-nums}
+.numbers span{font-size:.75rem;color:var(--ink-2)}
+
+/* safety */
+.sos{background:var(--crit-bg);border:1px solid var(--crit);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.sos .num{font-family:var(--f-display);font-size:2.6rem;font-weight:600;line-height:1}
+.linkgrid{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:560px){.linkgrid{grid-template-columns:1fr 1fr}}
+.linkgrid a{display:flex;flex-direction:column;gap:2px;padding:12px 14px;min-height:56px;border:1px solid var(--line);border-radius:12px;background:var(--surface);text-decoration:none;color:var(--ink)}
+.linkgrid a b{color:var(--link)}
+.linkgrid a span{font-size:.85rem;color:var(--ink-2)}
+.list{margin:0;padding-left:1.15em;display:flex;flex-direction:column;gap:6px}
+.check{display:flex;flex-direction:column;gap:4px}
+.check label{display:flex;gap:10px;align-items:center;min-height:44px;cursor:pointer}
+.check input{width:22px;height:22px;accent-color:var(--accent)}
+
+/* history */
+.era{display:grid;grid-template-columns:86px 1fr;gap:14px;padding-block:14px;border-top:1px solid var(--line)}
+.era:first-child{border-top:0}
+.era .yr{font-family:var(--f-display);font-weight:600;font-size:1.05rem;color:var(--accent);font-variant-numeric:tabular-nums}
+.era .yr small{display:block;font-family:var(--f-body);font-weight:400;color:var(--ink-2);font-size:.78rem}
+.era p{max-width:62ch}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 110px);z-index:60;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:600;font-size:.92rem}
+@media (prefers-reduced-motion:no-preference){
+  .sheet .box{animation:up .22s ease-out}
+  @keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand"><b>Guam Coastal Circuit</b><span id="hdrSub">From Oceanview Drive, Asan</span></div>
+    <button class="btn sm ghost" id="historyBtn" type="button">Guam in Layers</button>
+  </div>
+</header>
+<div id="live-conditions-root" hidden></div>
+<main id="main"></main>
+<div class="nowbar" id="nowbar" hidden></div>
+<nav class="tabbar" aria-label="Sections">
+  <ul id="tabs"></ul>
+</nav>
+<div id="sheet" class="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle"></div>
+<div id="toast" class="toast" hidden role="status"></div>
+
+<script>
+// ==LOGIC==
+const ACCESSED = "Oct 5, 2026";
+const L = 157; // minutes around the main loop, measured clockwise from Asan
+const HOME = { id:"home", name:"Oceanview Drive, Asan", lat:13.4705, lon:144.7135, loop:0, spur:0, q:"Oceanview Drive, Asan, Guam" };
+
+// Road nodes along the loop (clockwise): [loop minute, lat, lon]
+const NODES = [[0,13.4705,144.7135],[4,13.4745,144.7310],[8,13.4770,144.7480],[12,13.4950,144.7700],[16,13.5120,144.7990],[22,13.5300,144.8180],[30,13.5650,144.8450],[36,13.5850,144.8740],[39,13.5400,144.8870],[46,13.4950,144.8700],[54,13.4550,144.8150],[60,13.4400,144.8000],[62,13.4268,144.7890],[68,13.4050,144.7760],[74,13.3745,144.7665],[78,13.3545,144.7655],[84,13.3150,144.7570],[90,13.2765,144.7485],[92,13.2695,144.7468],[98,13.2550,144.7250],[104,13.2450,144.6950],[107,13.2652,144.6705],[112,13.2780,144.6630],[117,13.2933,144.6575],[122,13.3050,144.6560],[127,13.3175,144.6605],[131,13.3350,144.6560],[135,13.3690,144.6530],[138,13.3990,144.6600],[142,13.4180,144.6660],[146,13.4320,144.6740],[150,13.4600,144.6945],[154,13.4680,144.7050],[157,13.4705,144.7135]];
+// Route 4 cross-island link between Hagåtña (loop 8) and Pago Bay (loop 62)
+const SHORT = { a:8, b:62, cost:16, via:[[13.4700,144.7650],[13.4580,144.7800],[13.4400,144.7900]] };
+
+const S = {
+  fws:{t:"Guam National Wildlife Refuge: status and hours",p:"U.S. Fish & Wildlife Service",u:"https://www.fws.gov/refuge/guam",c:"hours"},
+  fwsLoc:{t:"Refuge location, hours and closures",p:"U.S. Fish & Wildlife Service",u:"https://fws.gov/refuge/guam/visit-us/locations/guam-national-wildlife-refuge",c:"hours"},
+  visitRit:{t:"Guam National Wildlife Refuge listing",p:"Guam Visitors Bureau",u:"https://www.visitguam.com/listing/guam-national-wildlife-refuge/2132/",c:"location"},
+  postRit:{t:"Refuge closed Mondays and Tuesdays; entry free",p:"The Guam Daily Post",u:"https://www.postguam.com/news/local/guam-national-wildlife-refuge-closed-mondays-tuesdays/article_fc9fcc32-cacc-11e9-8847-ab466f0cae4d.html",c:"hours"},
+  gpSoledad:{t:"Fort Soledad",p:"Guampedia",u:"https://www.guampedia.com/fort-soledad/",c:"history"},
+  nrhpSoledad:{t:"NRHP nomination: Fort Nuestra Señora de la Soledad",p:"National Park Service",u:"https://npgallery.nps.gov/NRHP/GetAsset/NRHP/74002042_text",c:"history"},
+  gpUmatac:{t:"Humåtak/Umatac",p:"Guampedia",u:"https://www.guampedia.com/?p=1293",c:"history"},
+  cettiGuide:{t:"Cetti Bay Overlook",p:"The Guam Guide",u:"https://archives.theguamguide.com/cetti-bay-overlook",c:"history"},
+  gpCetti:{t:"Cetti",p:"Guampedia",u:"https://www.guampedia.com/?p=17330",c:"history"},
+  visitPhoto:{t:"Picture-perfect places (Cetti coconut stand, Fort Soledad)",p:"Guam Visitors Bureau",u:"https://www.visitguam.com/blog/post/3268/",c:"location"},
+  merizoWiki:{t:"Merizo Bell Tower",p:"Wikipedia (NRHP data)",u:"https://en.wikipedia.org/wiki/Merizo_Bell_Tower",c:"history"},
+  postSouth:{t:"Strolling down south, part 2",p:"The Guam Daily Post",u:"https://www.postguam.com/island_life/spots_on_the_rock/strolling-down-south---part-2/article_237f4a72-9b9d-11e8-8fc9-2bc3089a64f7.html",c:"location"},
+  merizoGuide:{t:"Merizo Pier",p:"The Guam Guide",u:"https://archives.theguamguide.com/merizo-pier/",c:"location"},
+  inaPools:{t:"Inarajan Pools Beach",p:"The Guam Guide",u:"https://theguamguide.com/inarajan-pools-beach",c:"location"},
+  visitIna:{t:"Uncovering the wonders of Inarajan",p:"Guam Visitors Bureau",u:"https://www.visitguam.com/blog/post/2840/",c:"history"},
+  visitInaV:{t:"Inarajan village history",p:"Guam Visitors Bureau",u:"https://www.visitguam.com/about-guam/villages/inarajan/",c:"history"},
+  gefpago:{t:"Gef Pa'go",p:"Guam Visitors Bureau",u:"https://www.visitguam.com/chamorro-culture/cultural-presentations/gef-pago/",c:"hours"},
+  afarGef:{t:"Gef Pa'go admission",p:"Afar",u:"https://www.afar.com/places/gef-pago-inarajan",c:"hours"},
+  pacWorlds:{t:"Inarajan beaches and pool history",p:"Pacific Worlds",u:"https://pacificworlds.com/guam/sea/beaches.cfm",c:"history"},
+  talofofo:{t:"Quick trip to Talofofo",p:"Stripes Guam / The Guam Guide",u:"https://www.theguamguide.com/quick-trip-talofofo-guam-history-caves-and-waterfalls",c:"location"},
+  fallsWiki:{t:"Talofofo Falls",p:"Wikipedia",u:"https://en.wikipedia.org/wiki/Talofofo_Falls",c:"history"},
+  fallsPrice:{t:"Talofofo Falls admission and hours",p:"mom-mom.net listing",u:"https://mom-mom.net/en/travel/places/696756f9a635b9e792dd9094",c:"hours"},
+  pago:{t:"Gazing at Guam in all its splendor (Pago Bay)",p:"Stripes Guam",u:"https://guam.stripes.com/travel/gazing-at-guam-in-all-its-splendor.html",c:"history"},
+  gpWWII:{t:"WWII monuments and sites map",p:"Guampedia",u:"https://www.guampedia.com/wwii-monuments-and-sites-map/",c:"history"},
+  phParks:{t:"Visit War in the Pacific",p:"Pacific Historic Parks",u:"https://www.pacifichistoricparks.org/plan-your-visit/visit-war-in-the-pacific",c:"history"},
+  npsGaan:{t:"Ga'an Point",p:"National Park Service",u:"https://www.nps.gov/parkhistory/online_books/npswapa/extContent/wapa/gaan_point.htm",c:"history"},
+  npsWapa:{t:"War in the Pacific National Historical Park",p:"National Park Service",u:"https://www.nps.gov/wapa/index.htm",c:"history"},
+  npsAlerts:{t:"Alerts and conditions",p:"National Park Service",u:"https://www.nps.gov/wapa/planyourvisit/conditions.htm",c:"safety"},
+  visitTLP:{t:"Two Lovers Point history and legend",p:"Guam Visitors Bureau",u:"https://www.visitguam.com/blog/post/2174/",c:"history"},
+  visitTLP2:{t:"Two Lovers Point legend (GVB telling)",p:"Guam Visitors Bureau",u:"https://www.visitguam.com/blog/post/2320/",c:"history"},
+  tlpFee:{t:"Two Lovers Point visitor reviews (fee)",p:"Wanderlog",u:"https://wanderlog.com/place/details/3062/恋人岬",c:"hours"},
+  fisheye:{t:"Fish Eye observatory reopens",p:"The Guam Daily Post",u:"https://www.postguam.com/fish-eye-marine-park-observatory-reopens-with-crystal-clear-views/article_3e5e8bcf-d763-420d-b202-eb41ac37609b.html",c:"hours"},
+  fisheyeBook:{t:"Fish Eye observatory admission",p:"Fish Eye Marine Park",u:"https://fisheyemarinepark.book.ntmg.com/products/ab0bb377-8b66-5bc2-b937-342ce0984ec3?lng=en-US",c:"location"},
+  nws:{t:"NWS Forecast Office Tiyan, Guam",p:"National Weather Service",u:"https://www.weather.gov/gum/",c:"safety"},
+  epa:{t:"Monitoring and Analytical Services (Beach Report)",p:"Guam EPA",u:"https://epa.guam.gov/monitoring-and-analytical/",c:"safety"},
+  marina:{t:"Marina Grill reviews",p:"Wanderlog",u:"https://wanderlog.com/place/details/3198250/marina-grill",c:"food"},
+  portMarina:{t:"Agat Marina",p:"Port Authority of Guam",u:"https://portofguam.com/node/75",c:"location"},
+  crab:{t:"Crab Daddy brings Southern-style seafood boil to Guam",p:"The Guam Daily Post",u:"https://www.postguam.com/business/local/crab-daddy-brings-southern-style-seafood-boil-to-guam/article_e1f215ca-0758-11ea-8074-5b60878ad6e0.html",c:"food"},
+  fcOT:{t:"Fisherman's Cove",p:"OpenTable",u:"https://opentable.com/r/fishermans-cove-hilton-guam-resort-and-spa-tumon-bay",c:"food"},
+  fcHrs:{t:"Hilton Guam restaurant hours",p:"Stripes Guam",u:"https://guam.stripes.com/food-drink/where-to-eat-sweets-on-guam---hilton-guam-resort-spa.html",c:"hours"},
+  beachin:{t:"Recommended eats in Tumon (Beachin' Shrimp)",p:"Trip.com",u:"https://ca.trip.com/moments/destination-tamuning-17248/",c:"food"},
+  jeffs:{t:"Jeff's Pirates Cove hours",p:"4travel.jp",u:"https://4travel.jp/os_shisetsu/10310311",c:"hours"},
+  cvMarket:{t:"Chamorro Village Wednesday Night Market",p:"The Guam Guide",u:"https://theguamguide.com/chamorro-village-wednesday-night-market",c:"food"},
+  dcaCV:{t:"Chamorro Village",p:"Department of Chamorro Affairs",u:"https://dca.guam.gov/?p=2589",c:"history"}
+};
+
+// Category metadata. shape: c = circle, s = square, d = diamond (never color alone)
+const CATS = {
+  "viewpoint":{label:"Viewpoint",v:"--c-view",shape:"c"},
+  "nature":{label:"Nature",v:"--c-nature",shape:"c"},
+  "swimming":{label:"Swimming",v:"--c-swim",shape:"c"},
+  "chamoru-history":{label:"Ancient CHamoru",v:"--c-chamoru",shape:"s"},
+  "spanish-history":{label:"Spanish era",v:"--c-spanish",shape:"s"},
+  "wwii-history":{label:"WWII",v:"--c-wwii",shape:"s"},
+  "seafood":{label:"Food",v:"--c-food",shape:"d"}
+};
+const HISTORY_CATS = ["chamoru-history","spanish-history","wwii-history"];
+
+const STOPS = [
+ {id:"asan-overlook",name:"Asan Bay Overlook",alt:["War in the Pacific National Historical Park"],village:"Asan-Maina (Nimitz Hill)",lat:13.4585,lon:144.7208,
+  cats:["wwii-history","viewpoint"],priority:"optional",profiles:[],loop:1,spur:7,dur:[15,25],art:"memorial",seed:3,q:"Asan Bay Overlook, Guam",
+  short:"Memorial wall and bronze reliefs above the Asan landing beach, a few minutes from where you are staying.",
+  why:"The Memorial Wall carries the names of American service members who died defending Guam in 1941, those killed retaking it in 1944, and the people of Guam who suffered and died during the 31 months of occupation.",
+  happened:"On July 21, 1944, U.S. Marines came ashore on the beach below and fought up the ridges around you. Japanese defenders on these heights could watch the whole landing.",
+  look:["The Memorial Wall of names","Bronze bas-reliefs of the CHamoru wartime experience","Asan Point and Adelup Point framing the landing beach"],
+  respect:"This is a memorial. Keep voices low and stay off the wall and sculptures.",
+  practical:["Open 24 hours","Not on the default plans. It is so close to Oceanview Drive that it works best as a quiet evening visit on any day of your stay."],
+  safety:[],alt_text:"Illustration of a low memorial wall and flagpoles above a blue bay.",sources:["phParks","npsWapa"]},
+
+ {id:"two-lovers",name:"Two Lovers Point",alt:["Puntan Dos Amantes"],village:"Tamuning",lat:13.5297,lon:144.8009,
+  cats:["viewpoint","chamoru-history"],priority:"recommended",profiles:["full","explorer"],loop:18,spur:6,dur:[20,40],art:"cliff",seed:7,q:"Two Lovers Point, Guam",
+  hours:{open:600,close:1140,note:"Listings disagree on opening time (7 a.m. or 10 a.m.). The plan uses 10 a.m. to be safe."},
+  short:"A limestone headland about 400 feet above Tumon Bay, tied to one of Guam's best-known legends.",
+  why:"CHamoru people knew this headland long before Spanish colonizers named it Cabo de los Amantes. French explorer Louis de Freycinet recorded the legend in 1819, and the story is older than that record.",
+  happened:"In the telling shared by the Guam Visitors Bureau, the daughter of a CHamoru chief refused a marriage arranged with a Spanish captain. Pursued to this cliff with the young CHamoru man she loved, the two tied their hair into a single knot and stepped off together. Details differ between tellings. Across them, the story carries the strain of loyalty and love under colonial rule.",
+  look:["Two tiered lookout platforms over Tumon Bay","The bronze statue of the lovers","Faifai Beach below and the line of Tumon hotels to the south"],
+  respect:"Treat the legend as part of CHamoru oral tradition rather than only a photo backdrop.",
+  practical:["The park grounds are free; the lookout platform charges a small fee (reported at $3)","Morning light falls behind you and lights the bay. Evening brings sunset over the Philippine Sea if you dine in Tumon."],
+  safety:["Stay behind the railings. The drop is sheer."],alt_text:"Illustration of a pale limestone cliff dropping into a turquoise bay.",sources:["visitTLP","visitTLP2","tlpFee"]},
+
+ {id:"spmp",name:"South Pacific Memorial Park",alt:["Peace Memorial Park","Mataguac"],village:"Yigo",lat:13.5455,lon:144.8838,
+  cats:["wwii-history"],priority:"optional",profiles:["explorer"],loop:39,spur:2,dur:[15,25],art:"tower",seed:11,q:"South Pacific Memorial Park, Yigo, Guam",
+  short:"A peace memorial at the site of the last organized battle on Guam, built as an act of reconciliation.",
+  why:"In 1965 a group of local and Japanese members formed the South Pacific Memorial Association. Their Peace Memorial Tower, dedicated in 1970, honors all the men, women and children who died in the Pacific during World War II.",
+  happened:"Mataguac was the scene of the last organized battle between Japanese and U.S. forces on Guam in August 1944, and the site of the final Japanese command post.",
+  look:["The Peace Memorial Tower","The command-post area"],
+  respect:"An active memorial that holds an annual peace ceremony. Visit quietly.",
+  practical:["A short detour off the north loop"],safety:[],alt_text:"Illustration of a white memorial tower among dark green trees.",sources:["gpWWII"]},
+
+ {id:"ritidian",name:"Ritidian Point",alt:["Puntan Litekyan","Guam National Wildlife Refuge"],village:"Yigo",lat:13.6493,lon:144.8608,
+  cats:["nature","chamoru-history","viewpoint"],priority:"essential",profiles:["full","explorer"],loop:36,spur:16,dur:[45,90],art:"beach",seed:5,q:"Ritidian Point, Guam National Wildlife Refuge",
+  hours:{days:[3,4,5,6,0],open:450,close:960,note:"Wednesday to Sunday, 7:30 a.m. to 4:00 p.m. Closed Monday, Tuesday, federal holidays and during hazardous ocean conditions."},
+  status:"In its Oct 3, 2026 update, Fish & Wildlife closed the refuge for hazardous ocean conditions. Check the morning you go.",
+  short:"Guam's northern edge: limestone forest, a white-sand beach, reef, and one of the island's deepest settlement landscapes.",
+  why:"Litekyan means \"a stirring place\" in CHamoru. The refuge protects sea turtle nesting beaches, native forest and endangered species such as the Mariana fruit bat, along with latte sites and caves holding ancient CHamoru pictographs.",
+  happened:"Ritidian holds some of the oldest CHamoru settlement evidence in the north. Refuge staff lead guided visits to the latte village and pictograph caves when tours are offered.",
+  look:["The nature center at the entrance","The long beach and turquoise reef flat","Latte-village and cave tours, when the refuge runs them"],
+  respect:"No pets. Leave rocks, shells and artifacts where they are. Keep clear of marked turtle nests.",
+  practical:["Entry is free","Turn at Potts Junction, drive 4.5 miles to the refuge sign, then bear left 1.5 miles downhill to the gate","When the refuge is closed, walking in is not permitted either"],
+  safety:["The water can look calm while currents are dangerous. Treat Ritidian as a walking and wading beach unless posted conditions say otherwise."],
+  alt_text:"Illustration of a white-sand beach edged by jungle, with turquoise reef water.",sources:["fws","fwsLoc","visitRit","postRit"]},
+
+ {id:"pago",name:"Pago Bay",alt:["Yona coast"],village:"Yona / Chalan Pago",lat:13.4268,lon:144.7890,
+  cats:["viewpoint","chamoru-history"],priority:"optional",profiles:[],loop:62,spur:0,dur:[10,15],art:"bay",seed:13,q:"Pago Bay, Guam",
+  short:"The east-coast view as Route 4 drops toward the bay. A short pull-off is enough.",
+  why:"Archaeologists working along the shore found buried village soils and artifacts showing people lived here centuries before Spanish contact in 1521.",
+  happened:"",look:["The reef line across the bay mouth","Open Pacific swell on the windward side"],
+  respect:"Most of the shoreline is residential. Use a legal pull-off and keep driveways clear.",
+  practical:["Every plan drives past this view; add it if you want to stop"],safety:["Do not stop on the curve; find a safe shoulder."],
+  alt_text:"Illustration of a wide bay between two green headlands.",sources:["pago"]},
+
+ {id:"jeffs",name:"Jeff's Pirates Cove",alt:["Lunch stop"],village:"Ipan, Talo'fo'fo",lat:13.3745,lon:144.7665,kind:"meal",
+  cats:["seafood"],priority:"recommended",profiles:[],loop:74,spur:0,dur:[40,60],art:"cove",seed:17,q:"Jeff's Pirates Cove, Talofofo, Guam",
+  hours:{byDay:{0:[540,1140],1:[600,1080],2:[600,1080],3:[600,1080],4:[600,1080],5:[600,1140],6:[540,1140]},note:"Reported: Mon to Thu 10 a.m. to 6 p.m., Fri 10 a.m. to 7 p.m., Sat and Sun 9 a.m. to 7 p.m. Confirm before you rely on it."},
+  short:"Open-air oceanfront restaurant on Route 4, run by the Pleadwell family since 1979.",
+  why:"The classic midday stop on a round-the-island drive, with a small museum and gift shop on site.",happened:"",
+  look:["The ocean deck","The small museum"],respect:"",
+  practical:["Best known for its burger. For your preferences, ask for the fish of the day grilled, a salad in place of fries, and sauces on the side."],
+  safety:[],alt_text:"Illustration of an open-air thatched roof beside the ocean.",sources:["jeffs","talofofo"]},
+
+ {id:"talofofo",name:"Talofofo Bay",alt:["Talo'fo'fo Bay Beach Park"],village:"Talo'fo'fo",lat:13.3545,lon:144.7655,
+  cats:["nature"],priority:"optional",profiles:["explorer"],loop:78,spur:1,dur:[15,30],art:"bay2",seed:19,q:"Talofofo Bay Beach Park, Guam",
+  short:"A dark-sand bay at the river mouth, popular with surfers. The coast feels wilder here than on the calmer west side.",
+  why:"River valleys meet open Pacific swell here, a sharp contrast with the lagoons you passed in the morning. The cliffs nearby hold the Talofofo Caves, known for ancient CHamoru pictographs.",
+  happened:"",look:["Surfers working the bay break","The Talofofo River mouth"],respect:"",
+  practical:["Picnic shelters at the beach park"],safety:["Swimming is permitted, but the water gets choppy and rough. Watch from shore if surf is up."],
+  alt_text:"Illustration of a dark-sand bay with surf lines.",sources:["talofofo"]},
+
+ {id:"talofofo-falls",name:"Talofofo Falls Resort Park",alt:["Yokoi's Cave"],village:"Inalåhan / Talo'fo'fo",lat:13.3220,lon:144.7350,
+  cats:["nature","wwii-history"],priority:"optional",profiles:[],detour:true,loop:80,spur:10,dur:[90,150],art:"falls",seed:23,q:"Talofofo Falls Resort Park, Guam",
+  hours:{open:540,close:1020,note:"Listed daily 9 a.m. to 5 p.m.; reviews mention reduced hours after typhoons."},
+  short:"Optional detour, adds 1.5 to 2.5 hours. A privately run park with a cable car over two cascades and a replica of Yokoi's Cave.",
+  why:"Japanese soldier Shoichi Yokoi hid in the jungle here from 1944 until he was found in 1972, one of the last WWII holdouts.",happened:"",
+  look:["The upper and lower falls from the cable car","The Yokoi's Cave replica and small history museum"],
+  respect:"",practical:["Admission reported at $22 adults, including the round-trip cable car","The park includes an adult-themed sculpture garden (Loveland)"],safety:[],
+  alt_text:"Illustration of white cascades in a green valley with a cable line overhead.",sources:["fallsWiki","fallsPrice"]},
+
+ {id:"inalahan-village",name:"Historic Inalåhan Village",alt:["Inarajan","Gef Pa'go Cultural Village"],village:"Inalåhan",lat:13.2765,lon:144.7485,
+  cats:["chamoru-history","spanish-history"],priority:"recommended",profiles:["full","explorer"],loop:90,spur:0,dur:[20,45],art:"village",seed:29,q:"Gef Pa'go Cultural Village, Inarajan, Guam",
+  hours:{open:540,close:720,label:"Gef Pa'go",note:"Gef Pa'go demonstrations: daily 9 a.m. to noon. The village itself has no hours."},
+  short:"One of Guam's best-preserved Spanish-era village landscapes, and a living community.",
+  why:"Inalåhan predates European contact. Spain formally established the village in 1680 around St. Joseph Church. It has been on the National Register of Historic Places since 1977, with 17 listed sites, many walkable.",
+  happened:"Gef Pa'go Cultural Village, on the bay, was founded in 1992. Elders demonstrate weaving, coconut candy, coconut oil and sea salt making, the lifeways of Guam in the 1940s and 1950s.",
+  look:["St. Joseph Church, still the center of village life and fiestas","Painted doors and windows along San Jose Avenue showing 1950s village life","Gef Pa'go's thatched huts on Inalåhan Bay"],
+  respect:"You are visiting a living village, not an open-air exhibit. Park thoughtfully, follow signs, keep driveways clear, and support local businesses where you can.",
+  practical:["Gef Pa'go admission reported at $10 adults, $5 children","The gift shop sells locally made goods"],safety:[],
+  alt_text:"Illustration of a white church facade with a bell gable among palms.",sources:["visitIna","visitInaV","gefpago","afarGef"]},
+
+ {id:"inalahan-pools",name:"Inalåhan Pools",alt:["Inarajan Pools","Salaglula Pool","Inarajan Natural Pool"],village:"Inalåhan",lat:13.2695,lon:144.7468,
+  cats:["swimming","nature"],priority:"essential",profiles:["express","full","explorer"],loop:92,spur:1,dur:[45,90],art:"pools",seed:31,q:"Inarajan Natural Pool, Guam",swim:true,
+  short:"Seawater pools inside a wall of dark rock, refilled by waves over the reef. The swim stop of the day when conditions allow.",
+  why:"The rock outcrops stand 15 to 20 feet high and take most of the wave action, so the pools stay calm on many rough-sea days. Typhoons have repeatedly wrecked and rebuilt the pavilions and steps.",
+  happened:"",look:["Fish in the shallow pools (bring a mask)","The high diving platform","Covered pavilions and rinse showers"],
+  respect:"Do not stand on coral or remove shells and animals.",
+  practical:["Bring water shoes, a towel, cash and snacks","Restrooms on site; reviewers describe them as poorly kept"],
+  safety:["Check current weather, tide, wave and water-quality conditions before entering","Do not enter if surf is breaking heavily over the rocks","Wear water shoes; the rock and reef are sharp and slippery","Keep children close. A protected pool is never risk-free.","Observe closures, signs and local warnings"],
+  alt_text:"Illustration of turquoise seawater pools edged by dark volcanic rock.",sources:["inaPools","visitIna","pacWorlds"]},
+
+ {id:"merizo",name:"Malesso' Pier",alt:["Merizo Pier","Merizo Bell Tower","Cocos Lagoon"],village:"Malesso' (Merizo)",lat:13.2652,lon:144.6705,
+  cats:["viewpoint","spanish-history","nature"],priority:"recommended",profiles:["express","full","explorer"],loop:107,spur:0,dur:[20,40],art:"pier",seed:37,q:"Merizo Pier, Guam",
+  short:"Guam's southernmost village, facing Cocos Lagoon and Cocos Island about two miles offshore. A good place to slow down before the west coast.",
+  why:"Across Route 4, the Malesso' Kombento (1856) is the oldest known occupied building on Guam. The 24-foot bell tower nearby was built by Capuchin Father Cristobal de Canals in the 1910s from mamposteria (mortared stone rubble) and restored by the Guam Preservation Trust in 2016.",
+  happened:"",look:["Cocos Island stretched across the lagoon","The bell tower (Kampanayun Malesso') and Santa Marian Kamalen park","Fishing boats at the pier"],
+  respect:"The meetinghouse and park serve the village. Keep it tidy.",
+  practical:["Restrooms on park property and a small store nearby","Cocos Island ferries leave from here. Do not assume boats or tours are running.","Parking is limited and traffic can be heavy"],
+  safety:["People jump from the pier. Check depth, boat traffic and current first, and never jump alone."],
+  alt_text:"Illustration of a pier reaching into a turquoise lagoon with a low island on the horizon.",sources:["postSouth","merizoGuide","merizoWiki"]},
+
+ {id:"soledad",name:"Fort Nuestra Señora de la Soledad",short_name:"Fort Soledad",alt:["Fort Soledad"],village:"Humåtak (Umatac)",lat:13.2933,lon:144.6575,
+  cats:["spanish-history","viewpoint"],priority:"essential",profiles:["express","full","explorer"],loop:117,spur:1,dur:[30,45],art:"fort",seed:41,q:"Fort Nuestra Senora de la Soledad, Umatac, Guam",
+  short:"The last of four Spanish forts around Humåtak Bay, set on a bluff about 224 feet above the water.",
+  why:"Spain governed Guam from 1668 to 1898. For much of that time, Manila galleons sailing west from Acapulco anchored in Humåtak Bay for water and supplies, and four forts were built between about 1680 and 1810 to protect the anchorage.",
+  happened:"Artillery stood on this bluff, called Chalan Aniti (Path of the Ancestors), by 1803. The fort was completed and named during Governor Alexandro Parreño's term (1806 to 1812) and held seven cannons firing over the parapet. After the galleon trade ended in 1815, Spain could not maintain it, and treasure hunters later damaged it. It became a park after World War II and was listed on the National Register in 1974.",
+  look:["The sentry box on the seaward corner","Cannon emplacements along the parapet","The village, the bay and the ruins of Fort Santo Angel at the bay's north entrance"],
+  respect:"Humåtak is traditionally associated with Magellan's 1521 landfall, the start of a colonial history CHamoru families still live with. Read the site with that in mind.",
+  practical:["Small park with parking off Route 4, uphill after the bridge"],
+  safety:["Low walls and steep drops. Stay inside the fort walls."],
+  alt_text:"Illustration of a stone parapet and cannon above a deep blue bay.",sources:["gpSoledad","nrhpSoledad","gpUmatac"]},
+
+ {id:"cetti",name:"Cetti Bay Overlook",alt:["Attelong Acho"],village:"Humåtak / Hågat",lat:13.3175,lon:144.6605,
+  cats:["viewpoint","nature","chamoru-history"],priority:"essential",profiles:["express","full","explorer"],loop:127,spur:0,dur:[15,30],art:"ridges",seed:43,q:"Cetti Bay Overlook, Guam",
+  short:"The defining roadside view of southern Guam: volcanic ridges falling to a remote bay.",
+  why:"The twin hills below, Attelong Acho (Black Rock), are pillow lava formed underwater during ancient eruptions, evidence of southern Guam's volcanic origin. People have lived along this coast for about 3,000 years. Latte stones and pottery remain in the bay, which is on the Guam and National Registers of Historic Places.",
+  happened:"",look:["Attelong Acho below and to the north","Cocos Island to the south on a clear day","Mount Lamlam, Guam's highest point at 1,332 feet, rising behind you"],
+  respect:"The bay below is a protected archaeological landscape. Leave anything you find.",
+  practical:["Park along the street. The Sella Bay viewpoint is about a minute north.","A coconut stand often sets up at the entrance","Photo tip: go wide and include the ridgeline or road for scale","Best light is late afternoon, which is when the clockwise plan puts you here"],
+  safety:["Stay behind barriers and keep clear of cliff edges, especially in rain or wind."],
+  alt_text:"Illustration of steep green volcanic ridges descending toward a dark-blue bay.",sources:["cettiGuide","gpCetti","visitPhoto"]},
+
+ {id:"gaan",name:"Ga'an Point",alt:["Agat Invasion Beach","War in the Pacific NHP, Agat Unit"],village:"Hågat (Agat)",lat:13.3990,lon:144.6600,
+  cats:["wwii-history","nature"],priority:"recommended",profiles:["full","explorer"],loop:138,spur:1,dur:[20,40],art:"pillbox",seed:47,q:"Ga'an Point, Agat, Guam",
+  short:"Japanese gun emplacements at the center of the southern landing beach of July 21, 1944.",
+  why:"Japan occupied Guam from December 1941 to July 1944. U.S. forces landed at both Asan and Agat on July 21, 1944. Ga'an Point sat at the center of the Agat beachhead; its guns had to be taken before supplies could come ashore.",
+  happened:"Agat was a rice-growing village of about 800 people before the war. The fortifications here were the last to fall in the Agat fighting. The flags of the United States, Japan and Guam fly here in memory of everyone who died.",
+  look:["Two pillboxes and small cave shelters cut into the coral","A Japanese 20 cm naval coastal gun","The reef flat that landing craft had to cross"],
+  respect:"Remember the civilians of Agat as well as the soldiers. Do not climb into or onto the fortifications.",
+  practical:["Open 24 hours, with picnic pavilions, restrooms and parking","Apaca Point, a mile north, has similar emplacements"],safety:[],
+  alt_text:"Illustration of a concrete pillbox on coral rock beside a calm reef.",sources:["npsGaan","phParks","npsWapa"]},
+
+ {id:"fisheye",name:"Fish Eye Marine Park",alt:["Piti Bomb Holes","Underwater Observatory"],village:"Piti",lat:13.4600,lon:144.6945,
+  cats:["nature"],priority:"optional",profiles:[],loop:150,spur:0,dur:[20,40],art:"reef",seed:53,q:"Fish Eye Marine Park, Piti, Guam",checkSameDay:true,
+  short:"An underwater observatory at the end of a 300-meter ocean bridge in the Piti marine preserve.",
+  why:"The viewing chamber sits about 6 meters down, with 26 windows onto Piti Bay, where the operator counts more than 200 fish species and 80 coral varieties. Six windows were replaced in September 2025.",
+  happened:"",look:["Reef fish at eye level through the windows","Piti Bay from the bridge"],respect:"",
+  practical:["Check same-day availability, ticketing and operating conditions","Lunch buffet packages include observatory entry","Stairs lead to the chamber; a live video feed on the upper deck serves anyone who prefers not to climb"],safety:[],
+  alt_text:"Illustration of a long bridge leading to a domed observatory over the reef.",sources:["fisheye","fisheyeBook"]}
+];
+
+const RESTAURANTS = [
+ {id:"marina",name:"Marina Grill",area:"Agat",lat:13.3690,lon:144.6515,loop:135,spur:1,q:"Marina Grill, Agat Marina, Guam",
+  type:"Waterfront grill at Agat Marina",routeFit:"excellent",price:"$$",
+  short:"A local favorite at the marina, serving local catch such as mahi as ceviche, grilled or in tacos, with a view over the boats.",
+  orders:["Fresh catch grilled simply","Mahi ceviche if available","Skip the tortilla or fries; ask for sauces on the side"],
+  fits:{lowCarb:true,sauceSide:true,spicy:true,grilled:true,sashimi:false},moods:["grilled","casual","quick"],
+  hours:null,hoursNote:"Hours not confirmed from a primary source. Call or check the day of.",sources:["marina","portMarina"]},
+ {id:"crab",name:"Crab Daddy Agana",area:"Hagåtña",lat:13.4775,lon:144.7470,loop:8,spur:1,q:"Crab Daddy, Hagatna, Guam",
+  type:"Seafood boil, casual",routeFit:"good",price:"$$",
+  short:"A Louisiana-style seafood boil house on Marine Corps Drive: crab, lobster, crawfish, mussels, shrimp and squid, plus grilled entrées. About 10 minutes from Oceanview Drive.",
+  orders:["For a lighter, less sauced meal, choose a grilled entrée over the full boil","If you go for the boil, order the seasoning on the side and skip the corn and potatoes"],
+  fits:{lowCarb:true,sauceSide:true,spicy:true,grilled:true,sashimi:false},moods:["boil","casual","spicy","quick"],
+  hours:{open:720,close:1320},hoursNote:"Noon to 10 p.m. at its 2019 opening. Confirm current hours.",sources:["crab"]},
+ {id:"fishermans",name:"Fisherman's Cove",area:"Tumon",lat:13.5005,lon:144.7826,loop:15,spur:3,q:"Fisherman's Cove, Hilton Guam Resort, Tumon",
+  type:"Refined seafood market dinner (Hilton Guam)",routeFit:"good",price:"$$$$",
+  short:"Pick your fish, lobster, crab or shrimp from a market display and the kitchen prepares it the way you ask, with your choice of seasonings.",
+  orders:["Choose a whole local fish or fillet from the display, grilled or steamed","Ask for sauces and butter on the side","Book ahead; diners report waits without a reservation"],
+  fits:{lowCarb:true,sauceSide:true,spicy:false,grilled:true,sashimi:true},moods:["refined","grilled"],
+  hours:{open:1080,close:1290},hoursNote:"Dinner reported 6 to 9:30 p.m. (older listing). Reserve on OpenTable and confirm.",sources:["fcOT","fcHrs"]},
+ {id:"beachin",name:"Beachin' Shrimp",area:"Tumon",lat:13.5150,lon:144.8010,loop:17,spur:2,q:"Beachin' Shrimp, 1225 Pale San Vitores Rd, Tumon, Guam",
+  type:"Casual shrimp house",routeFit:"good",price:"$$",
+  short:"Shrimp-centric coastal cooking drawing on California, Mexico and Louisiana, in the center of Tumon.",
+  orders:["Garlic or spicy shrimp preparations","Ask about salad or vegetable sides in place of rice or pasta","Sauces on the side"],
+  fits:{lowCarb:true,sauceSide:true,spicy:true,grilled:false,sashimi:false},moods:["spicy","casual"],
+  hours:{open:600,close:1260},hoursNote:"Reported daily 10 a.m. to 9 p.m. Confirm current hours.",sources:["beachin"]}
+];
+
+const MOODS = [
+ {id:"grilled",label:"Grilled fish, low-carb friendly"},
+ {id:"casual",label:"Casual local seafood"},
+ {id:"boil",label:"Seafood boil"},
+ {id:"refined",label:"Refined dinner"},
+ {id:"spicy",label:"Shrimp and spicy food"},
+ {id:"quick",label:"Get back near Asan quickly"}
+];
+
+const PROFILES = {
+ express:{label:"Scenic Express",range:"5 to 6 hours",desc:"Big views, four priority stops, one meal",meal:40,dinner:false},
+ full:{label:"Recommended Full Day",range:"8 to 9 hours plus dinner",desc:"Major scenic and historic stops, a swim, seafood dinner",meal:50,dinner:true},
+ explorer:{label:"Slow Explorer",range:"10 to 12 hours",desc:"Longer beach time and every history stop",meal:60,dinner:true}
+};
+const DINNER_MIN = 75;
+
+// Federal holidays when the refuge would otherwise be open (Wed to Sun) and others, 2026 to 2027
+const FED_HOLIDAYS = new Set(["2026-10-12","2026-11-11","2026-11-26","2026-12-25","2027-01-01","2027-01-18","2027-02-15","2027-05-31","2027-06-18","2027-07-05","2027-09-06","2027-10-11","2027-11-11","2027-11-25","2027-12-24"]);
+const DOW = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+function dowOf(date){ const [y,m,d]=date.split("-").map(Number); return new Date(Date.UTC(y,m-1,d)).getUTCDay(); }
+function fmt(min){ min=Math.round(min); let h=Math.floor(min/60)%24, m=min%60; const ap=h>=12?"p.m.":"a.m."; h=h%12||12; return `${h}:${String(m).padStart(2,"0")} ${ap}`; }
+function fmtS(min){ min=Math.round(min); let h=Math.floor(min/60)%24, m=min%60; h=h%12||12; return `${h}:${String(m).padStart(2,"0")}`; }
+function ap(min){ return (Math.floor(Math.round(min)/60)%24)>=12?"pm":"am"; }
+function dur(min){ min=Math.round(min); const h=Math.floor(min/60), m=min%60; return h? (m? `${h} hr ${m} min`:`${h} hr`) : `${m} min`; }
+function parseHM(s){ const [h,m]=s.split(":").map(Number); return h*60+m; }
+
+// NOAA approximation of sunset for Guam (UTC+10, no daylight saving)
+function sunTimes(date, lat=13.45, lon=144.75, tz=10){
+  const [y,mo,d]=date.split("-").map(Number);
+  const start=Date.UTC(y,0,1), N=Math.round((Date.UTC(y,mo-1,d)-start)/864e5)+1;
+  const g=2*Math.PI/365*(N-1);
+  const eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+  const dec=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+  const r=Math.PI/180, la=lat*r;
+  const ha=Math.acos(Math.cos(90.833*r)/(Math.cos(la)*Math.cos(dec))-Math.tan(la)*Math.tan(dec))/r;
+  return { sunrise:720-4*(lon+ha)-eq+tz*60, sunset:720-4*(lon-ha)-eq+tz*60 };
+}
+
+function ritidianStatus(date, cond){
+  const dw=dowOf(date);
+  if(FED_HOLIDAYS.has(date)) return {open:false,why:"a federal holiday"};
+  if(dw===1||dw===2) return {open:false,why:`a ${DOW[dw]}`};
+  if(cond.surf) return {open:false,why: cond.surfFromLive ? "a rough-surf day in the forecast, when the refuge often closes (check its status page before you go)" : "a high surf day (the refuge closes during hazardous ocean conditions)"};
+  if(cond.ritClosedLive && cond.ritClosedLive===date) return {open:false,why:"a day Fish & Wildlife lists the refuge as closed"};
+  return {open:true};
+}
+
+// Shortest driving minutes on the loop plus the Route 4 cross-island link
+function ring(a,b){ const d=((b-a)%L+L)%L; return d<=L-d ? {d,cw:true} : {d:L-d,cw:false}; }
+function legMinutes(A,B){
+  if(A.id===B.id) return {min:0,short:false,type:"ring"};
+  const a=A.loop, b=B.loop;
+  let best={min:ring(a,b).d,type:"ring"};
+  const c1=ring(a,SHORT.a).d+SHORT.cost+ring(SHORT.b,b).d;
+  const c2=ring(a,SHORT.b).d+SHORT.cost+ring(SHORT.a,b).d;
+  if(c1<best.min) best={min:c1,type:"a2b"};
+  if(c2<best.min) best={min:c2,type:"b2a"};
+  return {min:Math.round(best.min+(A.spur||0)+(B.spur||0)), short:best.type!=="ring", type:best.type};
+}
+
+function dwellFor(s, profile, cond){
+  const [lo,hi]=s.dur;
+  if(s.swim && cond.water) return 15;
+  const f={express:0.25,full:0.5,explorer:0.7}[profile];
+  return Math.round((lo+(hi-lo)*f)/5)*5;
+}
+
+function orderKey(s,dir,lateTL){
+  // With nothing else in the north on the plan, Two Lovers moves to the evening in clockwise order
+  if(lateTL && s.id==="two-lovers" && dir==="cw") return L+s.loop;
+  return dir==="cw" ? s.loop : ((L-s.loop)%L);
+}
+function dinnerId(st){ return st.dinnerForced ? st.dinner : (st.dir==="cw" ? "marina" : "fishermans"); }
+
+function hoursFor(s, dow){
+  const h=s.hours; if(!h) return null;
+  if(h.byDay) return h.byDay[dow] ? {open:h.byDay[dow][0],close:h.byDay[dow][1]} : {closed:true};
+  if(h.days && !h.days.includes(dow)) return {closed:true};
+  return {open:h.open,close:h.close};
+}
+
+function isIncluded(s, st){
+  if(s.kind==="meal") return false;
+  const ov=st.overrides[s.id];
+  if(st.trip && st.trip.status[s.id]==="skip") return false;
+  if(ov!==undefined) return ov;
+  return s.profiles.includes(st.profile);
+}
+
+// Build the plan. st = state; now = Guam minutes (for day-of mode) or null
+function buildPlan(st, now){
+  const dw=dowOf(st.date), sun=sunTimes(st.date), prof=PROFILES[st.profile];
+  const rit=ritidianStatus(st.date, st.cond);
+  const alerts=[];
+  let chosen=STOPS.filter(s=>isIncluded(s,st));
+  const ritWanted = chosen.some(s=>s.id==="ritidian");
+  if(!rit.open){
+    chosen=chosen.filter(s=>s.id!=="ritidian");
+    if(ritWanted || STOPS.find(s=>s.id==="ritidian").profiles.includes(st.profile))
+      alerts.push({lvl:"warn",id:"rit-closed",title:"Ritidian is off today's plan",text:`${new Date(st.date+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric"})} is ${rit.why}, so the refuge is closed. Pick a Wednesday to Sunday date to include it.`});
+  }
+  const northIds=new Set(["ritidian","spmp"]);
+  const lateTL = !chosen.some(x=>northIds.has(x.id));
+  const key=x=>orderKey(x,st.dir,lateTL);
+  chosen.sort((a,b)=>key(a)-key(b));
+
+  const trip=st.trip||{on:false,status:{},doneAt:{},extra:{}};
+  const done = trip.on ? chosen.filter(s=>trip.status[s.id]==="done") : [];
+
+  function simulate(list, startMin, from){
+    const items=[]; let t=startMin, pos=from, drive=0;
+    for(const s of list){
+      const leg=legMinutes(pos,s);
+      drive+=leg.min; t+=leg.min;
+      const dwell=(s._meal? s._mealDwell : dwellFor(s,st.profile,st.cond)) + ((trip.extra||{})[s.id]||0);
+      items.push({s,leg,arrive:t,depart:t+dwell,dwell}); t+=dwell; pos=s;
+    }
+    return {items,t,pos,drive};
+  }
+
+  const startMin=parseHM(st.start);
+  const remaining=chosen.filter(s=>!(trip.on && trip.status[s.id]==="done"));
+  let fromPos=HOME, t0=startMin;
+  if(trip.on){
+    const last=trip.last? (STOPS.find(s=>s.id===trip.last)||RESTAURANTS.find(r=>r.id===trip.last)) : null;
+    if(last) fromPos=last;
+    if(now!=null) t0=Math.max(now, startMin);
+  }
+  const order=list=>rotateFrom([...list].sort((a,b)=>key(a)-key(b)), fromPos, key);
+
+  // dinner wanted?
+  let dId=dinnerId(st);
+  const wantDinner = dId!=="none" && (prof.dinner || st.dinnerForced) && !(trip.on && trip.dinnerDone);
+
+  // lunch: pick the candidate that lands nearest 12:15
+  const lunchCands=[STOPS.find(s=>s.id==="jeffs"), RESTAURANTS.find(r=>r.id==="marina")];
+  let lunch=null, lunchArr=null;
+  if(!(trip.on && trip.lunchDone)){
+    const scored=lunchCands.map(c=>{
+      const m=Object.assign({},c,{_meal:true,_mealDwell:prof.meal,cats:["seafood"],kind:"meal"});
+      const sim=simulate(order([...remaining,m]), t0, fromPos);
+      const it=sim.items.find(i=>i.s===m);
+      const late=it.arrive>14*60+30, early=it.arrive<10*60+45;
+      return {m,arrive:it.arrive,score:Math.abs(it.arrive-(12*60+15))+(early?120:0)+(late?120:0)};
+    }).sort((x,y)=>x.score-y.score);
+    let pick=scored[0];
+    if(wantDinner && pick.m.id===dId){
+      const alt=scored.find(x=>x.m.id!==dId && x.arrive>=10*60+45 && x.arrive<=14*60+30);
+      if(alt) pick=alt;
+      else if(!st.dinnerForced){
+        const fall=(st.dir==="cw"?["crab","beachin","fishermans"]:["fishermans","beachin","crab"]).find(x=>x!==pick.m.id);
+        alerts.push({lvl:"info",id:"dinner-moved",title:`Dinner moved to ${RESTAURANTS.find(r=>r.id===fall).name}`,text:`Lunch works out best at ${pick.m.name} today, so dinner goes somewhere else. Change it under Eat.`});
+        dId=fall;
+      } else alerts.push({lvl:"info",id:"same-place",title:"Lunch and dinner at the same place",text:`Both meals land at ${pick.m.name}. Pick another dinner under Eat if you want variety.`});
+    }
+    // past mid-afternoon in day-of mode, skip lunch
+    if(!(trip.on && t0>14*60)) { lunch=pick.m; lunchArr=pick.arrive; }
+  }
+  const sim=simulate(order(lunch?[...remaining,lunch]:remaining), t0, fromPos);
+
+  let dinner=null, dinnerItem=null, homeLeg, endT=sim.t, drive=sim.drive;
+  if(wantDinner){
+    const r=RESTAURANTS.find(x=>x.id===dId)||RESTAURANTS[0];
+    const leg=legMinutes(sim.pos,r);
+    const raw=sim.t+leg.min;
+    const floor=Math.max(17*60+30, r.hours? r.hours.open : 0);
+    const arrive=Math.max(raw,floor);
+    dinner=r; dinnerItem={s:r,leg,arrive,depart:arrive+DINNER_MIN,dwell:DINNER_MIN,spare:arrive-raw,spareAt:sim.t};
+    drive+=leg.min; endT=arrive+DINNER_MIN;
+    homeLeg=legMinutes(r,HOME);
+  }
+  if(!homeLeg) homeLeg=legMinutes(sim.pos,HOME);
+  drive+=homeLeg.min; const homeT=endT+homeLeg.min;
+
+  // per-item warnings
+  for(const it of sim.items){
+    it.flags=[];
+    const s=it.s;
+    if(s.id==="ritidian"){
+      if(it.arrive>15*60+30) it.flags.push({lvl:"crit",t:`Arrives ${fmt(it.arrive)}. The gate closes at 4:00 p.m., so this would be a very short visit at best.`});
+      else if(it.depart>16*60) it.flags.push({lvl:"warn",t:`The gate closes at 4:00 p.m., leaving about ${dur(16*60-it.arrive)} here.`});
+      if(s.status) it.flags.push({lvl:"info",t:s.status});
+    }
+    if(s.id==="two-lovers" && it.arrive<600) it.flags.push({lvl:"info",t:`Arrives ${fmt(it.arrive)}. The lookout may not be open yet (listings say 7 or 10 a.m.). The grounds are still worth a look, or come back at sunset.`});
+    if(s.id==="inalahan-village"){
+      if(it.arrive>=720) it.flags.push({lvl:"info",t:`Gef Pa'go demonstrations end at noon; you arrive about ${fmt(it.arrive)}. Walk the village instead, or plan a southern morning another day.`});
+      else it.flags.push({lvl:"info",t:`You arrive before noon, in time for Gef Pa'go's 9 a.m. to noon demonstrations.`});
+    }
+    if(s.swim && st.cond.water) it.flags.push({lvl:"warn",t:"Water-quality advisory set. Treat this as a scenic stop and stay out of the water."});
+    if(s.swim && st.cond.surf) it.flags.push({lvl:"warn",t:"High surf: watch for surge over the rocks before going in."});
+    if(s.checkSameDay) it.flags.push({lvl:"info",t:"Check same-day availability, ticketing and operating conditions."});
+    const h=s.hours? hoursFor(s,dw):null;
+    if(h && h.closed && s.id!=="ritidian") it.flags.push({lvl:"warn",t:`Reported closed on ${DOW[dw]}s.`});
+    if(h && !h.closed && s.id!=="inalahan-village" && s.id!=="two-lovers" && s.id!=="ritidian" && (it.arrive<h.open||it.arrive>h.close-20)) it.flags.push({lvl:"warn",t:`Arrives ${fmt(it.arrive)}, outside reported hours (${fmt(h.open)} to ${fmt(h.close)}).`});
+    if(!s._meal && s.cats.includes("viewpoint") && it.arrive>sun.sunset-10) it.flags.push({lvl:"warn",t:`Arrives after sunset (${fmt(sun.sunset)}). The view will be gone.`});
+  }
+  if(dinnerItem){
+    dinnerItem.flags=[];
+    const h=dinner.hours;
+    if(h && dinnerItem.arrive<h.open) dinnerItem.flags.push({lvl:"info",t:`You would arrive ${fmt(dinnerItem.arrive)}; dinner service is reported to start at ${fmt(h.open)}.`});
+    if(h && dinnerItem.arrive>h.close-45) dinnerItem.flags.push({lvl:"warn",t:`Arrives ${fmt(dinnerItem.arrive)}, close to the reported closing time.`});
+    if(!h) dinnerItem.flags.push({lvl:"info",t:dinner.hoursNote});
+  }
+
+  // plan-level alerts
+  const ritItem=sim.items.find(i=>i.s.id==="ritidian");
+  if(ritItem && ritItem.arrive>14*60+50) alerts.push({lvl:"crit",id:"rit-late",title:"Ritidian comes too late in this direction",text:`You would reach the refuge at ${fmt(ritItem.arrive)}, and it closes at 4:00 p.m. Drive clockwise to arrive in the morning, or save Ritidian for a north-coast day.`,action:st.dir==="ccw"?{label:"Switch to clockwise",fn:"setDir",arg:"cw"}:null});
+  const late=sim.items.filter(i=>!i.s._meal && i.arrive>sun.sunset-10 && i.s.cats.some(c=>c==="viewpoint"||c==="swimming"));
+  if(late.length) alerts.push({lvl:"warn",id:"dark",title:trip.on?"Prioritize the south today":"Not enough daylight for every stop",text:`${late.map(i=>i.s.short_name||i.s.name).join(", ")} would come after sunset (${fmt(sun.sunset)}). Trim optional stops to keep the essentials in daylight.`,action:{label:"Trim to essentials",fn:"trim"}});
+  if(homeT>21*60) alerts.push({lvl:"warn",id:"long",title:"A long day",text:`Projected return is ${fmt(homeT)}. Consider Scenic Express or skipping a stop.`});
+  if(st.cond.rain) alerts.push({lvl:"info",id:"rain",title:st.cond.rainFromLive?"Rain likely this afternoon (forecast)":"Rain likely this afternoon",text:"Prioritize overlooks and historic sites before any swimming stop. Pools turn murky after heavy runoff, and Cetti Bay loses its view in cloud."});
+  if(st.cond.water) alerts.push({lvl:"warn",id:"water",title:"Water-quality advisory",text:"Keep Inalåhan as a scenic stop, but do not plan to enter the water. The plan shortens that stop to 15 minutes."});
+  if(st.cond.surf) alerts.push({lvl:"warn",id:"surf",title:st.cond.surfFromLive?"Rough surf in the forecast":"High surf advisory",text:"Ritidian closes in hazardous ocean conditions, so it is off the plan. Skip pier jumping at Malesso' and watch for surge at the pools."});
+  if(dw===3) alerts.push({lvl:"ok",id:"wed",title:"It's a Wednesday",text:"Chamorro Village in Hagåtña holds its night market from 5:30 to 9:30 p.m., with barbecue, local produce, crafts and dancing. It is 10 minutes from Oceanview Drive if you want to end the day there."});
+
+  return {items:sim.items, dinnerItem, dinnerId:dinner?dinner.id:null, homeLeg, homeT, endT, drive, sun, rit, alerts, lunch, t0, fromPos, done, lateTL};
+}
+
+// Rotate a sorted list so the first element is the next stop after `from` in travel order
+function rotateFrom(list, from, key){
+  if(!from || from.id==="home") return list;
+  const inList=list.some(s=>s.id===from.id);
+  const k = inList ? key(list.find(s=>s.id===from.id)) : key(from);
+  const after=list.filter(s=>key(s)>k && s.id!==from.id), before=list.filter(s=>key(s)<=k && s.id!==from.id);
+  return [...after,...before];
+}
+
+// Restaurant ranking for the Eat tab
+function rankDinner(st, plan){
+  const mood=st.mood;
+  const lastPos = plan.items.length? plan.items[plan.items.length-1].s : HOME;
+  const directHome = legMinutes(lastPos,HOME).min;
+  return RESTAURANTS.map(r=>{
+    const toR=legMinutes(lastPos,r).min, toHome=legMinutes(r,HOME).min;
+    let score=0;
+    if(r.moods.includes(mood)) score+=10;
+    if(mood==="grilled"){ score+= (r.fits.grilled?4:0)+(r.fits.lowCarb?2:0)+(r.fits.sashimi?1:0); }
+    if(mood==="quick") score+= Math.max(0,30-toHome);
+    if(mood==="refined" && r.price==="$$$$") score+=5;
+    score += Math.max(0, 12-(toR+toHome-directHome)/3);
+    return {r,toR,toHome,extra:toR+toHome-directHome,score};
+  }).sort((a,b)=>b.score-a.score);
+}
+// ==END LOGIC==
+</script>
+
+<script>
+// ---------- state ----------
+const KEY="gcc-v1";
+function guamNow(){
+  const p=Object.fromEntries(new Intl.DateTimeFormat("en-CA",{timeZone:"Pacific/Guam",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+  return {date:`${p.year}-${p.month}-${p.day}`, min:(parseInt(p.hour,10)%24)*60+parseInt(p.minute,10)};
+}
+const NOW=guamNow();
+const DEFAULT={tab:"route",profile:"full",dir:"cw",date:NOW.date,start:"08:00",interests:["history","nature","swimming","seafood"],layers:[],overrides:{},dinner:"marina",mood:"grilled",cond:{rain:false,water:false,surf:false},dinnerForced:false,
+  trip:{on:false,status:{},extra:{},last:null,lunchDone:false,dinnerDone:false},packing:{},selected:"cetti"};
+let st=load();
+function load(){ try{ const raw=localStorage.getItem(KEY); if(raw){ const o=JSON.parse(raw); return Object.assign(structuredClone(DEFAULT),o,{cond:Object.assign({},DEFAULT.cond,o.cond||{}),trip:Object.assign({},DEFAULT.trip,o.trip||{})}); } }catch(e){} return structuredClone(DEFAULT); }
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(st)); }catch(e){} }
+function set(patch){ Object.assign(st,patch); save(); render(); }
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const byId=id=>STOPS.find(s=>s.id===id)||RESTAURANTS.find(r=>r.id===id);
+const stopNumber={}; // filled per render from plan order
+
+// ---------- navigation links ----------
+function navLinks(p){
+  const q=encodeURIComponent(p.q||p.name+", Guam");
+  return {
+    google:`https://www.google.com/maps/dir/?api=1&destination=${q}&travelmode=driving`,
+    apple:`https://maps.apple.com/?daddr=${q}&ll=${p.lat},${p.lon}&dirflg=d`,
+    waze:`https://waze.com/ul?q=${q}&ll=${p.lat},${p.lon}&navigate=yes`
+  };
+}
+function fullRouteLink(plan){
+  const pts=[...plan.items.map(i=>i.s), ...(plan.dinnerItem?[plan.dinnerItem.s]:[])];
+  const way=pts.slice(0,9).map(p=>encodeURIComponent(p.q)).join("%7C");
+  const o=encodeURIComponent(HOME.q);
+  return `https://www.google.com/maps/dir/?api=1&origin=${o}&destination=${o}&waypoints=${way}&travelmode=driving`;
+}
+
+// ---------- icons ----------
+const I={
+ map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>',
+ route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="19" r="2"/><path d="M8 5h7a3.5 3.5 0 0 1 0 7H9a3.5 3.5 0 0 0 0 7h7"/></svg>',
+ stops:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+ eat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-4 7-5.5 11-5.5 2.5 0 4.5 1 6 2.5l2-2v10l-2-2c-1.5 1.5-3.5 2.5-6 2.5-4 0-8-1.5-11-5.5z"/><circle cx="15.5" cy="11" r=".8" fill="currentColor"/></svg>',
+ safety:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/><path d="M12 8v5M12 16.5v.1"/></svg>',
+ nav:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2-8-8-2z"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
+ car:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16h14M6.5 16V19M17.5 16v3M4 16l1.6-5.2A2 2 0 0 1 7.5 9.4h9a2 2 0 0 1 1.9 1.4L20 16"/></svg>'
+};
+const TABS=[["map","Map",I.map],["route","Route",I.route],["stops","Stops",I.stops],["eat","Eat",I.eat],["safety","Safety",I.safety]];
+
+// ---------- illustrations (placeholders until licensed photos are added) ----------
+function rng(seed){ let a=seed*9301+49297; return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+let artN=0;
+function ridge(R, y0, y1, amp, n=22, rough=0.55){
+  const pts=[]; for(let i=0;i<=n;i++){ const x=i/n*360; const base=y0+(y1-y0)*(i/n); pts.push([x,base]); }
+  let a=amp; for(let pass=0;pass<4;pass++){ for(let i=1;i<pts.length-1;i++){ pts[i][1]+= (R()-.5)*a; } a*=rough; }
+  return pts;
+}
+function polyPath(pts,bottom=200){ return "M0,"+bottom+" L"+pts.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" L")+" L360,"+bottom+" Z"; }
+function palm(x,y,h,c="#1f3a2b"){
+  const tx=x+h*.25, ty=y-h;
+  let s=`<path d="M${x},${y} Q${x+h*.05},${y-h*.5} ${tx},${ty}" stroke="${c}" stroke-width="${Math.max(1.5,h*.05)}" fill="none"/>`;
+  for(const [dx,dy] of [[-1,.2],[-.8,-.35],[0,-.6],[.8,-.3],[1,.25],[.5,.45],[-.5,.45]]){
+    s+=`<path d="M${tx},${ty} q${dx*h*.28},${dy*h*.1-h*.12} ${dx*h*.5},${dy*h*.3+h*.08}" stroke="${c}" stroke-width="${Math.max(1.2,h*.035)}" fill="none" stroke-linecap="round"/>`;
+  }
+  return s;
+}
+function art(kind, seed=1, opts={}){
+  const R=rng(seed); const id="a"+(artN++);
+  const sky={
+    morning:["#9CCFE0","#E9F4F1"], noon:["#7FC1DE","#DDF0F3"], afternoon:["#86BCD6","#F3DDBF"], sunset:["#33547A","#F0A36E"]
+  }[opts.sky||"noon"];
+  let s=`<svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${esc(opts.alt||"Illustration")}" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="${id}s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${sky[0]}"/><stop offset="1" stop-color="${sky[1]}"/></linearGradient>
+  <linearGradient id="${id}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1D6E8E"/><stop offset="1" stop-color="#073B5C"/></linearGradient>
+  <linearGradient id="${id}l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5FD0C8"/><stop offset="1" stop-color="#16B7B0"/></linearGradient></defs>
+  <rect width="360" height="200" fill="url(#${id}s)"/>`;
+  const sea=(y,f=`url(#${id}w)`)=>`<rect y="${y}" width="360" height="${200-y}" fill="${f}"/><path d="M0,${y} H360" stroke="#ffffff" stroke-opacity=".35"/>`;
+  const glints=(y0,y1,n=14)=>{ let g=""; for(let i=0;i<n;i++){ const x=R()*360,y=y0+R()*(y1-y0),w=6+R()*16; g+=`<path d="M${x.toFixed(0)},${y.toFixed(0)} h${w.toFixed(0)}" stroke="#fff" stroke-opacity="${(.15+R()*.25).toFixed(2)}" stroke-linecap="round"/>`;} return g; };
+  switch(kind){
+    case "hero":{
+      s+=`<circle cx="250" cy="96" r="20" fill="#F7D79B" opacity=".95"/>`+sea(104)+glints(108,190,24);
+      s+=`<path d="${polyPath(ridge(R,70,118,30))}" fill="#3E6B57" opacity=".75"/>`.replace(/L360,200/," L360,200");
+      const back=ridge(R,62,112,26); for(const p of back) if(p[0]>200) p[1]=Math.max(p[1],104+ (p[0]-200)*0.02);
+      s+=`<path d="${polyPath(back.map(p=>[p[0]*0.62,p[1]]).concat([[223,106],[223,200]]))}" fill="#2F5A45"/>`;
+      s+=`<path d="${polyPath(ridge(R,120,150,26).map(p=>[p[0]*.48,p[1]]).concat([[173,150],[173,200]]))}" fill="#255A3E"/>`;
+      s+=`<path d="M0,176 Q90,160 172,168 L172,200 L0,200Z" fill="#1A3F2D"/>`;
+      s+=palm(36,176,40,"#10291d")+palm(60,174,30,"#10291d");
+      break;}
+    case "ridges":{
+      s+=sea(98)+glints(100,190);
+      s+=`<path d="${polyPath(ridge(R,60,92,24))}" fill="#6E9478"/>`;
+      s+=`<path d="${polyPath(ridge(R,84,120,26).map(p=>[p[0],p[1]+(p[0]>230?(p[0]-230)*.5:0)]))}" fill="#467A57"/>`;
+      s+=`<path d="${polyPath(ridge(R,118,150,22).map(p=>[p[0],p[1]+(p[0]>200?(p[0]-200)*.35:0)]))}" fill="#2F6446"/>`;
+      s+=`<path d="M40,200 Q70,150 110,152 Q140,150 160,200Z" fill="#253A30"/><path d="M110,200 Q140,160 170,162 Q195,165 205,200Z" fill="#2B4237"/>`;
+      s+=`<path d="${polyPath(ridge(R,172,186,10))}" fill="#1E4A33"/>`;
+      break;}
+    case "fort":{
+      s+=sea(92)+glints(96,150);
+      s+=`<path d="M0,96 Q60,70 120,84 Q150,90 170,96Z" fill="#577E66"/>`;
+      s+=`<path d="M0,150 H360 V200 H0Z" fill="#B19A75"/>`;
+      for(let x=0;x<360;x+=40) s+=`<rect x="${x}" y="136" width="26" height="16" fill="#C2AB86"/>`;
+      for(let i=0;i<26;i++){ const x=R()*360,y=156+R()*40; s+=`<path d="M${x.toFixed(0)},${y.toFixed(0)} h${(8+R()*14).toFixed(0)}" stroke="#8E7856" stroke-width="1.2"/>`; }
+      s+=`<path d="M120,138 L210,124 L212,132 L124,146Z" fill="#26292b"/><circle cx="128" cy="150" r="13" fill="none" stroke="#26292b" stroke-width="5"/>`;
+      s+=`<rect x="292" y="96" width="34" height="56" fill="#CDB892"/><path d="M288,98 Q309,70 330,98Z" fill="#B7A07A"/><rect x="304" y="114" width="10" height="16" fill="#3A3226"/>`;
+      break;}
+    case "pools":{
+      s+=sea(70)+`<path d="M0,96 Q40,90 80,95 T160,94 T240,96 T360,93" stroke="#fff" stroke-width="3" fill="none" opacity=".8"/>`;
+      s+=`<path d="${polyPath(ridge(R,100,92,28,26,.6))}" fill="#2B3135"/>`;
+      s+=`<ellipse cx="110" cy="150" rx="78" ry="22" fill="url(#${id}l)"/><ellipse cx="260" cy="168" rx="70" ry="18" fill="url(#${id}l)"/><ellipse cx="200" cy="128" rx="34" ry="9" fill="#2FB9B2"/>`;
+      s+=`<path d="M0,190 Q60,176 120,184 T240,186 T360,182 V200 H0Z" fill="#202528"/>`;
+      s+=glints(140,175,10);
+      break;}
+    case "pier":{
+      s+=sea(108,`url(#${id}l)`)+glints(112,170,18);
+      s+=`<path d="M60,110 Q120,100 200,103 Q260,104 300,110Z" fill="#3D7752"/>`;
+      for(let i=0;i<9;i++) s+=palm(80+i*24+R()*8,106,10+R()*6,"#2B5A3E");
+      s+=`<path d="M150,200 L176,128 L188,128 L230,200Z" fill="#9C8F7C"/><path d="M176,128 L188,128" stroke="#6E6457" stroke-width="2"/>`;
+      for(let i=0;i<6;i++){ const t=i/6, y=200-72*t; s+=`<path d="M${150+26*t},${y} L${230-42*t},${y}" stroke="#7D7263" stroke-width="1"/>`; }
+      break;}
+    case "beach":{
+      s+=`<rect y="82" width="360" height="40" fill="#1E7D9B"/><rect y="112" width="360" height="24" fill="#3CC1BE"/><rect y="128" width="360" height="18" fill="#8DE0D6"/>`+glints(86,140,16);
+      s+=`<path d="M0,150 Q120,128 360,140 V200 H0Z" fill="#F4EEE2"/>`;
+      s+=`<path d="M0,200 V96 Q30,80 60,100 Q80,120 90,150 Q60,170 40,200Z" fill="#2E6146"/>`;
+      s+=palm(70,150,46,"#1f4430")+palm(96,146,34,"#1f4430");
+      break;}
+    case "cliff":{
+      s+=sea(86)+glints(90,196,24);
+      s+=`<path d="M0,90 Q30,86 60,92 L60,96 L0,96Z" fill="#8FA898"/>`;
+      for(let i=0;i<7;i++) s+=`<rect x="${6+i*7}" y="${84-(R()*6)}" width="4" height="${6+R()*6}" fill="#E8E2D6"/>`;
+      s+=`<path d="M220,200 L232,90 Q240,58 268,52 L360,48 L360,200Z" fill="#D7C9AC"/><path d="M220,200 L232,90 Q236,74 250,64 L246,200Z" fill="#B9A887"/>`;
+      s+=`<path d="M232,62 Q260,40 300,42 Q330,44 360,40 L360,52 L268,56 Q246,58 236,68Z" fill="#3E6B4C"/>`;
+      s+=`<path d="M246,52 h40" stroke="#4b4b4b" stroke-width="1.5"/>`;
+      break;}
+    case "memorial": case "tower":{
+      s+=sea(112)+glints(116,160,10);
+      s+=`<path d="${polyPath(ridge(R,104,126,16))}" fill="#3F6F51"/>`;
+      s+=`<path d="M0,170 H360 V200 H0Z" fill="#8E9A8D"/>`;
+      if(kind==="tower"){ s+=`<path d="M170,170 L176,64 L184,64 L190,170Z" fill="#F1EEE6"/><path d="M164,170 h32 v-8 h-32z" fill="#D9D4C8"/>`; s+=palm(80,170,34,"#1f4430")+palm(280,170,30,"#1f4430"); }
+      else { s+=`<rect x="40" y="150" width="280" height="22" fill="#5B6466"/><path d="M40,150 h280" stroke="#9AA3A5"/>`; for(const x of [130,180,230]) s+=`<path d="M${x},150 V82" stroke="#E7E3DA" stroke-width="2.5"/><path d="M${x+1},84 h22 v13 h-22z" fill="${x===130?"#B22234":x===180?"#F3F1EC":"#1F4E8C"}"/>`; }
+      break;}
+    case "pillbox":{
+      s+=sea(96)+`<rect y="132" width="360" height="30" fill="#6CCFC6" opacity=".7"/>`+glints(100,150,12);
+      s+=`<path d="M0,200 V160 Q60,140 140,150 Q200,158 240,200Z" fill="#B7AB92"/>`;
+      s+=`<path d="M70,152 L80,122 L130,118 L146,140 L140,156 L84,160Z" fill="#8B8F88"/><path d="M92,132 h30" stroke="#2c2f2c" stroke-width="5"/>`;
+      s+=palm(200,170,52,"#1f4430");
+      break;}
+    case "village":{
+      s+=`<path d="${polyPath(ridge(R,92,112,20))}" fill="#4F7F5D"/>`;
+      s+=`<path d="M0,150 H360 V200 H0Z" fill="#CDBFA4"/>`;
+      s+=`<rect x="140" y="88" width="80" height="66" fill="#F3EFE6"/><path d="M134,90 L180,58 L226,90Z" fill="#B95E3F"/><rect x="170" y="44" width="20" height="22" fill="#F3EFE6"/><path d="M180,48 a5,5 0 0 1 0,10" fill="#5B4A3A"/><rect x="172" y="120" width="16" height="34" fill="#6B4B33"/>`;
+      s+=`<rect x="40" y="120" width="60" height="34" fill="#E5D6BC"/><path d="M36,122 L70,104 L104,122Z" fill="#8A6E50"/><rect x="262" y="124" width="56" height="30" fill="#D8E4E0"/><path d="M258,126 L290,110 L322,126Z" fill="#7A6A58"/>`;
+      s+=palm(118,154,40,"#1f4430")+palm(246,154,46,"#1f4430");
+      break;}
+    case "bay": case "bay2":{
+      s+=sea(96)+glints(100,190,18);
+      s+=`<path d="M0,200 V88 Q50,80 90,110 Q120,140 110,200Z" fill="#3E6E50"/><path d="M360,200 V84 Q300,82 270,112 Q250,140 262,200Z" fill="#2F6446"/>`;
+      if(kind==="bay2") s+=`<path d="M110,200 Q180,170 262,200Z" fill="#4E4A45"/>`+`<path d="M140,150 q20,-6 40,0 M190,140 q20,-6 40,0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".7"/>`;
+      else s+=`<path d="M100,124 Q180,118 270,126" stroke="#fff" stroke-width="2" fill="none" opacity=".55"/>`;
+      break;}
+    case "cove":{
+      s+=sea(100)+glints(104,190,16);
+      s+=`<path d="M0,170 H360 V200 H0Z" fill="#7A5E43"/>`;
+      s+=`<path d="M10,96 L130,60 L250,96Z" fill="#A9864F"/><path d="M10,96 L250,96" stroke="#7a5c33" stroke-width="3"/>`;
+      for(const x of [30,90,170,230]) s+=`<rect x="${x}" y="96" width="6" height="74" fill="#5A4027"/>`;
+      s+=palm(300,170,48,"#1f4430");
+      break;}
+    case "reef":{
+      s+=sea(70,`url(#${id}l)`)+glints(80,190,20);
+      for(let i=0;i<9;i++) s+=`<ellipse cx="${R()*360}" cy="${120+R()*70}" rx="${14+R()*20}" ry="${5+R()*6}" fill="#0F8E88" opacity=".5"/>`;
+      s+=`<path d="M0,170 L250,104" stroke="#EDEAE2" stroke-width="5"/><path d="M0,176 L250,110" stroke="#B9B4A8" stroke-width="2"/>`;
+      s+=`<path d="M236,110 a26,22 0 0 1 52,0 v6 h-52z" fill="#EDEAE2"/><path d="M234,116 h56" stroke="#9e998e" stroke-width="2"/>`;
+      break;}
+    case "falls":{
+      s+=`<path d="${polyPath(ridge(R,50,70,20))}" fill="#4E8460"/><path d="${polyPath(ridge(R,110,120,24))}" fill="#2F6446"/>`;
+      s+=`<path d="M150,70 C155,110 145,140 150,200 L190,200 C186,150 196,110 190,70Z" fill="#EAF6F5" opacity=".9"/>`;
+      for(let i=0;i<8;i++){ const x=154+i*4.5; s+=`<path d="M${x},74 V190" stroke="#B7E0E2" stroke-width="1"/>`; }
+      s+=`<path d="M0,40 L360,70" stroke="#3a3a3a" stroke-width="1.2"/><rect x="214" y="54" width="14" height="10" fill="#C04A2B"/>`;
+      break;}
+  }
+  s+=`</svg>`;
+  return s;
+}
+function plate(s, sky){ return `<div class="plate">${art(s.art,s.seed,{sky,alt:s.alt_text})}<span class="cap">Illustration · photo pending</span></div>`; }
+
+// ---------- shared bits ----------
+function primaryCat(s){ return (s.cats||["nature"])[0]; }
+function catColor(c){ return `var(${(CATS[c]||CATS.nature).v})`; }
+function shapeOf(s){ return (CATS[primaryCat(s)]||CATS.nature).shape; }
+function catTags(s){ return (s.cats||[]).map(c=>`<span class="tag">${CATS[c].label}</span>`).join(""); }
+function priPill(s){ if(s.kind==="meal") return `<span class="pill rec">Lunch</span>`; if(s.detour) return `<span class="pill opt">Optional detour</span>`; return {essential:`<span class="pill ess">Essential</span>`,recommended:`<span class="pill rec">Recommended</span>`,optional:`<span class="pill opt">Optional</span>`}[s.priority]; }
+function flagsHtml(f){ return (f||[]).map(x=>`<div class="flag ${x.lvl==="crit"?"crit":x.lvl==="info"?"info":""}">${esc(x.t)}</div>`).join(""); }
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,2200); }
+
+let PLAN=null;
+function computePlan(){
+  const now = (st.trip.on && st.date===guamNow().date) ? guamNow().min : (st.trip.on ? null : null);
+  PLAN=buildPlan(st, st.trip.on ? (now ?? parseHM(st.start)) : null);
+  let n=0; for(const it of PLAN.items){ if(!it.s._meal) stopNumber[it.s.id]=++n; }
+}
+
+// ---------- ROUTE (home) ----------
+function viewRoute(){
+  const p=PLAN, prof=PROFILES[st.profile];
+  const startM=parseHM(st.start);
+  const nStops=p.items.filter(i=>!i.s._meal).length + (st.trip.on? Object.values(st.trip.status).filter(v=>v==="done").length:0);
+  const facts=`<div class="facts">
+    <div class="fact"><span class="k">Leave</span><span class="v">${fmt(st.trip.on?p.t0:startM)}</span><span class="s">${st.trip.on?"from here, now":"Oceanview Drive"}</span></div>
+    <div class="fact"><span class="k">Dinner</span><span class="v">${p.dinnerItem?fmt(p.dinnerItem.arrive):"None"}</span><span class="s">${p.dinnerItem?esc(p.dinnerItem.s.name):"Add one under Eat"}</span></div>
+    <div class="fact"><span class="k">Back home</span><span class="v">${fmt(p.homeT)}</span><span class="s">${dur(p.homeT-(st.trip.on?p.t0:startM))} total</span></div>
+    <div class="fact"><span class="k">Driving</span><span class="v">${dur(p.drive)}</span><span class="s">estimate, light traffic</span></div>
+    <div class="fact"><span class="k">Stops</span><span class="v">${nStops}</span><span class="s">plus ${p.lunch?"lunch":"no lunch"}${p.dinnerItem?" and dinner":""}</span></div>
+    <div class="fact"><span class="k">Sunset</span><span class="v">${fmt(p.sun.sunset)}</span><span class="s">${new Date(st.date+"T12:00:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})}</span></div>
+  </div>`;
+  const alerts=p.alerts.length? `<div class="alerts" aria-live="polite">${p.alerts.map(a=>`<div class="alert ${a.lvl}"><div><b>${esc(a.title)}</b><span>${esc(a.text)}</span>${a.action?`<div><button class="btn sm" data-act="${a.action.fn}" data-arg="${a.action.arg||""}">${esc(a.action.label)}</button></div>`:""}</div></div>`).join("")}</div>`:"";
+
+  return `<div class="wrap">
+  ${st.trip.on?"":`<section class="hero">
+    <div class="plate" style="aspect-ratio:16/7">${art("hero",2,{sky:"sunset",alt:"Illustration of green volcanic ridges and palms above the sea at sunset."})}<span class="cap">Illustration</span></div>
+    <span class="eyebrow">A full-day island drive from Asan</span>
+    <h1>The Guam Coastal Circuit</h1>
+    <p class="lede">Ancient CHamoru landscapes, Spanish forts, WWII landing beaches, reef pools and Pacific seafood. Leave early, drive clockwise, let the southern coast take its time, and finish with dinner near the water.</p>
+    <div class="row"><button class="btn primary" data-act="startTrip">${I.nav} Start today</button><button class="btn" data-act="tab" data-arg="map">Open the map</button></div>
+  </section>`}
+  ${st.trip.on?`<section class="section"><div class="alert ok"><div><b>Day-of mode is on</b><span>Times below are projected from now (${fmt(guamNow().min)} Guam time). Mark stops done or skipped as you go and the rest of the day recalculates.</span><div class="row"><button class="btn sm" data-act="endTrip">End the day</button></div></div></div></section>`:""}
+
+  <section class="section" aria-labelledby="planH">
+    <h2 id="planH">Plan the day</h2>
+    <div class="panel">
+      <div class="field"><span class="lbl">Travel style</span>
+        <div class="seg c3" role="group" aria-label="Travel style">${Object.entries(PROFILES).map(([k,v])=>`<button type="button" aria-pressed="${st.profile===k}" data-act="profile" data-arg="${k}"><b>${v.label.replace("Recommended ","")}</b><span>${v.range}</span></button>`).join("")}</div>
+        <span class="small muted">${esc(prof.desc)}.</span>
+      </div>
+      <div class="field"><span class="lbl">Direction</span>
+        <div class="seg c2" role="group" aria-label="Direction">
+          <button type="button" aria-pressed="${st.dir==="cw"}" data-act="setDir" data-arg="cw"><b>Clockwise</b><span>North first · recommended</span></button>
+          <button type="button" aria-pressed="${st.dir==="ccw"}" data-act="setDir" data-arg="ccw"><b>South first</b><span>Counterclockwise</span></button>
+        </div>
+      </div>
+      <div class="two">
+        <div class="field"><label for="tripDate">Trip date</label><input id="tripDate" type="date" value="${st.date}"></div>
+        <div class="field"><label for="tripStart">Leave at</label><input id="tripStart" type="time" value="${st.start}" step="900"></div>
+      </div>
+      <div class="field"><span class="lbl">Today's conditions</span>
+        <div class="cond">
+          <label><input type="checkbox" id="cRain" ${st.cond.rain?"checked":""}><span>Rain likely this afternoon <span class="muted small">(<a href="${S.nws.u}" target="_blank" rel="noopener">NWS Guam</a>)</span></span></label>
+          <label><input type="checkbox" id="cWater" ${st.cond.water?"checked":""}><span>Water-quality advisory for Inalåhan <span class="muted small">(<a href="${S.epa.u}" target="_blank" rel="noopener">Guam EPA</a>)</span></span></label>
+          <label><input type="checkbox" id="cSurf" ${st.cond.surf?"checked":""}><span>High surf advisory <span class="muted small">(<a href="${S.fws.u}" target="_blank" rel="noopener">Ritidian status</a>)</span></span></label>
+        </div>
+        <span class="small muted">The live forecast above sets rain and surf for you when the trip is within 15 days. Water quality has no live feed, so check the Guam EPA link. Anything you tick by hand stays as you set it.</span>
+      </div>
+    </div>
+    ${facts}
+    ${alerts}
+  </section>
+
+  ${st.trip.on?"":`<details class="why" ${st.dir==="ccw"?"open":""}><summary>Why clockwise</summary><div class="body">
+    <p>Most guides send you south first. This plan runs the loop north first, which on a north-up map is the clockwise direction, for three reasons.</p>
+    <ol>
+      <li><b>Ritidian closes at 4:00 p.m.</b> and is shut Monday, Tuesday and on high-surf days. North first gets you there in the morning. South first puts you at the gate near closing time.</li>
+      <li><b>The southern overlooks face west.</b> Cetti Bay and Fort Soledad are at their best in late-afternoon light.</li>
+      <li><b>The day ends at Agat</b>, about 20 minutes from Oceanview Drive, with dinner by the water as the sun sets over the Philippine Sea.</li>
+    </ol>
+    <p class="small muted">South first is still here under Direction if you skip Ritidian or prefer a morning swim.</p>
+  </div></details>`}
+
+  <section class="section" aria-labelledby="tlH">
+    <div class="row" style="justify-content:space-between"><h2 id="tlH">${st.trip.on?"The rest of today":"Today's route"}</h2><a class="btn sm" href="${fullRouteLink(p)}" target="_blank" rel="noopener">${I.nav} Whole route in Google Maps</a></div>
+    ${timeline()}
+  </section>
+
+  ${cutList()}
+  ${packing()}
+  <section class="section"><p class="small muted">Drive times are planning estimates from a simplified road model, not live traffic. Hours, fees and status notes were last checked ${ACCESSED}; each stop lists its sources. <button class="btn sm ghost" data-act="history">Sources and history</button></p></section>
+  </div>`;
+}
+
+function nodeHtml(s,num){
+  if(s._meal||s.kind==="meal") return `<div class="node dm" style="background:${catColor("seafood")}"><span>${s._meal?"L":"D"}</span></div>`;
+  const sh=shapeOf(s);
+  return `<div class="node ${sh==="s"?"sq":sh==="d"?"dm":""}" style="background:${catColor(primaryCat(s))}"><span>${num}</span></div>`;
+}
+function legRow(leg){
+  if(!leg||!leg.min) return "";
+  return `<li class="legrow"><div></div><div class="rail"></div><div class="leg">${I.car}<span>${dur(leg.min)} drive${leg.short?" · Route 4 cross-island":""}</span></div></li>`;
+}
+function timeline(){
+  const p=PLAN; let h=`<ol class="tl">`;
+  // start
+  const startLabel = st.trip.on ? (st.trip.last? "Now, at "+(byId(st.trip.last).short_name||byId(st.trip.last).name) : "Now, at Oceanview Drive") : "Oceanview Drive, Asan";
+  h+=`<li><div class="time">${fmtS(st.trip.on?p.t0:parseHM(st.start))}<small>${ap(st.trip.on?p.t0:parseHM(st.start))}</small></div><div class="rail"><div class="node home"><span>H</span></div></div><div class="body"><div class="stopcard"><h3>${esc(startLabel)}</h3>${st.trip.on?"":`<p class="small muted">Fill water bottles, check fuel (keep it above a quarter tank in the south and north), and check the weather and beach advisories before you go.</p>`}</div></div></li>`;
+  // done (day-of)
+  if(st.trip.on){
+    for(const id of Object.keys(st.trip.status).filter(k=>st.trip.status[k]==="done")){
+      const s=byId(id); if(!s) continue;
+      h+=`<li><div class="time">${st.trip.doneAt&&st.trip.doneAt[id]!=null?fmtS(st.trip.doneAt[id]):""}<small>done</small></div><div class="rail"><div class="node done"><span>${I.check.replace('<svg','<svg width="12" height="12"')}</span></div></div><div class="body"><div class="stopcard done"><div class="row" style="justify-content:space-between"><b>${esc(s.short_name||s.name)}</b><button class="btn sm ghost" data-act="undo" data-arg="${id}">Undo</button></div></div></div></li>`;
+    }
+  }
+  for(const it of p.items){
+    h+=legRow(it.leg);
+    const s=it.s, num=stopNumber[s.id];
+    const isMeal=!!s._meal;
+    h+=`<li><div class="time">${fmtS(it.arrive)}<small>${ap(it.arrive)} · ${dur(it.dwell)}</small></div><div class="rail">${nodeHtml(s,num)}</div><div class="body"><article class="stopcard">
+      <div class="row">${isMeal?`<span class="pill rec">Lunch</span>`:priPill(s)}<span class="small muted">${esc(isMeal?(s.area||s.village):s.village)}</span></div>
+      <h3>${esc(isMeal?s.name:(s.short_name||s.name))}</h3>
+      <p class="small">${esc(s.short)}</p>
+      ${isMeal?`<p class="small"><b>Order:</b> ${esc((s.orders||[s.practical&&s.practical[0]]).filter(Boolean)[0]||"")}</p>`:""}
+      ${flagsHtml(it.flags)}
+      <div class="acts">
+        <button class="btn sm" data-act="nav" data-arg="${s.id}">${I.nav} Navigate</button>
+        ${isMeal?"":`<button class="btn sm" data-act="detail" data-arg="${s.id}">Details</button>`}
+        ${st.trip.on?`<button class="btn sm primary" data-act="done" data-arg="${isMeal?"lunch:"+s.id:s.id}">${I.check} Done</button><button class="btn sm ghost" data-act="stay" data-arg="${s.id}">Stay +15</button>`:""}
+        ${isMeal?"":`<button class="btn sm ghost" data-act="skip" data-arg="${s.id}">Skip</button>`}
+      </div></article></div></li>`;
+  }
+  if(p.dinnerItem){
+    const it=p.dinnerItem, r=it.s;
+    if(it.spare>=15) h+=spareRow(it);
+    h+=legRow(it.leg);
+    h+=`<li><div class="time">${fmtS(it.arrive)}<small>${ap(it.arrive)} · ${dur(it.dwell)}</small></div><div class="rail">${nodeHtml({kind:"meal"},0)}</div><div class="body"><article class="stopcard">
+      <div class="row"><span class="pill rec">Dinner</span><span class="small muted">${esc(r.area)}</span></div>
+      <h3>${esc(r.name)}</h3><p class="small">${esc(r.short)}</p>
+      <p class="small"><b>Order:</b> ${esc(r.orders[0])}. ${esc(r.orders[r.orders.length-1])}.</p>
+      ${flagsHtml(it.flags)}
+      <div class="acts"><button class="btn sm" data-act="nav" data-arg="${r.id}">${I.nav} Navigate</button><button class="btn sm" data-act="tab" data-arg="eat">Change dinner</button>${st.trip.on?`<button class="btn sm primary" data-act="done" data-arg="dinner:${r.id}">${I.check} Done</button>`:""}</div></article></div></li>`;
+  }
+  h+=legRow(p.homeLeg);
+  h+=`<li><div class="time">${fmtS(p.homeT)}<small>${ap(p.homeT)}</small></div><div class="rail"><div class="node home"><span>H</span></div></div><div class="body"><div class="stopcard"><h3>Back at Oceanview Drive</h3><p class="small muted">${p.homeT<p.sun.sunset?"Home before sunset at "+fmt(p.sun.sunset)+".":"After dark. The last stretch is the familiar Marine Corps Drive corridor."}</p></div></div></li>`;
+  h+=`</ol>`;
+  // skipped / not included
+  const off=STOPS.filter(s=>s.kind!=="meal" && !PLAN.items.some(i=>i.s.id===s.id) && !(st.trip.on&&st.trip.status[s.id]==="done"));
+  if(off.length){
+    h+=`<div class="stack" style="margin-top:6px"><span class="eyebrow">Not on today's plan</span>${off.map(s=>{
+      const closed = s.id==="ritidian" && !PLAN.rit.open;
+      return `<div class="skipped"><span><b>${esc(s.short_name||s.name)}</b> · ${closed?"closed today":s.detour?"optional detour":esc(PRI_LABEL[s.priority])}</span>${closed?"":`<button class="btn sm" data-act="add" data-arg="${s.id}">Add</button>`}</div>`;}).join("")}</div>`;
+  }
+  return h;
+}
+function spareRow(it){
+  const last=PLAN.items.length? PLAN.items[PLAN.items.length-1].s : HOME;
+  const toHome=legMinutes(last,HOME).min;
+  let tip;
+  if(it.spare>=100 && toHome<=30) tip=`Oceanview Drive is ${dur(toHome)} away. Go back to rest and change, then head out to dinner.`;
+  else if(it.s.area==="Agat") tip="Linger at Ga'an Point's beach or walk the Agat Marina breakwater as the light drops.";
+  else if(it.s.area==="Tumon") tip=`Walk the Tumon Bay beach path, or catch sunset (${fmt(PLAN.sun.sunset)}) from Two Lovers Point.`;
+  else tip="Walk Paseo de Susana and the old Plaza de España area in Hagåtña.";
+  return `<li><div class="time">${fmtS(it.spareAt)}<small>${ap(it.spareAt)}</small></div><div class="rail"><div class="node" style="background:var(--surface-2);color:var(--ink)"><span>·</span></div></div><div class="body"><div class="skipped" style="border-style:solid;display:block"><b>Time to spare: ${dur(it.spare)}</b><br><span class="small">${esc(tip)}</span></div></div></li>`;
+}
+const PRI_LABEL={essential:"essential",recommended:"recommended",optional:"optional"};
+
+function cutList(){
+  if(st.trip.on) return "";
+  const inc=PLAN.items.filter(i=>!i.s._meal);
+  if(inc.length<4) return "";
+  const intr=new Set(st.interests);
+  const score=s=>({essential:5,recommended:3,optional:0}[s.priority]) + s.cats.reduce((a,c)=>a+((intr.has("history")&&HISTORY_CATS.includes(c))?2:0)+((intr.has("nature")&&(c==="nature"||c==="viewpoint"))?2:0)+((intr.has("swimming")&&c==="swimming")?2:0),0);
+  const list=inc.map(i=>({s:i.s,score:score(i.s),save:i.dwell+2*(i.s.spur||0)})).filter(x=>x.s.priority!=="essential").sort((a,b)=>a.score-b.score).slice(0,3);
+  if(!list.length) return "";
+  return `<section class="section"><h2>If the day runs long</h2><p class="muted small">Cut these first, ranked by priority and your interests.</p>
+   <div class="chips" role="group" aria-label="Interests">${[["history","History"],["nature","Nature"],["swimming","Swimming"],["seafood","Seafood"]].map(([k,l])=>`<button class="chip" aria-pressed="${intr.has(k)}" data-act="interest" data-arg="${k}">${l}</button>`).join("")}</div>
+   <ol class="list">${list.map(x=>`<li><b>${esc(x.s.short_name||x.s.name)}</b> saves about ${dur(x.save)}</li>`).join("")}</ol></section>`;
+}
+
+const PACK=["Water, more than you expect to drink","Reef-safe sunscreen and a hat","Towel and swimwear","Water shoes or sturdy sandals","Light rain layer","Snacks for the car","Cash for small fees, coconuts and fruit stands","Phone charger and offline map download"];
+function packing(){
+  if(st.trip.on) return "";
+  return `<section class="section"><h2>Pack the car</h2><div class="check">${PACK.map((x,i)=>`<label><input type="checkbox" id="pk${i}" data-pack="${i}" ${st.packing[i]?"checked":""}><span>${esc(x)}</span></label>`).join("")}</div></section>`;
+}
+
+// ---------- MAP ----------
+const K=1000, COS=Math.cos(13.45*Math.PI/180), LON0=144.60, LAT0=13.68;
+const P=(lat,lon)=>[(lon-LON0)*K*COS,(LAT0-lat)*K];
+const OUTLINE=[[144.8852,13.6409],[144.896,13.6172],[144.914,13.6054],[144.9356,13.6004],[144.9536,13.5987],[144.9536,13.5868],[144.9392,13.5598],[144.9068,13.5159],[144.8708,13.4855],[144.8096,13.445],[144.7844,13.4197],[144.77,13.3792],[144.7592,13.2863],[144.734,13.2491],[144.7196,13.2424],[144.698,13.2407],[144.68,13.2474],[144.6692,13.2643],[144.6584,13.2812],[144.6548,13.2863],[144.6476,13.3251],[144.644,13.3319],[144.6404,13.3369],[144.6332,13.342],[144.626,13.3454],[144.6368,13.3555],[144.644,13.3656],[144.6476,13.3792],[144.6476,13.396],[144.644,13.4045],[144.6404,13.4146],[144.6332,13.4231],[144.6224,13.4315],[144.6296,13.4383],[144.6368,13.4433],[144.6404,13.4383],[144.6548,13.4399],[144.716,13.4737],[144.7304,13.4855],[144.7844,13.5159],[144.7952,13.5277],[144.8024,13.5396],[144.8096,13.5531],[144.8312,13.6206],[144.8384,13.6324],[144.8492,13.6443],[144.8672,13.6527],[144.8816,13.6544]];
+function smoothClosed(pts){
+  const n=pts.length; let d=`M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+  for(let i=0;i<n;i++){ const p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
+    const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6], c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
+    d+=` C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`; }
+  return d+"Z";
+}
+function loopPoint(m){
+  m=((m%L)+L)%L;
+  for(let i=0;i<NODES.length-1;i++){ const a=NODES[i],b=NODES[i+1]; if(m>=a[0]&&m<=b[0]){ const t=(m-a[0])/((b[0]-a[0])||1); return [a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t]; } }
+  return [NODES[0][1],NODES[0][2]];
+}
+function legPath(A,B,leg){
+  const pts=[[A.lat,A.lon]];
+  const walk=(from,to)=>{ const r=ring(from,to); for(let k=2;k<r.d;k+=2) pts.push(loopPoint(r.cw?from+k:from-k)); pts.push(loopPoint(to)); };
+  pts.push(loopPoint(A.loop));
+  if(leg.type==="a2b"){ walk(A.loop,SHORT.a); SHORT.via.forEach(v=>pts.push(v)); walk(SHORT.b,B.loop); }
+  else if(leg.type==="b2a"){ walk(A.loop,SHORT.b); [...SHORT.via].reverse().forEach(v=>pts.push(v)); walk(SHORT.a,B.loop); }
+  else walk(A.loop,B.loop);
+  pts.push([B.lat,B.lon]);
+  return pts;
+}
+let mapVB={x:-10,y:-10,w:380,h:480};
+function mapSvg(){
+  const p=PLAN;
+  const land=smoothClosed(OUTLINE.map(([lon,lat])=>P(lat,lon)));
+  const layers=new Set(st.layers);
+  const visible=s=>!layers.size || (s.cats||[]).some(c=>layers.has(c)||(layers.has("history")&&HISTORY_CATS.includes(c))) || (layers.has("seafood")&&s.kind==="meal");
+  // route
+  let route=""; const seq=[HOME,...p.items.map(i=>i.s),...(p.dinnerItem?[p.dinnerItem.s]:[]),HOME];
+  if(st.trip.on && st.trip.last){ seq[0]=byId(st.trip.last)||HOME; }
+  const legs=[...p.items.map(i=>i.leg),...(p.dinnerItem?[p.dinnerItem.leg]:[]),p.homeLeg];
+  let all=[];
+  for(let i=0;i<seq.length-1;i++){ const lp=legPath(seq[i],seq[i+1],legs[i]); all=all.concat(lp.slice(i?1:0)); }
+  const rd=all.map(([la,lo],i)=>{ const [x,y]=P(la,lo); return (i?"L":"M")+x.toFixed(1)+","+y.toFixed(1); }).join("");
+  route=`<path d="${rd}" fill="none" stroke="var(--surface)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/><path d="${rd}" fill="none" stroke="var(--route)" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round" marker-mid="url(#arw)"/>`;
+  // detour stops not included: dashed spur lines
+  let off="";
+  for(const s of STOPS){ if(p.items.some(i=>i.s.id===s.id)) continue; if(!visible(s)) continue;
+    const base=loopPoint(s.loop), [x1,y1]=P(base[0],base[1]), [x2,y2]=P(s.lat,s.lon);
+    off+=`<path d="M${x1},${y1} L${x2},${y2}" stroke="var(--c-off)" stroke-width="2" stroke-dasharray="4 4" fill="none"/>`; }
+  // labels
+  const LBL=[["Philippine Sea",13.50,144.635,1],["Pacific Ocean",13.33,144.86,1],["Hagåtña",13.488,144.745],["Tumon",13.523,144.786],["Yigo",13.555,144.905],["Andersen AFB (no access)",13.592,144.912],["Apra Harbor",13.447,144.648],["Hågat",13.381,144.672],["Humåtak",13.300,144.672],["Malesso'",13.252,144.688],["Inalåhan",13.284,144.735],["Talo'fo'fo",13.352,144.748],["Yona",13.412,144.763],["Mangilao",13.462,144.828],["Mt. Lamlam",13.336,144.672]];
+  let lbl=LBL.map(([t,la,lo,sea])=>{ const [x,y]=P(la,lo); return `<text x="${x.toFixed(0)}" y="${y.toFixed(0)}" font-size="${sea?10:7.5}" ${sea?'font-style="italic" letter-spacing="1"':''} fill="var(--map-label)" text-anchor="middle" style="font-family:var(--f-body)">${t}</text>`; }).join("");
+  // markers
+  let mk="";
+  const drawMarker=(s,num,inPlan)=>{
+    const [x,y]=P(s.lat,s.lon); const sh=s.kind==="meal"?"d":shapeOf(s);
+    const col=inPlan? catColor(s.kind==="meal"?"seafood":primaryCat(s)) : "var(--c-off)";
+    const sel=st.selected===s.id; const r=sel?10:8;
+    let shape = sh==="s" ? `<rect x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" rx="3"/>` : sh==="d" ? `<rect x="${-r*.85}" y="${-r*.85}" width="${1.7*r}" height="${1.7*r}" rx="2" transform="rotate(45)"/>` : `<circle r="${r}"/>`;
+    shape=shape.replace("/>",` fill="${col}" stroke="var(--surface)" stroke-width="${sel?3:2}"/>`);
+    const label = s.kind==="meal" ? "L" : (inPlan&&num? num : "+");
+    return `<g class="mk" transform="translate(${x.toFixed(1)},${y.toFixed(1)})" tabindex="0" role="button" aria-label="${esc((s.short_name||s.name)+(inPlan?", stop "+num:", not on plan"))}" data-sel="${s.id}">${sel?`<circle r="16" fill="var(--route-alt)" opacity=".28"/>`:""}${shape}<text y="3.3" font-size="${sel?10:8.5}" text-anchor="middle" fill="var(--marker-ink)">${label}</text></g>`;
+  };
+  for(const s of STOPS){ if(!visible(s)) continue; const inPlan=p.items.some(i=>i.s.id===s.id); if(s.kind==="meal" && !inPlan) continue; mk+=drawMarker(s,stopNumber[s.id],inPlan); }
+  if(!layers.size||layers.has("seafood")) for(const r of RESTAURANTS){ const inPlan=(p.dinnerItem&&p.dinnerItem.s.id===r.id)||(p.lunch&&p.lunch.id===r.id); if(!inPlan) continue; const [x,y]=P(r.lat,r.lon); mk+=`<g class="mk" transform="translate(${x.toFixed(1)},${y.toFixed(1)})" tabindex="0" role="button" aria-label="${esc(r.name)}, ${p.lunch&&p.lunch.id===r.id?"lunch":"dinner"}" data-sel="${r.id}"><rect x="-7" y="-7" width="14" height="14" rx="2" transform="rotate(45)" fill="var(--c-food)" stroke="var(--surface)" stroke-width="2"/><text y="3.3" font-size="8.5" text-anchor="middle" fill="var(--marker-ink)">${p.lunch&&p.lunch.id===r.id?"L":"D"}</text></g>`; }
+  const [hx,hy]=P(HOME.lat,HOME.lon);
+  mk+=`<g class="mk" transform="translate(${hx},${hy})" data-sel="home" tabindex="0" role="button" aria-label="Start: Oceanview Drive, Asan"><path d="M0,-11 L3,-3 L11,-3 L4.5,2 L7,10 L0,5 L-7,10 L-4.5,2 L-11,-3 L-3,-3Z" fill="var(--ink)" stroke="var(--surface)" stroke-width="1.5"/></g><text x="${hx-14}" y="${hy+4}" font-size="8" text-anchor="end" font-weight="700" fill="var(--ink)" style="font-family:var(--f-body)">Oceanview Dr</text>`;
+  // compass + scale
+  const sb=5/111.32*K;
+  const deco=`<g transform="translate(330,24)"><path d="M0,-12 L5,4 L0,0 L-5,4Z" fill="var(--ink)"/><text y="16" font-size="8" text-anchor="middle" fill="var(--ink)" font-weight="700">N</text></g>
+   <g transform="translate(14,448)"><path d="M0,0 h${sb.toFixed(1)}" stroke="var(--ink)" stroke-width="2"/><path d="M0,-3 v6 M${sb.toFixed(1)},-3 v6" stroke="var(--ink)" stroke-width="1.5"/><text x="${(sb/2).toFixed(0)}" y="-5" font-size="7.5" text-anchor="middle" fill="var(--ink)">5 km</text></g>`;
+  return `<svg id="mapsvg" viewBox="${mapVB.x} ${mapVB.y} ${mapVB.w} ${mapVB.h}" role="img" aria-label="Drawn map of Guam showing today's route and numbered stops. The route list on the Route tab carries the same information.">
+   <defs><marker id="arw" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M1,1 L9,5 L1,9" fill="none" stroke="var(--route)" stroke-width="2"/></marker></defs>
+   <rect x="-400" y="-400" width="1200" height="1300" fill="var(--map-sea)"/>
+   <path d="${land}" fill="none" stroke="var(--map-reef)" stroke-width="12" stroke-linejoin="round"/>
+   <path d="${land}" fill="var(--map-land)" stroke="var(--map-coast)" stroke-width="1.2"/>
+   ${lbl}${off}${route}${mk}${deco}</svg>`;
+}
+function viewMap(){
+  const p=PLAN; const sel=byId(st.selected)||STOPS.find(s=>s.id==="cetti");
+  const LAYERS=[["history","History"],["nature","Nature"],["seafood","Food"],["swimming","Swimming"],["viewpoint","Viewpoints"],["wwii-history","WWII"],["spanish-history","Spanish era"],["chamoru-history","Ancient CHamoru"]];
+  const layers=new Set(st.layers);
+  const ordered=[...p.items.map(i=>i.s)];
+  return `<div class="mapview"><div class="wrap"><div class="mapwrap">
+   <div class="stack">
+    <div class="chips" role="group" aria-label="Map layers">${LAYERS.map(([k,l])=>`<button class="chip" aria-pressed="${layers.has(k)}" data-act="layer" data-arg="${k}">${k==="seafood"?'<span class="dm" style="background:var(--c-food)"></span>':CATS[k]?`<span class="${CATS[k].shape==="s"?"sq":"dot"}" style="background:${catColor(k)}"></span>`:'<span class="sq" style="background:var(--c-chamoru)"></span>'}${l}</button>`).join("")}${layers.size?`<button class="chip" data-act="layerclear">Show all</button>`:""}</div>
+    <div class="mapbox" id="mapbox">${mapSvg()}
+      <div class="mapctl"><button class="btn" data-act="zoom" data-arg="in" aria-label="Zoom in">+</button><button class="btn" data-act="zoom" data-arg="out" aria-label="Zoom out">−</button><button class="btn" data-act="zoom" data-arg="fit" aria-label="Show whole island" style="font-size:.8rem">Fit</button></div>
+      <div class="maplegend" aria-hidden="true"><div><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="var(--c-view)"/></svg>Views, nature, swimming</div><div><svg width="14" height="14"><rect x="1" y="1" width="12" height="12" rx="2" fill="var(--c-spanish)"/></svg>History sites</div><div><svg width="14" height="14"><rect x="3" y="3" width="8" height="8" transform="rotate(45 7 7)" fill="var(--c-food)"/></svg>Meals</div><div><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="var(--c-off)"/></svg>Not on plan</div></div>
+    </div>
+    <p class="small muted">Drawn map, not to road-level detail. Use Navigate for turn-by-turn directions. Arrows show the direction of travel.</p>
+   </div>
+   <div class="mapside">${drawer(sel)}
+    <div class="maplist"><span class="eyebrow">Today's stops</span>${ordered.map(s=>`<button class="mrow" data-sel="${s.id}" aria-current="${st.selected===s.id}">${s._meal?'<b>L</b>':`<b>${stopNumber[s.id]}</b>`}<span>${esc(s.short_name||s.name)}</span></button>`).join("")}</div>
+   </div>
+  </div></div></div>`;
+}
+function drawer(s){
+  if(!s||s.id==="home") return `<div class="drawer"><b>Oceanview Drive, Asan</b><span class="small muted">Start and finish of the circuit.</span></div>`;
+  const isR=RESTAURANTS.includes(s);
+  const it=PLAN.items.find(i=>i.s.id===s.id) || (PLAN.dinnerItem&&PLAN.dinnerItem.s.id===s.id?PLAN.dinnerItem:null);
+  const inPlan=!!it;
+  return `<div class="drawer" aria-live="polite">
+    <div class="row">${isR?`<span class="pill rec">${PLAN.lunch&&PLAN.lunch.id===s.id?"Lunch":"Dinner"}</span>`:priPill(s)}${inPlan?`<span class="small muted tnum">Arrive ${fmt(it.arrive)} · ${dur(it.leg.min)} from previous stop</span>`:`<span class="small muted">Not on today's plan</span>`}</div>
+    <h3>${esc(s.short_name||s.name)}</h3>
+    <p class="small">${esc(s.short)}</p>
+    ${isR?"":`<div class="row">${catTags(s)}</div>`}
+    <div class="row">
+      ${isR?"":`<button class="btn sm" data-act="detail" data-arg="${s.id}">View stop</button>`}
+      <button class="btn sm primary" data-act="nav" data-arg="${s.id}">${I.nav} Navigate</button>
+      ${isR?"":(inPlan?`<button class="btn sm ghost" data-act="skip" data-arg="${s.id}">Skip</button>`:(s.id==="ritidian"&&!PLAN.rit.open?`<span class="small muted">Closed on this date</span>`:`<button class="btn sm" data-act="add" data-arg="${s.id}">Add to my day</button>`))}
+    </div></div>`;
+}
+
+// ---------- STOPS ----------
+function viewStops(){
+  const layers=new Set(st.layers);
+  const LAY=[["history","History"],["nature","Nature"],["swimming","Swimming"],["viewpoint","Viewpoints"],["wwii-history","WWII"],["spanish-history","Spanish era"],["chamoru-history","Ancient CHamoru"]];
+  const visible=s=>!layers.size || s.cats.some(c=>layers.has(c)||(layers.has("history")&&HISTORY_CATS.includes(c)));
+  const order=[...STOPS].filter(s=>s.kind!=="meal").sort((a,b)=>orderKey(a,st.dir)-orderKey(b,st.dir));
+  return `<div class="wrap"><section class="section"><span class="eyebrow">${order.length} places on the circuit, in ${st.dir==="cw"?"clockwise":"south-first"} order</span><h1 style="font-size:2rem">Stops</h1>
+   <div class="chips" role="group" aria-label="Filter stops">${LAY.map(([k,l])=>`<button class="chip" aria-pressed="${layers.has(k)}" data-act="layer" data-arg="${k}">${l}</button>`).join("")}${layers.size?`<button class="chip" data-act="layerclear">Show all</button>`:""}</div>
+   <div class="cards">${order.filter(visible).map(s=>{ const it=PLAN.items.find(i=>i.s.id===s.id); const closed=s.id==="ritidian"&&!PLAN.rit.open;
+     return `<article class="scard ${it?"":"off"}">${plate(s,"noon")}<div class="in">
+      <div class="row">${priPill(s)}${it?`<span class="small muted tnum">Stop ${stopNumber[s.id]} · ${fmt(it.arrive)}</span>`:`<span class="small muted">${closed?"Closed on this date":"Not on today's plan"}</span>`}</div>
+      <h3>${esc(s.short_name||s.name)}</h3>
+      <span class="small muted">${esc(s.village)}${s.alt&&s.alt.length?" · "+esc(s.alt[0]):""}</span>
+      <p class="small">${esc(s.short)}</p>
+      <div class="row">${catTags(s)}<span class="tag">${s.dur[0]} to ${s.dur[1]} min</span></div>
+      <div class="row"><button class="btn sm" data-act="detail" data-arg="${s.id}">Details</button><button class="btn sm" data-act="nav" data-arg="${s.id}">${I.nav} Navigate</button>${closed?"":it?`<button class="btn sm ghost" data-act="skip" data-arg="${s.id}">Skip</button>`:`<button class="btn sm" data-act="add" data-arg="${s.id}">Add</button>`}</div>
+     </div></article>`; }).join("")}</div>
+   <button class="btn" data-act="history">Guam in Layers: history and sources</button>
+  </section></div>`;
+}
+
+function detailHtml(s){
+  const it=PLAN.items.find(i=>i.s.id===s.id);
+  const dw=dowOf(st.date); const h=s.hours? hoursFor(s,dw):null;
+  const L2=navLinks(s);
+  const blocks=[
+    ["Why it matters",s.why],["What happened here",s.happened]
+  ].filter(b=>b[1]).map(([t,v])=>`<div class="block"><h3>${t}</h3><p>${esc(v)}</p></div>`).join("");
+  const list=(t,a)=>a&&a.length?`<div class="block"><h3>${t}</h3><ul>${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:"";
+  return `<div class="head"><button class="btn iconbtn" data-act="close" aria-label="Close">✕</button></div>
+   ${plate(s,s.id==="cetti"||s.id==="soledad"?"afternoon":"noon")}
+   <div class="content">
+    <div class="stack" style="gap:8px">
+      <div class="row">${priPill(s)}${catTags(s)}</div>
+      <h2 id="sheetTitle" style="font-size:1.9rem">${esc(s.name)}</h2>
+      <span class="muted">${esc(s.village)}${s.alt&&s.alt.length?" · also "+s.alt.map(esc).join(", "):""}</span>
+      <p style="font-size:1.08rem">${esc(s.short)}</p>
+    </div>
+    <dl class="kv tnum">
+      <dt>On today's plan</dt><dd>${it?`Stop ${stopNumber[s.id]}, arrive ${fmt(it.arrive)}, stay ${dur(it.dwell)}`:"No"}</dd>
+      <dt>Suggested time</dt><dd>${s.dur[0]} to ${s.dur[1]} minutes</dd>
+      ${s.hours?`<dt>Hours</dt><dd>${esc(s.hours.note)}${h&&h.closed?` <b>Closed on ${DOW[dw]}s.</b>`:""}</dd>`:""}
+      <dt>Last checked</dt><dd>${ACCESSED}</dd>
+    </dl>
+    ${it?flagsHtml(it.flags):""}
+    <div class="navgrid"><a class="btn" href="${L2.google}" target="_blank" rel="noopener">Google<span>Maps</span></a><a class="btn" href="${L2.apple}" target="_blank" rel="noopener">Apple<span>Maps</span></a><a class="btn" href="${L2.waze}" target="_blank" rel="noopener">Waze<span>Navigate</span></a></div>
+    ${blocks}
+    ${list("Look for",s.look)}
+    ${s.respect?`<div class="block"><h3>Respectful visiting</h3><p>${esc(s.respect)}</p></div>`:""}
+    ${list("Practical",s.practical)}
+    ${s.safety&&s.safety.length?`<div class="block"><h3>Safety</h3><ul>${s.safety.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>${s.swim?`<p class="small muted" style="margin-top:6px">Live data is not available here. Check the <a href="${S.epa.u}" target="_blank" rel="noopener">Guam EPA beach report</a> and <a href="${S.nws.u}" target="_blank" rel="noopener">NWS Guam</a> before entering the water.</p>`:""}</div>`:""}
+    <div class="row">${s.id==="ritidian"&&!PLAN.rit.open?"":it?`<button class="btn" data-act="skip" data-arg="${s.id}">Skip this stop</button>`:`<button class="btn primary" data-act="add" data-arg="${s.id}">Add to my day</button>`}</div>
+    <div class="block"><h3>Sources</h3><ol class="srcs">${s.sources.map(k=>S[k]).map(x=>`<li><a href="${x.u}" target="_blank" rel="noopener">${esc(x.t)}</a>, ${esc(x.p)} (${x.c}, accessed ${ACCESSED})</li>`).join("")}</ol>
+    <p class="small muted" style="margin-top:6px">Image: illustration placeholder. A licensed photo with credit will replace it.</p></div>
+   </div>`;
+}
+
+// ---------- EAT ----------
+function viewEat(){
+  const ranked=rankDinner(st,PLAN);
+  const lunchC=[STOPS.find(s=>s.id==="jeffs"), RESTAURANTS.find(r=>r.id==="marina")];
+  const fitsRow=f=>[["grilled","Grilled fish"],["sashimi","Sashimi or ceviche"],["lowCarb","Low-carb options"],["sauceSide","Sauce on the side"],["spicy","Spicy options"]].map(([k,l])=>`<span class="fit ${f[k]?"":"no"}">${l}</span>`).join("");
+  const dinnerOn = !!PLAN.dinnerItem;
+  return `<div class="wrap"><section class="section">
+   <span class="eyebrow">Seafood guide</span><h1 style="font-size:2rem">Where to eat</h1>
+   <p class="muted">Ranked for how you like to eat: fresh fish, simple grilling, sashimi or poke, shrimp, lower-carb sides and sauces on the side. Hours come from secondary listings, so confirm before you go.</p>
+   <div class="field"><span class="lbl">Tonight I want</span><div class="chips" role="radiogroup" aria-label="Dinner mood">${MOODS.map(m=>`<button class="chip" role="radio" aria-checked="${st.mood===m.id}" aria-pressed="${st.mood===m.id}" data-act="mood" data-arg="${m.id}">${m.label}</button>`).join("")}</div></div>
+   ${dinnerOn?"":`<div class="alert"><div><b>${st.dinnerForced&&st.dinner==="none"?"Dinner is off the plan":"Scenic Express has one meal"}</b><span>Add a dinner stop to see it on the timeline.</span><div><button class="btn sm" data-act="dinnerOn">Add dinner</button></div></div></div>`}
+   <div class="stack">${ranked.map((x,i)=>{ const r=x.r, sel=PLAN.dinnerId===r.id;
+     return `<article class="rcard ${sel?"sel":""}"><div class="rhead"><span class="rank">${i+1}</span><div class="stack" style="gap:4px;min-width:0"><div class="row"><h3>${esc(r.name)}</h3><span class="tag">${r.price}</span>${sel?`<span class="pill ess">Tonight's dinner</span>`:""}</div><span class="small muted">${esc(r.type)} · ${esc(r.area)}</span></div></div>
+      <p class="small">${esc(r.short)}</p>
+      <div class="numbers tnum"><div><b>${dur(x.toR)}</b><span>from your last stop</span></div><div><b>${dur(x.toHome)}</b><span>then home</span></div><div><b>${x.extra<=3?"On the way":"+"+dur(x.extra)}</b><span>vs. driving home</span></div></div>
+      <div class="fits">${fitsRow(r.fits)}</div>
+      <div class="block"><h3>How to order</h3><ul>${r.orders.map(o=>`<li>${esc(o)}</li>`).join("")}</ul></div>
+      <p class="small muted">${esc(r.hoursNote)} Last checked ${ACCESSED}. <a href="${S[r.sources[0]].u}" target="_blank" rel="noopener">Source</a></p>
+      <div class="row">${sel?`<button class="btn sm ghost" data-act="dinnerOff">Remove dinner</button>`:`<button class="btn sm primary" data-act="dinner" data-arg="${r.id}">Make this tonight's dinner</button>`}<button class="btn sm" data-act="nav" data-arg="${r.id}">${I.nav} Navigate</button></div>
+     </article>`;}).join("")}</div>
+  </section>
+  <section class="section"><h2>Lunch on the road</h2><p class="muted small">The plan picks whichever of these lands closest to midday. ${PLAN.lunch?`Today that is <b>${esc(PLAN.lunch.name)}</b> at about ${fmt((PLAN.items.find(i=>i.s._meal)||{}).arrive||0)}.`:""}</p>
+   ${lunchC.map(c=>`<article class="rcard"><div class="row"><h3>${esc(c.name)}</h3><span class="small muted">${esc(c.village||c.area)}</span></div><p class="small">${esc(c.short)}</p><p class="small"><b>For you:</b> ${esc(c.kind==="meal"?c.practical[0]:c.orders.join(". "))}.</p><p class="small muted">${esc(c.hours&&c.hours.note?c.hours.note:c.hoursNote)}</p><div class="row"><button class="btn sm" data-act="nav" data-arg="${c.id}">${I.nav} Navigate</button></div></article>`).join("")}
+  </section>
+  <section class="section"><h2>Chamorro Village, Wednesday nights</h2><p>The Wednesday Night Market in Hagåtña runs 5:30 to 9:30 p.m., with more than 80 vendors, barbecue and kelaguen, local produce, master weavers and woodworkers, and dancing in the center court. It is about 10 minutes from Oceanview Drive.</p><p class="small muted"><a href="${S.cvMarket.u}" target="_blank" rel="noopener">The Guam Guide</a> · <a href="${S.dcaCV.u}" target="_blank" rel="noopener">Department of Chamorro Affairs</a></p></section>
+  </div>`;
+}
+
+// ---------- SAFETY ----------
+function viewSafety(){
+  const sec=(t,a)=>`<section class="section"><h2>${t}</h2><ul class="list">${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`;
+  return `<div class="wrap"><section class="section"><span class="eyebrow">Safety and conditions</span><h1 style="font-size:2rem">Before you go, and on the road</h1>
+   <div class="sos"><span class="eyebrow" style="color:var(--crit)">Emergency services</span><span class="num">911</span><div class="row"><button class="btn sm" data-act="copy" data-arg="911">Copy number</button><a class="btn sm" href="tel:911">Call</a></div><span class="small">If the Call button does nothing here, dial 911 from your phone. To share your location, use your phone's Maps or Messages app.</span></div>
+   <div class="linkgrid">
+     <a href="${S.nws.u}" target="_blank" rel="noopener"><b>Current weather and surf</b><span>NWS Guam: forecast, high surf and rip current statements</span></a>
+     <a href="${S.epa.u}" target="_blank" rel="noopener"><b>Guam EPA beach report</b><span>Weekly water-quality advisories</span></a>
+     <a href="${S.fws.u}" target="_blank" rel="noopener"><b>Ritidian status</b><span>U.S. Fish & Wildlife Service, updated as conditions change</span></a>
+     <a href="${S.npsAlerts.u}" target="_blank" rel="noopener"><b>War in the Pacific alerts</b><span>National Park Service closures and conditions</span></a>
+     <a href="${fullRouteLink(PLAN)}" target="_blank" rel="noopener"><b>Open today's route in Maps</b><span>Google Maps, with today's stops as waypoints</span></a>
+   </div></section>
+   ${sec("Driving",["Drive on the right.","Roads in the south and north can be narrow, wet, uneven and slower than map estimates.","Rain can arrive quickly. Slow down on the hill sections south of Agat.","Do not stop on unmarked shoulders or curves, and do not block driveways, narrow roads or beach access.","Keep fuel above a quarter tank when exploring the south or north."])}
+   ${sec("Ocean and swimming",["Sea conditions change quickly.","Reefs, currents, sharp coral and surge can make good-looking water unsafe.","Use designated access points.","Check official water-quality advisories before swimming, and stay out after heavy rain if advisories are issued.","Wear reef-safe sunscreen and do not step on coral."])}
+   ${sec("Heat and hydration",["Carry more water than you expect to need.","Use sun protection; the midday sun is strong year-round.","Schedule strenuous walks early.","Keep snacks in the car.","Do not underestimate heat and humidity."])}
+   ${sec("Cultural respect",["Use CHamoru place names where you can: Hågat, Humåtak, Malesso', Inalåhan, Talo'fo'fo, Hagåtña.","Respect sacred, archaeological, military and memorial sites.","Do not remove rocks, coral, artifacts, shells or historic material.","Stay on marked trails.","Treat villages as communities, not attractions."])}
+   <section class="section"><h2>Using this page offline</h2><p class="small">Everything on this page, including the map, route and stop guides, loads with the page. If you lose signal while it is open, it keeps working. Navigation links and source links need a connection. Your plan, skipped stops and progress are saved in this browser only.</p></section>
+  </div>`;
+}
+
+// ---------- HISTORY ----------
+function historyHtml(){
+  const eras=[
+    ["c. 1500 BC","Ancient CHamoru","Long before European contact, CHamoru people built village communities across Guam and the Mariana Islands. Latte stones, pillar-and-capstone foundations of houses, remain the most visible symbol of that legacy. You will see that world at Ritidian, Cetti Bay and Pago Bay."],
+    ["1521 · 1668","Spanish era","Magellan's ships reached Guam in 1521, and Spain claimed the island in 1565. Permanent colonial rule began with the Jesuit mission of 1668, followed by decades of war, disease and forced resettlement into church-centered villages such as Inalåhan. Humåtak Bay served Manila galleons until 1815, guarded by Fort Soledad and three other forts."],
+    ["1898","American naval era","Spain ceded Guam to the United States after the Spanish-American War. The U.S. Navy governed the island for most of the next half century."],
+    ["1941 to 1944","Japanese occupation and WWII","Japan occupied Guam from December 1941 to July 1944, 31 months marked by forced labor, internment and killings of CHamoru civilians. U.S. forces landed at Asan and Agat on July 21, 1944, now Liberation Day. The last organized fighting came at Mataguac in Yigo that August."],
+    ["1950 to today","Contemporary Guam","The Organic Act of 1950 made Guam an unincorporated U.S. territory and its people U.S. citizens. Guam is the largest and southernmost of the Mariana Islands, and CHamoru language, food, fiestas and family networks remain central to its identity."]
+  ];
+  const all=Object.values(S);
+  return `<div class="head"><button class="btn iconbtn" data-act="close" aria-label="Close">✕</button></div>
+   <div class="content"><span class="eyebrow">About Guam</span><h2 id="sheetTitle" style="font-size:1.9rem">Guam in Layers: CHamoru, Spanish, Japanese, American</h2>
+   <div>${eras.map(([y,t,p])=>`<div class="era"><div class="yr">${y}<small>${t}</small></div><p>${esc(p)}</p></div>`).join("")}</div>
+   <p class="small muted">The era summaries draw on general reference history; stop-specific claims carry their own sources below.</p>
+   <div class="block"><h3>All sources (accessed ${ACCESSED})</h3><ol class="srcs">${all.map(x=>`<li><a href="${x.u}" target="_blank" rel="noopener">${esc(x.t)}</a>, ${esc(x.p)} <span>(${x.c})</span></li>`).join("")}</ol></div>
+   </div>`;
+}
+
+// ---------- nav chooser ----------
+function navHtml(p){
+  const l=navLinks(p);
+  return `<div class="head"><button class="btn iconbtn" data-act="close" aria-label="Close">✕</button></div><div class="content"><h2 id="sheetTitle">Navigate to ${esc(p.short_name||p.name)}</h2>
+  <div class="navgrid"><a class="btn" href="${l.google}" target="_blank" rel="noopener">Google<span>Maps</span></a><a class="btn" href="${l.apple}" target="_blank" rel="noopener">Apple<span>Maps</span></a><a class="btn" href="${l.waze}" target="_blank" rel="noopener">Waze<span>Navigate</span></a></div>
+  <p class="small muted">Opens your maps app searching for "${esc(p.q)}". Pins on this page are approximate.</p></div>`;
+}
+function openSheet(html){ const sh=$("#sheet"); sh.innerHTML=`<div class="box">${html}</div>`; sh.hidden=false; const b=sh.querySelector("[data-act=close]"); b&&b.focus(); }
+function closeSheet(){ $("#sheet").hidden=true; $("#sheet").innerHTML=""; }
+
+// ---------- now bar ----------
+function renderNow(){
+  const nb=$("#nowbar");
+  if(!st.trip.on){ nb.hidden=true; return; }
+  const next=PLAN.items[0] || PLAN.dinnerItem;
+  if(!next){ nb.hidden=false; nb.innerHTML=`<div class="card"><div><div class="k">All stops done</div><div class="n">Head home</div><div class="t">${dur(PLAN.homeLeg.min)} to Oceanview Drive</div></div><div class="acts"><button class="btn sm" data-act="nav" data-arg="home">Navigate</button></div></div>`; return; }
+  const s=next.s; const isDinner=PLAN.dinnerItem&&next===PLAN.dinnerItem;
+  nb.hidden=false;
+  nb.innerHTML=`<div class="card"><div style="min-width:0"><div class="k">Next stop${s._meal?" · lunch":isDinner?" · dinner":""}</div><div class="n">${esc(s.short_name||s.name)}</div><div class="t tnum">Arrive ~${fmt(next.arrive)} · ${dur(next.leg.min)} drive</div></div>
+   <div class="acts"><button class="btn sm" data-act="nav" data-arg="${s.id}">${I.nav}<span class="sr">Navigate</span></button><button class="btn sm ghost" data-act="done" data-arg="${s._meal?"lunch:"+s.id:isDinner?"dinner:"+s.id:s.id}">Done</button></div></div>`;
+}
+
+// ---------- render ----------
+function render(){
+  computePlan();
+  const d=new Date(st.date+"T12:00:00");
+  $("#hdrSub").textContent=`${PROFILES[st.profile].label} · ${st.dir==="cw"?"clockwise":"south first"} · ${d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})}`;
+  $("#tabs").innerHTML=TABS.map(([k,l,ic])=>`<li><button type="button" data-act="tab" data-arg="${k}" ${st.tab===k?'aria-current="page"':""}>${ic}<span>${l}</span></button></li>`).join("");
+  const v={route:viewRoute,map:viewMap,stops:viewStops,eat:viewEat,safety:viewSafety}[st.tab]||viewRoute;
+  $("#main").innerHTML=v();
+  renderNow();
+  if(st.tab==="map") bindMap();
+}
+
+// ---------- events ----------
+document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-act],[data-sel]"); if(!el) return;
+  if(el.dataset.sel && !el.dataset.act){ if(dragMoved) return; st.selected=el.dataset.sel; save(); if(st.tab==="map"){ render(); } return; }
+  const a=el.dataset.act, arg=el.dataset.arg;
+  switch(a){
+    case "tab": st.tab=arg; save(); render(); window.scrollTo(0,0); break;
+    case "profile": set({profile:arg}); break;
+    case "setDir": set({dir:arg}); toast(arg==="cw"?"Clockwise: north first":"South first"); break;
+    case "interest": { const s=new Set(st.interests); s.has(arg)?s.delete(arg):s.add(arg); set({interests:[...s]}); break; }
+    case "layer": { const s=new Set(st.layers); s.has(arg)?s.delete(arg):s.add(arg); set({layers:[...s]}); break; }
+    case "layerclear": set({layers:[]}); break;
+    case "detail": openSheet(detailHtml(byId(arg))); break;
+    case "nav": openSheet(navHtml(arg==="home"?HOME:byId(arg))); break;
+    case "close": closeSheet(); break;
+    case "history": openSheet(historyHtml()); break;
+    case "skip": { st.overrides[arg]=false; save(); closeSheet(); render(); toast("Skipped. Find it under Not on today's plan."); break; }
+    case "add": { st.overrides[arg]=true; if(st.trip.on) delete st.trip.status[arg]; save(); closeSheet(); render(); toast("Added to your day"); break; }
+    case "trim": { for(const it of PLAN.items){ if(!it.s._meal && it.s.priority!=="essential") st.overrides[it.s.id]=false; } save(); render(); toast("Trimmed to essential stops"); break; }
+    case "mood": set({mood:arg}); break;
+    case "dinner": set({dinner:arg,dinnerForced:true}); toast("Dinner set"); break;
+    case "dinnerOn": set({dinner:dinnerId(Object.assign({},st,{dinnerForced:false})),dinnerForced:true}); break;
+    case "dinnerOff": set({dinner:"none",dinnerForced:true}); break;
+    case "startTrip": { const n=guamNow(); st.trip={on:true,status:{},doneAt:{},extra:{},last:null,lunchDone:false,dinnerDone:false}; if(st.date!==n.date){ st.date=n.date; toast("Plan moved to today"); } st.tab="route"; save(); render(); window.scrollTo(0,0); break; }
+    case "endTrip": st.trip={on:false,status:{},doneAt:{},extra:{},last:null,lunchDone:false,dinnerDone:false}; save(); render(); break;
+    case "done": {
+      const n=guamNow().min;
+      if(arg.startsWith("lunch:")){ st.trip.lunchDone=true; st.trip.last=arg.slice(6); }
+      else if(arg.startsWith("dinner:")){ st.trip.dinnerDone=true; st.trip.last=arg.slice(7); }
+      else { st.trip.status[arg]="done"; st.trip.doneAt=st.trip.doneAt||{}; st.trip.doneAt[arg]=n; st.trip.last=arg; }
+      save(); render(); toast("Marked done. Times updated."); break; }
+    case "undo": { delete st.trip.status[arg]; if(st.trip.last===arg) st.trip.last=null; save(); render(); break; }
+    case "stay": { st.trip.extra[arg]=(st.trip.extra[arg]||0)+15; save(); render(); toast("Added 15 minutes"); break; }
+    case "zoom": zoom(arg); break;
+    case "copy": { const t=arg; (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast("Copied "+t)).catch(()=>toast("Dial "+t)); break; }
+  }
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t.id==="tripDate" && t.value) set({date:t.value});
+  if(t.id==="tripStart" && t.value) set({start:t.value});
+  if(t.id==="cRain") { st.cond.rain=t.checked; st.cond.rainFromLive=false; st.condManual=Object.assign({},st.condManual,{rain:true}); save(); render(); }
+  if(t.id==="cWater") { st.cond.water=t.checked; st.condManual=Object.assign({},st.condManual,{water:true}); save(); render(); }
+  if(t.id==="cSurf") { st.cond.surf=t.checked; st.cond.surfFromLive=false; st.condManual=Object.assign({},st.condManual,{surf:true}); save(); render(); }
+  if(t.dataset.pack!==undefined){ st.packing[t.dataset.pack]=t.checked; save(); }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !$("#sheet").hidden) closeSheet();
+  if((e.key==="Enter"||e.key===" ") && e.target.matches("g.mk")){ e.preventDefault(); st.selected=e.target.dataset.sel; save(); render(); const g=document.querySelector(`g.mk[data-sel="${st.selected}"]`); g&&g.focus(); }
+});
+$("#sheet").addEventListener("click",e=>{ if(e.target.id==="sheet") closeSheet(); });
+$("#historyBtn").addEventListener("click",()=>openSheet(historyHtml()));
+
+// map pan/zoom
+let dragMoved=false;
+function setVB(){ const svg=$("#mapsvg"); if(svg) svg.setAttribute("viewBox",`${mapVB.x} ${mapVB.y} ${mapVB.w} ${mapVB.h}`); }
+function zoom(k){
+  if(k==="fit"){ mapVB={x:-10,y:-10,w:380,h:480}; return setVB(); }
+  const f=k==="in"?0.7:1/0.7; const cx=mapVB.x+mapVB.w/2, cy=mapVB.y+mapVB.h/2;
+  mapVB.w=Math.min(600,Math.max(60,mapVB.w*f)); mapVB.h=mapVB.w*480/380; mapVB.x=cx-mapVB.w/2; mapVB.y=cy-mapVB.h/2; setVB();
+}
+function bindMap(){
+  const svg=$("#mapsvg"); if(!svg) return;
+  const box=$("#mapbox"); const ratio=box.clientHeight/box.clientWidth;
+  if(Math.abs(mapVB.h/mapVB.w-ratio)>0.01){ const cx=mapVB.x+mapVB.w/2, cy=mapVB.y+mapVB.h/2; if(ratio>480/380){ mapVB.w=Math.max(mapVB.w, 380); mapVB.h=mapVB.w*ratio; } else { mapVB.h=Math.max(mapVB.h,480); mapVB.w=mapVB.h/ratio; } mapVB.x=cx-mapVB.w/2; mapVB.y=cy-mapVB.h/2; setVB(); }
+  let start=null, pts=new Map();
+  svg.addEventListener("pointerdown",e=>{ pts.set(e.pointerId,[e.clientX,e.clientY]); dragMoved=false; start={x:e.clientX,y:e.clientY,vb:{...mapVB},d:pts.size===2?dist():null}; });
+  const dist=()=>{ const [a,b]=[...pts.values()]; return Math.hypot(a[0]-b[0],a[1]-b[1]); };
+  svg.addEventListener("pointermove",e=>{
+    if(!start||!pts.has(e.pointerId)) return; pts.set(e.pointerId,[e.clientX,e.clientY]);
+    const r=svg.getBoundingClientRect();
+    if(pts.size===2 && start.d){ const f=start.d/dist(); const w=Math.min(600,Math.max(60,start.vb.w*f)); const cx=start.vb.x+start.vb.w/2, cy=start.vb.y+start.vb.h/2; mapVB.w=w; mapVB.h=w*start.vb.h/start.vb.w; mapVB.x=cx-w/2; mapVB.y=cy-mapVB.h/2; dragMoved=true; setVB(); return; }
+    const dx=(e.clientX-start.x)*mapVB.w/r.width, dy=(e.clientY-start.y)*mapVB.h/r.height;
+    if(Math.abs(e.clientX-start.x)+Math.abs(e.clientY-start.y)>6){ dragMoved=true; if(!svg.hasPointerCapture(e.pointerId)) svg.setPointerCapture(e.pointerId); }
+    if(dragMoved){ mapVB.x=start.vb.x-dx; mapVB.y=start.vb.y-dy; setVB(); }
+  });
+  const end=e=>{ pts.delete(e.pointerId); if(pts.size===0){ start=null; setTimeout(()=>dragMoved=false,0); } };
+  svg.addEventListener("pointerup",end); svg.addEventListener("pointercancel",end);
+  svg.addEventListener("wheel",e=>{ e.preventDefault(); zoom(e.deltaY<0?"in":"out"); },{passive:false});
+}
+
+// refresh day-of projections every minute while open
+setInterval(()=>{ if(st.trip.on && $("#sheet").hidden && st.tab==="route"){ const y=window.scrollY; render(); window.scrollTo(0,y); } else if(st.trip.on){ computePlan(); renderNow(); } },60000);
+try{ navigator.wakeLock && st.trip.on && navigator.wakeLock.request("screen").catch(()=>{}); }catch(e){}
+// ---------- live conditions hook (called by src/main.js) ----------
+window.GCC = {
+  getState: () => ({date: st.date, dir: st.dir}),
+  applyLive(live){
+    // live = {rain:boolean|null, surf:boolean|null}; only fills values the person has not set by hand
+    st.live = live; let changed=false;
+    if(live.ritClosedOn!==undefined){ const v=live.ritClosedOn||null; if(st.cond.ritClosedLive!==v){ st.cond.ritClosedLive=v; changed=true; } }
+    for(const k of ["rain","surf"]){ if(live[k]!=null && !(st.condManual||{})[k] && st.cond[k]!==live[k]){ st.cond[k]=live[k]; st.cond[k+"FromLive"]=true; changed=true; } }
+    if(changed){ save(); render(); }
+  }
+};
+render();
+</script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

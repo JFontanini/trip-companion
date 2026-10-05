@@ -1,0 +1,155 @@
+[
+  {
+    "id": "marina",
+    "name": "Marina Grill",
+    "area": "Agat",
+    "lat": 13.369,
+    "lon": 144.6515,
+    "loop": 135,
+    "spur": 1,
+    "q": "Marina Grill, Agat Marina, Guam",
+    "type": "Waterfront grill at Agat Marina",
+    "routeFit": "excellent",
+    "price": "$$",
+    "short": "A local favorite at the marina, serving local catch such as mahi as ceviche, grilled or in tacos, with a view over the boats.",
+    "orders": [
+      "Fresh catch grilled simply",
+      "Mahi ceviche if available",
+      "Skip the tortilla or fries; ask for sauces on the side"
+    ],
+    "fits": {
+      "lowCarb": true,
+      "sauceSide": true,
+      "spicy": true,
+      "grilled": true,
+      "sashimi": false
+    },
+    "moods": [
+      "grilled",
+      "casual",
+      "quick"
+    ],
+    "hours": null,
+    "hoursNote": "Hours not confirmed from a primary source. Call or check the day of.",
+    "sources": [
+      "marina",
+      "portMarina"
+    ]
+  },
+  {
+    "id": "crab",
+    "name": "Crab Daddy Agana",
+    "area": "Hagåtña",
+    "lat": 13.4775,
+    "lon": 144.747,
+    "loop": 8,
+    "spur": 1,
+    "q": "Crab Daddy, Hagatna, Guam",
+    "type": "Seafood boil, casual",
+    "routeFit": "good",
+    "price": "$$",
+    "short": "A Louisiana-style seafood boil house on Marine Corps Drive: crab, lobster, crawfish, mussels, shrimp and squid, plus grilled entrées. About 10 minutes from Oceanview Drive.",
+    "orders": [
+      "For a lighter, less sauced meal, choose a grilled entrée over the full boil",
+      "If you go for the boil, order the seasoning on the side and skip the corn and potatoes"
+    ],
+    "fits": {
+      "lowCarb": true,
+      "sauceSide": true,
+      "spicy": true,
+      "grilled": true,
+      "sashimi": false
+    },
+    "moods": [
+      "boil",
+      "casual",
+      "spicy",
+      "quick"
+    ],
+    "hours": {
+      "open": 720,
+      "close": 1320
+    },
+    "hoursNote": "Noon to 10 p.m. at its 2019 opening. Confirm current hours.",
+    "sources": [
+      "crab"
+    ]
+  },
+  {
+    "id": "fishermans",
+    "name": "Fisherman's Cove",
+    "area": "Tumon",
+    "lat": 13.5005,
+    "lon": 144.7826,
+    "loop": 15,
+    "spur": 3,
+    "q": "Fisherman's Cove, Hilton Guam Resort, Tumon",
+    "type": "Refined seafood market dinner (Hilton Guam)",
+    "routeFit": "good",
+    "price": "$$$$",
+    "short": "Pick your fish, lobster, crab or shrimp from a market display and the kitchen prepares it the way you ask, with your choice of seasonings.",
+    "orders": [
+      "Choose a whole local fish or fillet from the display, grilled or steamed",
+      "Ask for sauces and butter on the side",
+      "Book ahead; diners report waits without a reservation"
+    ],
+    "fits": {
+      "lowCarb": true,
+      "sauceSide": true,
+      "spicy": false,
+      "grilled": true,
+      "sashimi": true
+    },
+    "moods": [
+      "refined",
+      "grilled"
+    ],
+    "hours": {
+      "open": 1080,
+      "close": 1290
+    },
+    "hoursNote": "Dinner reported 6 to 9:30 p.m. (older listing). Reserve on OpenTable and confirm.",
+    "sources": [
+      "fcOT",
+      "fcHrs"
+    ]
+  },
+  {
+    "id": "beachin",
+    "name": "Beachin' Shrimp",
+    "area": "Tumon",
+    "lat": 13.515,
+    "lon": 144.801,
+    "loop": 17,
+    "spur": 2,
+    "q": "Beachin' Shrimp, 1225 Pale San Vitores Rd, Tumon, Guam",
+    "type": "Casual shrimp house",
+    "routeFit": "good",
+    "price": "$$",
+    "short": "Shrimp-centric coastal cooking drawing on California, Mexico and Louisiana, in the center of Tumon.",
+    "orders": [
+      "Garlic or spicy shrimp preparations",
+      "Ask about salad or vegetable sides in place of rice or pasta",
+      "Sauces on the side"
+    ],
+    "fits": {
+      "lowCarb": true,
+      "sauceSide": true,
+      "spicy": true,
+      "grilled": false,
+      "sashimi": false
+    },
+    "moods": [
+      "spicy",
+      "casual"
+    ],
+    "hours": {
+      "open": 600,
+      "close": 1260
+    },
+    "hoursNote": "Reported daily 10 a.m. to 9 p.m. Confirm current hours.",
+    "sources": [
+      "beachin"
+    ]
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "profiles": {
+    "express": {
+      "label": "Scenic Express",
+      "range": "5 to 6 hours",
+      "desc": "Big views, four priority stops, one meal",
+      "meal": 40,
+      "dinner": false
+    },
+    "full": {
+      "label": "Recommended Full Day",
+      "range": "8 to 9 hours plus dinner",
+      "desc": "Major scenic and historic stops, a swim, seafood dinner",
+      "meal": 50,
+      "dinner": true
+    },
+    "explorer": {
+      "label": "Slow Explorer",
+      "range": "10 to 12 hours",
+      "desc": "Longer beach time and every history stop",
+      "meal": 60,
+      "dinner": true
+    }
+  },
+  "dinnerMoods": [
+    {
+      "id": "grilled",
+      "label": "Grilled fish, low-carb friendly"
+    },
+    {
+      "id": "casual",
+      "label": "Casual local seafood"
+    },
+    {
+      "id": "boil",
+      "label": "Seafood boil"
+    },
+    {
+      "id": "refined",
+      "label": "Refined dinner"
+    },
+    {
+      "id": "spicy",
+      "label": "Shrimp and spicy food"
+    },
+    {
+      "id": "quick",
+      "label": "Get back near Asan quickly"
+    }
+  ]
+}

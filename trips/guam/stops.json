@@ -1,0 +1,820 @@
+[
+  {
+    "id": "asan-overlook",
+    "name": "Asan Bay Overlook",
+    "alt": [
+      "War in the Pacific National Historical Park"
+    ],
+    "village": "Asan-Maina (Nimitz Hill)",
+    "lat": 13.4585,
+    "lon": 144.7208,
+    "cats": [
+      "wwii-history",
+      "viewpoint"
+    ],
+    "priority": "optional",
+    "profiles": [],
+    "loop": 1,
+    "spur": 7,
+    "dur": [
+      15,
+      25
+    ],
+    "art": "memorial",
+    "seed": 3,
+    "q": "Asan Bay Overlook, Guam",
+    "short": "Memorial wall and bronze reliefs above the Asan landing beach, a few minutes from where you are staying.",
+    "why": "The Memorial Wall carries the names of American service members who died defending Guam in 1941, those killed retaking it in 1944, and the people of Guam who suffered and died during the 31 months of occupation.",
+    "happened": "On July 21, 1944, U.S. Marines came ashore on the beach below and fought up the ridges around you. Japanese defenders on these heights could watch the whole landing.",
+    "look": [
+      "The Memorial Wall of names",
+      "Bronze bas-reliefs of the CHamoru wartime experience",
+      "Asan Point and Adelup Point framing the landing beach"
+    ],
+    "respect": "This is a memorial. Keep voices low and stay off the wall and sculptures.",
+    "practical": [
+      "Open 24 hours",
+      "Not on the default plans. It is so close to Oceanview Drive that it works best as a quiet evening visit on any day of your stay."
+    ],
+    "safety": [],
+    "alt_text": "Illustration of a low memorial wall and flagpoles above a blue bay.",
+    "sources": [
+      "phParks",
+      "npsWapa"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "two-lovers",
+    "name": "Two Lovers Point",
+    "alt": [
+      "Puntan Dos Amantes"
+    ],
+    "village": "Tamuning",
+    "lat": 13.5297,
+    "lon": 144.8009,
+    "cats": [
+      "viewpoint",
+      "chamoru-history"
+    ],
+    "priority": "recommended",
+    "profiles": [
+      "full",
+      "explorer"
+    ],
+    "loop": 18,
+    "spur": 6,
+    "dur": [
+      20,
+      40
+    ],
+    "art": "cliff",
+    "seed": 7,
+    "q": "Two Lovers Point, Guam",
+    "hours": {
+      "open": 600,
+      "close": 1140,
+      "note": "Listings disagree on opening time (7 a.m. or 10 a.m.). The plan uses 10 a.m. to be safe."
+    },
+    "short": "A limestone headland about 400 feet above Tumon Bay, tied to one of Guam's best-known legends.",
+    "why": "CHamoru people knew this headland long before Spanish colonizers named it Cabo de los Amantes. French explorer Louis de Freycinet recorded the legend in 1819, and the story is older than that record.",
+    "happened": "In the telling shared by the Guam Visitors Bureau, the daughter of a CHamoru chief refused a marriage arranged with a Spanish captain. Pursued to this cliff with the young CHamoru man she loved, the two tied their hair into a single knot and stepped off together. Details differ between tellings. Across them, the story carries the strain of loyalty and love under colonial rule.",
+    "look": [
+      "Two tiered lookout platforms over Tumon Bay",
+      "The bronze statue of the lovers",
+      "Faifai Beach below and the line of Tumon hotels to the south"
+    ],
+    "respect": "Treat the legend as part of CHamoru oral tradition rather than only a photo backdrop.",
+    "practical": [
+      "The park grounds are free; the lookout platform charges a small fee (reported at $3)",
+      "Morning light falls behind you and lights the bay. Evening brings sunset over the Philippine Sea if you dine in Tumon."
+    ],
+    "safety": [
+      "Stay behind the railings. The drop is sheer."
+    ],
+    "alt_text": "Illustration of a pale limestone cliff dropping into a turquoise bay.",
+    "sources": [
+      "visitTLP",
+      "visitTLP2",
+      "tlpFee"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "spmp",
+    "name": "South Pacific Memorial Park",
+    "alt": [
+      "Peace Memorial Park",
+      "Mataguac"
+    ],
+    "village": "Yigo",
+    "lat": 13.5455,
+    "lon": 144.8838,
+    "cats": [
+      "wwii-history"
+    ],
+    "priority": "optional",
+    "profiles": [
+      "explorer"
+    ],
+    "loop": 39,
+    "spur": 2,
+    "dur": [
+      15,
+      25
+    ],
+    "art": "tower",
+    "seed": 11,
+    "q": "South Pacific Memorial Park, Yigo, Guam",
+    "short": "A peace memorial at the site of the last organized battle on Guam, built as an act of reconciliation.",
+    "why": "In 1965 a group of local and Japanese members formed the South Pacific Memorial Association. Their Peace Memorial Tower, dedicated in 1970, honors all the men, women and children who died in the Pacific during World War II.",
+    "happened": "Mataguac was the scene of the last organized battle between Japanese and U.S. forces on Guam in August 1944, and the site of the final Japanese command post.",
+    "look": [
+      "The Peace Memorial Tower",
+      "The command-post area"
+    ],
+    "respect": "An active memorial that holds an annual peace ceremony. Visit quietly.",
+    "practical": [
+      "A short detour off the north loop"
+    ],
+    "safety": [],
+    "alt_text": "Illustration of a white memorial tower among dark green trees.",
+    "sources": [
+      "gpWWII"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "ritidian",
+    "name": "Ritidian Point",
+    "alt": [
+      "Puntan Litekyan",
+      "Guam National Wildlife Refuge"
+    ],
+    "village": "Yigo",
+    "lat": 13.6493,
+    "lon": 144.8608,
+    "cats": [
+      "nature",
+      "chamoru-history",
+      "viewpoint"
+    ],
+    "priority": "essential",
+    "profiles": [
+      "full",
+      "explorer"
+    ],
+    "loop": 36,
+    "spur": 16,
+    "dur": [
+      45,
+      90
+    ],
+    "art": "beach",
+    "seed": 5,
+    "q": "Ritidian Point, Guam National Wildlife Refuge",
+    "hours": {
+      "days": [
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "open": 450,
+      "close": 960,
+      "note": "Wednesday to Sunday, 7:30 a.m. to 4:00 p.m. Closed Monday, Tuesday, federal holidays and during hazardous ocean conditions."
+    },
+    "status": "In its Oct 3, 2026 update, Fish & Wildlife closed the refuge for hazardous ocean conditions. Check the morning you go.",
+    "short": "Guam's northern edge: limestone forest, a white-sand beach, reef, and one of the island's deepest settlement landscapes.",
+    "why": "Litekyan means \"a stirring place\" in CHamoru. The refuge protects sea turtle nesting beaches, native forest and endangered species such as the Mariana fruit bat, along with latte sites and caves holding ancient CHamoru pictographs.",
+    "happened": "Ritidian holds some of the oldest CHamoru settlement evidence in the north. Refuge staff lead guided visits to the latte village and pictograph caves when tours are offered.",
+    "look": [
+      "The nature center at the entrance",
+      "The long beach and turquoise reef flat",
+      "Latte-village and cave tours, when the refuge runs them"
+    ],
+    "respect": "No pets. Leave rocks, shells and artifacts where they are. Keep clear of marked turtle nests.",
+    "practical": [
+      "Entry is free",
+      "Turn at Potts Junction, drive 4.5 miles to the refuge sign, then bear left 1.5 miles downhill to the gate",
+      "When the refuge is closed, walking in is not permitted either"
+    ],
+    "safety": [
+      "The water can look calm while currents are dangerous. Treat Ritidian as a walking and wading beach unless posted conditions say otherwise."
+    ],
+    "alt_text": "Illustration of a white-sand beach edged by jungle, with turquoise reef water.",
+    "sources": [
+      "fws",
+      "fwsLoc",
+      "visitRit",
+      "postRit"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "pago",
+    "name": "Pago Bay",
+    "alt": [
+      "Yona coast"
+    ],
+    "village": "Yona / Chalan Pago",
+    "lat": 13.4268,
+    "lon": 144.789,
+    "cats": [
+      "viewpoint",
+      "chamoru-history"
+    ],
+    "priority": "optional",
+    "profiles": [],
+    "loop": 62,
+    "spur": 0,
+    "dur": [
+      10,
+      15
+    ],
+    "art": "bay",
+    "seed": 13,
+    "q": "Pago Bay, Guam",
+    "short": "The east-coast view as Route 4 drops toward the bay. A short pull-off is enough.",
+    "why": "Archaeologists working along the shore found buried village soils and artifacts showing people lived here centuries before Spanish contact in 1521.",
+    "happened": "",
+    "look": [
+      "The reef line across the bay mouth",
+      "Open Pacific swell on the windward side"
+    ],
+    "respect": "Most of the shoreline is residential. Use a legal pull-off and keep driveways clear.",
+    "practical": [
+      "Every plan drives past this view; add it if you want to stop"
+    ],
+    "safety": [
+      "Do not stop on the curve; find a safe shoulder."
+    ],
+    "alt_text": "Illustration of a wide bay between two green headlands.",
+    "sources": [
+      "pago"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "jeffs",
+    "name": "Jeff's Pirates Cove",
+    "alt": [
+      "Lunch stop"
+    ],
+    "village": "Ipan, Talo'fo'fo",
+    "lat": 13.3745,
+    "lon": 144.7665,
+    "kind": "meal",
+    "cats": [
+      "seafood"
+    ],
+    "priority": "recommended",
+    "profiles": [],
+    "loop": 74,
+    "spur": 0,
+    "dur": [
+      40,
+      60
+    ],
+    "art": "cove",
+    "seed": 17,
+    "q": "Jeff's Pirates Cove, Talofofo, Guam",
+    "hours": {
+      "byDay": {
+        "0": [
+          540,
+          1140
+        ],
+        "1": [
+          600,
+          1080
+        ],
+        "2": [
+          600,
+          1080
+        ],
+        "3": [
+          600,
+          1080
+        ],
+        "4": [
+          600,
+          1080
+        ],
+        "5": [
+          600,
+          1140
+        ],
+        "6": [
+          540,
+          1140
+        ]
+      },
+      "note": "Reported: Mon to Thu 10 a.m. to 6 p.m., Fri 10 a.m. to 7 p.m., Sat and Sun 9 a.m. to 7 p.m. Confirm before you rely on it."
+    },
+    "short": "Open-air oceanfront restaurant on Route 4, run by the Pleadwell family since 1979.",
+    "why": "The classic midday stop on a round-the-island drive, with a small museum and gift shop on site.",
+    "happened": "",
+    "look": [
+      "The ocean deck",
+      "The small museum"
+    ],
+    "respect": "",
+    "practical": [
+      "Best known for its burger. For your preferences, ask for the fish of the day grilled, a salad in place of fries, and sauces on the side."
+    ],
+    "safety": [],
+    "alt_text": "Illustration of an open-air thatched roof beside the ocean.",
+    "sources": [
+      "jeffs",
+      "talofofo"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "talofofo",
+    "name": "Talofofo Bay",
+    "alt": [
+      "Talo'fo'fo Bay Beach Park"
+    ],
+    "village": "Talo'fo'fo",
+    "lat": 13.3545,
+    "lon": 144.7655,
+    "cats": [
+      "nature"
+    ],
+    "priority": "optional",
+    "profiles": [
+      "explorer"
+    ],
+    "loop": 78,
+    "spur": 1,
+    "dur": [
+      15,
+      30
+    ],
+    "art": "bay2",
+    "seed": 19,
+    "q": "Talofofo Bay Beach Park, Guam",
+    "short": "A dark-sand bay at the river mouth, popular with surfers. The coast feels wilder here than on the calmer west side.",
+    "why": "River valleys meet open Pacific swell here, a sharp contrast with the lagoons you passed in the morning. The cliffs nearby hold the Talofofo Caves, known for ancient CHamoru pictographs.",
+    "happened": "",
+    "look": [
+      "Surfers working the bay break",
+      "The Talofofo River mouth"
+    ],
+    "respect": "",
+    "practical": [
+      "Picnic shelters at the beach park"
+    ],
+    "safety": [
+      "Swimming is permitted, but the water gets choppy and rough. Watch from shore if surf is up."
+    ],
+    "alt_text": "Illustration of a dark-sand bay with surf lines.",
+    "sources": [
+      "talofofo"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "talofofo-falls",
+    "name": "Talofofo Falls Resort Park",
+    "alt": [
+      "Yokoi's Cave"
+    ],
+    "village": "Inalåhan / Talo'fo'fo",
+    "lat": 13.322,
+    "lon": 144.735,
+    "cats": [
+      "nature",
+      "wwii-history"
+    ],
+    "priority": "optional",
+    "profiles": [],
+    "detour": true,
+    "loop": 80,
+    "spur": 10,
+    "dur": [
+      90,
+      150
+    ],
+    "art": "falls",
+    "seed": 23,
+    "q": "Talofofo Falls Resort Park, Guam",
+    "hours": {
+      "open": 540,
+      "close": 1020,
+      "note": "Listed daily 9 a.m. to 5 p.m.; reviews mention reduced hours after typhoons."
+    },
+    "short": "Optional detour, adds 1.5 to 2.5 hours. A privately run park with a cable car over two cascades and a replica of Yokoi's Cave.",
+    "why": "Japanese soldier Shoichi Yokoi hid in the jungle here from 1944 until he was found in 1972, one of the last WWII holdouts.",
+    "happened": "",
+    "look": [
+      "The upper and lower falls from the cable car",
+      "The Yokoi's Cave replica and small history museum"
+    ],
+    "respect": "",
+    "practical": [
+      "Admission reported at $22 adults, including the round-trip cable car",
+      "The park includes an adult-themed sculpture garden (Loveland)"
+    ],
+    "safety": [],
+    "alt_text": "Illustration of white cascades in a green valley with a cable line overhead.",
+    "sources": [
+      "fallsWiki",
+      "fallsPrice"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "inalahan-village",
+    "name": "Historic Inalåhan Village",
+    "alt": [
+      "Inarajan",
+      "Gef Pa'go Cultural Village"
+    ],
+    "village": "Inalåhan",
+    "lat": 13.2765,
+    "lon": 144.7485,
+    "cats": [
+      "chamoru-history",
+      "spanish-history"
+    ],
+    "priority": "recommended",
+    "profiles": [
+      "full",
+      "explorer"
+    ],
+    "loop": 90,
+    "spur": 0,
+    "dur": [
+      20,
+      45
+    ],
+    "art": "village",
+    "seed": 29,
+    "q": "Gef Pa'go Cultural Village, Inarajan, Guam",
+    "hours": {
+      "open": 540,
+      "close": 720,
+      "label": "Gef Pa'go",
+      "note": "Gef Pa'go demonstrations: daily 9 a.m. to noon. The village itself has no hours."
+    },
+    "short": "One of Guam's best-preserved Spanish-era village landscapes, and a living community.",
+    "why": "Inalåhan predates European contact. Spain formally established the village in 1680 around St. Joseph Church. It has been on the National Register of Historic Places since 1977, with 17 listed sites, many walkable.",
+    "happened": "Gef Pa'go Cultural Village, on the bay, was founded in 1992. Elders demonstrate weaving, coconut candy, coconut oil and sea salt making, the lifeways of Guam in the 1940s and 1950s.",
+    "look": [
+      "St. Joseph Church, still the center of village life and fiestas",
+      "Painted doors and windows along San Jose Avenue showing 1950s village life",
+      "Gef Pa'go's thatched huts on Inalåhan Bay"
+    ],
+    "respect": "You are visiting a living village, not an open-air exhibit. Park thoughtfully, follow signs, keep driveways clear, and support local businesses where you can.",
+    "practical": [
+      "Gef Pa'go admission reported at $10 adults, $5 children",
+      "The gift shop sells locally made goods"
+    ],
+    "safety": [],
+    "alt_text": "Illustration of a white church facade with a bell gable among palms.",
+    "sources": [
+      "visitIna",
+      "visitInaV",
+      "gefpago",
+      "afarGef"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "inalahan-pools",
+    "name": "Inalåhan Pools",
+    "alt": [
+      "Inarajan Pools",
+      "Salaglula Pool",
+      "Inarajan Natural Pool"
+    ],
+    "village": "Inalåhan",
+    "lat": 13.2695,
+    "lon": 144.7468,
+    "cats": [
+      "swimming",
+      "nature"
+    ],
+    "priority": "essential",
+    "profiles": [
+      "express",
+      "full",
+      "explorer"
+    ],
+    "loop": 92,
+    "spur": 1,
+    "dur": [
+      45,
+      90
+    ],
+    "art": "pools",
+    "seed": 31,
+    "q": "Inarajan Natural Pool, Guam",
+    "swim": true,
+    "short": "Seawater pools inside a wall of dark rock, refilled by waves over the reef. The swim stop of the day when conditions allow.",
+    "why": "The rock outcrops stand 15 to 20 feet high and take most of the wave action, so the pools stay calm on many rough-sea days. Typhoons have repeatedly wrecked and rebuilt the pavilions and steps.",
+    "happened": "",
+    "look": [
+      "Fish in the shallow pools (bring a mask)",
+      "The high diving platform",
+      "Covered pavilions and rinse showers"
+    ],
+    "respect": "Do not stand on coral or remove shells and animals.",
+    "practical": [
+      "Bring water shoes, a towel, cash and snacks",
+      "Restrooms on site; reviewers describe them as poorly kept"
+    ],
+    "safety": [
+      "Check current weather, tide, wave and water-quality conditions before entering",
+      "Do not enter if surf is breaking heavily over the rocks",
+      "Wear water shoes; the rock and reef are sharp and slippery",
+      "Keep children close. A protected pool is never risk-free.",
+      "Observe closures, signs and local warnings"
+    ],
+    "alt_text": "Illustration of turquoise seawater pools edged by dark volcanic rock.",
+    "sources": [
+      "inaPools",
+      "visitIna",
+      "pacWorlds"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "merizo",
+    "name": "Malesso' Pier",
+    "alt": [
+      "Merizo Pier",
+      "Merizo Bell Tower",
+      "Cocos Lagoon"
+    ],
+    "village": "Malesso' (Merizo)",
+    "lat": 13.2652,
+    "lon": 144.6705,
+    "cats": [
+      "viewpoint",
+      "spanish-history",
+      "nature"
+    ],
+    "priority": "recommended",
+    "profiles": [
+      "express",
+      "full",
+      "explorer"
+    ],
+    "loop": 107,
+    "spur": 0,
+    "dur": [
+      20,
+      40
+    ],
+    "art": "pier",
+    "seed": 37,
+    "q": "Merizo Pier, Guam",
+    "short": "Guam's southernmost village, facing Cocos Lagoon and Cocos Island about two miles offshore. A good place to slow down before the west coast.",
+    "why": "Across Route 4, the Malesso' Kombento (1856) is the oldest known occupied building on Guam. The 24-foot bell tower nearby was built by Capuchin Father Cristobal de Canals in the 1910s from mamposteria (mortared stone rubble) and restored by the Guam Preservation Trust in 2016.",
+    "happened": "",
+    "look": [
+      "Cocos Island stretched across the lagoon",
+      "The bell tower (Kampanayun Malesso') and Santa Marian Kamalen park",
+      "Fishing boats at the pier"
+    ],
+    "respect": "The meetinghouse and park serve the village. Keep it tidy.",
+    "practical": [
+      "Restrooms on park property and a small store nearby",
+      "Cocos Island ferries leave from here. Do not assume boats or tours are running.",
+      "Parking is limited and traffic can be heavy"
+    ],
+    "safety": [
+      "People jump from the pier. Check depth, boat traffic and current first, and never jump alone."
+    ],
+    "alt_text": "Illustration of a pier reaching into a turquoise lagoon with a low island on the horizon.",
+    "sources": [
+      "postSouth",
+      "merizoGuide",
+      "merizoWiki"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "soledad",
+    "name": "Fort Nuestra Señora de la Soledad",
+    "short_name": "Fort Soledad",
+    "alt": [
+      "Fort Soledad"
+    ],
+    "village": "Humåtak (Umatac)",
+    "lat": 13.2933,
+    "lon": 144.6575,
+    "cats": [
+      "spanish-history",
+      "viewpoint"
+    ],
+    "priority": "essential",
+    "profiles": [
+      "express",
+      "full",
+      "explorer"
+    ],
+    "loop": 117,
+    "spur": 1,
+    "dur": [
+      30,
+      45
+    ],
+    "art": "fort",
+    "seed": 41,
+    "q": "Fort Nuestra Senora de la Soledad, Umatac, Guam",
+    "short": "The last of four Spanish forts around Humåtak Bay, set on a bluff about 224 feet above the water.",
+    "why": "Spain governed Guam from 1668 to 1898. For much of that time, Manila galleons sailing west from Acapulco anchored in Humåtak Bay for water and supplies, and four forts were built between about 1680 and 1810 to protect the anchorage.",
+    "happened": "Artillery stood on this bluff, called Chalan Aniti (Path of the Ancestors), by 1803. The fort was completed and named during Governor Alexandro Parreño's term (1806 to 1812) and held seven cannons firing over the parapet. After the galleon trade ended in 1815, Spain could not maintain it, and treasure hunters later damaged it. It became a park after World War II and was listed on the National Register in 1974.",
+    "look": [
+      "The sentry box on the seaward corner",
+      "Cannon emplacements along the parapet",
+      "The village, the bay and the ruins of Fort Santo Angel at the bay's north entrance"
+    ],
+    "respect": "Humåtak is traditionally associated with Magellan's 1521 landfall, the start of a colonial history CHamoru families still live with. Read the site with that in mind.",
+    "practical": [
+      "Small park with parking off Route 4, uphill after the bridge"
+    ],
+    "safety": [
+      "Low walls and steep drops. Stay inside the fort walls."
+    ],
+    "alt_text": "Illustration of a stone parapet and cannon above a deep blue bay.",
+    "sources": [
+      "gpSoledad",
+      "nrhpSoledad",
+      "gpUmatac"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "cetti",
+    "name": "Cetti Bay Overlook",
+    "alt": [
+      "Attelong Acho"
+    ],
+    "village": "Humåtak / Hågat",
+    "lat": 13.3175,
+    "lon": 144.6605,
+    "cats": [
+      "viewpoint",
+      "nature",
+      "chamoru-history"
+    ],
+    "priority": "essential",
+    "profiles": [
+      "express",
+      "full",
+      "explorer"
+    ],
+    "loop": 127,
+    "spur": 0,
+    "dur": [
+      15,
+      30
+    ],
+    "art": "ridges",
+    "seed": 43,
+    "q": "Cetti Bay Overlook, Guam",
+    "short": "The defining roadside view of southern Guam: volcanic ridges falling to a remote bay.",
+    "why": "The twin hills below, Attelong Acho (Black Rock), are pillow lava formed underwater during ancient eruptions, evidence of southern Guam's volcanic origin. People have lived along this coast for about 3,000 years. Latte stones and pottery remain in the bay, which is on the Guam and National Registers of Historic Places.",
+    "happened": "",
+    "look": [
+      "Attelong Acho below and to the north",
+      "Cocos Island to the south on a clear day",
+      "Mount Lamlam, Guam's highest point at 1,332 feet, rising behind you"
+    ],
+    "respect": "The bay below is a protected archaeological landscape. Leave anything you find.",
+    "practical": [
+      "Park along the street. The Sella Bay viewpoint is about a minute north.",
+      "A coconut stand often sets up at the entrance",
+      "Photo tip: go wide and include the ridgeline or road for scale",
+      "Best light is late afternoon, which is when the clockwise plan puts you here"
+    ],
+    "safety": [
+      "Stay behind barriers and keep clear of cliff edges, especially in rain or wind."
+    ],
+    "alt_text": "Illustration of steep green volcanic ridges descending toward a dark-blue bay.",
+    "sources": [
+      "cettiGuide",
+      "gpCetti",
+      "visitPhoto"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "gaan",
+    "name": "Ga'an Point",
+    "alt": [
+      "Agat Invasion Beach",
+      "War in the Pacific NHP, Agat Unit"
+    ],
+    "village": "Hågat (Agat)",
+    "lat": 13.399,
+    "lon": 144.66,
+    "cats": [
+      "wwii-history",
+      "nature"
+    ],
+    "priority": "recommended",
+    "profiles": [
+      "full",
+      "explorer"
+    ],
+    "loop": 138,
+    "spur": 1,
+    "dur": [
+      20,
+      40
+    ],
+    "art": "pillbox",
+    "seed": 47,
+    "q": "Ga'an Point, Agat, Guam",
+    "short": "Japanese gun emplacements at the center of the southern landing beach of July 21, 1944.",
+    "why": "Japan occupied Guam from December 1941 to July 1944. U.S. forces landed at both Asan and Agat on July 21, 1944. Ga'an Point sat at the center of the Agat beachhead; its guns had to be taken before supplies could come ashore.",
+    "happened": "Agat was a rice-growing village of about 800 people before the war. The fortifications here were the last to fall in the Agat fighting. The flags of the United States, Japan and Guam fly here in memory of everyone who died.",
+    "look": [
+      "Two pillboxes and small cave shelters cut into the coral",
+      "A Japanese 20 cm naval coastal gun",
+      "The reef flat that landing craft had to cross"
+    ],
+    "respect": "Remember the civilians of Agat as well as the soldiers. Do not climb into or onto the fortifications.",
+    "practical": [
+      "Open 24 hours, with picnic pavilions, restrooms and parking",
+      "Apaca Point, a mile north, has similar emplacements"
+    ],
+    "safety": [],
+    "alt_text": "Illustration of a concrete pillbox on coral rock beside a calm reef.",
+    "sources": [
+      "npsGaan",
+      "phParks",
+      "npsWapa"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  },
+  {
+    "id": "fisheye",
+    "name": "Fish Eye Marine Park",
+    "alt": [
+      "Piti Bomb Holes",
+      "Underwater Observatory"
+    ],
+    "village": "Piti",
+    "lat": 13.46,
+    "lon": 144.6945,
+    "cats": [
+      "nature"
+    ],
+    "priority": "optional",
+    "profiles": [],
+    "loop": 150,
+    "spur": 0,
+    "dur": [
+      20,
+      40
+    ],
+    "art": "reef",
+    "seed": 53,
+    "q": "Fish Eye Marine Park, Piti, Guam",
+    "checkSameDay": true,
+    "short": "An underwater observatory at the end of a 300-meter ocean bridge in the Piti marine preserve.",
+    "why": "The viewing chamber sits about 6 meters down, with 26 windows onto Piti Bay, where the operator counts more than 200 fish species and 80 coral varieties. Six windows were replaced in September 2025.",
+    "happened": "",
+    "look": [
+      "Reef fish at eye level through the windows",
+      "Piti Bay from the bridge"
+    ],
+    "respect": "",
+    "practical": [
+      "Check same-day availability, ticketing and operating conditions",
+      "Lunch buffet packages include observatory entry",
+      "Stairs lead to the chamber; a live video feed on the upper deck serves anyone who prefers not to climb"
+    ],
+    "safety": [],
+    "alt_text": "Illustration of a long bridge leading to a domed observatory over the reef.",
+    "sources": [
+      "fisheye",
+      "fisheyeBook"
+    ],
+    "imageUrls": [],
+    "imageAttributions": []
+  }
+]

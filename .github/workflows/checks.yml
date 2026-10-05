@@ -1,0 +1,21 @@
+name: Checks
+
+# Style, unit tests and a production build on every push and pull request.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm }
+      - run: python3 bin/check-style.py
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run build

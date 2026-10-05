@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "techsavvy-dad"
+  },
+  "targets": {
+    "techsavvy-dad": {
+      "hosting": {
+        "guam": ["guam-techsavvy"]
+      }
+    }
+  }
+}
