@@ -71,6 +71,9 @@ a permission error on the bucket, the message names the missing permission.
 | `LIVE_URL` | `https://guam.techsavvy.dad` |
 | `DEPLOY_ENABLED` | `true`, last, once everything above is set |
 
+If the Deploy workflow shows the job as skipped, the job condition `vars.DEPLOY_ENABLED == 'true'` did not
+match: check the variable is under Variables (not Secrets), named exactly `DEPLOY_ENABLED`, valued exactly `true`.
+
 ## 6. First deploy
 
 Run the Deploy workflow from the Actions tab (workflow_dispatch). It builds, deploys hosting
