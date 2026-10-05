@@ -4,8 +4,8 @@ name: Deploy
 # never sit committed but undeployed (the gap chief-os-app and catalyst-academy-site hit).
 # Cloud Functions deploy by hand from The Beast; see DEPLOY.md.
 #
-# Off until the Firebase project exists: set repository variable DEPLOY_ENABLED=true after
-# the one-time Workload Identity setup in DEPLOY.md. Keyless, same pattern as chief-os-app.
+# Keyless, same pattern as chief-os-app: Workload Identity Federation with the repository variables
+# in DEPLOY.md. The first step names any variable the run cannot see, instead of skipping silently.
 on:
   push:
     branches: [main]
@@ -21,9 +21,22 @@ concurrency:
 
 jobs:
   deploy:
-    if: vars.DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     steps:
+      - name: Check deploy variables
+        env:
+          DEPLOY_ENABLED: ${{ vars.DEPLOY_ENABLED }}
+          WIF_PROVIDER: ${{ vars.WIF_PROVIDER }}
+          DEPLOY_SERVICE_ACCOUNT: ${{ vars.DEPLOY_SERVICE_ACCOUNT }}
+          LIVE_URL: ${{ vars.LIVE_URL }}
+        run: |
+          missing=""
+          for v in DEPLOY_ENABLED WIF_PROVIDER DEPLOY_SERVICE_ACCOUNT LIVE_URL; do
+            val="${!v}"
+            if [ -z "$val" ]; then missing="$missing $v"; else echo "$v is set (${#val} characters)"; fi
+          done
+          if [ -n "$missing" ]; then echo "::error title=Deploy variables missing::Not visible to this run:$missing. Add them under Settings, Secrets and variables, Actions, Variables tab."; exit 1; fi
+          if [ "$DEPLOY_ENABLED" != "true" ]; then echo "::error title=Deploy turned off::DEPLOY_ENABLED is set but is not exactly true (${#DEPLOY_ENABLED} characters)."; exit 1; fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: "22", cache: npm }

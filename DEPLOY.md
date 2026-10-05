@@ -71,8 +71,8 @@ a permission error on the bucket, the message names the missing permission.
 | `LIVE_URL` | `https://guam.techsavvy.dad` |
 | `DEPLOY_ENABLED` | `true`, last, once everything above is set |
 
-If the Deploy workflow shows the job as skipped, the job condition `vars.DEPLOY_ENABLED == 'true'` did not
-match: check the variable is under Variables (not Secrets), named exactly `DEPLOY_ENABLED`, valued exactly `true`.
+The Deploy workflow's first step, Check deploy variables, fails with an error naming any variable the run
+cannot see, or saying DEPLOY_ENABLED is not exactly `true`. Variables go under the Variables tab, not Secrets.
 
 ## 6. First deploy
 
