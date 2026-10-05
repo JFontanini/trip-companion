@@ -61,15 +61,88 @@
         "alt": "A sandy path through beach shrubs at Litekyan opening onto white sand and a turquoise reef flat.",
         "focus": "50% 55%"
       }
+    },
+    "asan-overlook": {
+      "hero": {
+        "file": "Asan Bay Overlook (0e5cb561-1dd8-b71b-0b9e-a016e4102f81).jpg",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Asan_Bay_Overlook_%280e5cb561-1dd8-b71b-0b9e-a016e4102f81%29.jpg",
+        "thumbName": "Asan_Bay_Overlook_%280e5cb561-1dd8-b71b-0b9e-a016e4102f81%29.jpg",
+        "width": 4953, "height": 2351,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Asan_Bay_Overlook_(0e5cb561-1dd8-b71b-0b9e-a016e4102f81).jpg",
+        "artist": "NPS", "source": "Wikimedia Commons", "license": "Public domain", "licenseUrl": "https://commons.wikimedia.org/wiki/File:Asan_Bay_Overlook_(0e5cb561-1dd8-b71b-0b9e-a016e4102f81).jpg",
+        "alt": "The view from the Asan Bay Overlook ridge down to the Asan Beach park lawn, a line of palms and a curving road, with the reef and open sea beyond.",
+        "focus": "50% 60%"
+      }
+    },
+    "pago": {
+      "hero": {
+        "file": "Pago Bay from UOG (431279255).jpg",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Pago_Bay_from_UOG_%28431279255%29.jpg",
+        "thumbName": "Pago_Bay_from_UOG_%28431279255%29.jpg",
+        "width": 2585, "height": 739,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Pago_Bay_from_UOG_(431279255).jpg",
+        "artist": "melanzane1013", "source": "Wikimedia Commons", "license": "CC BY-SA 2.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "alt": "A wide view across Pago Bay from a grassy hillside to limestone cliffs, with surf breaking along the reef.",
+        "focus": "50% 55%"
+      }
+    },
+    "talofofo": {
+      "hero": {
+        "file": "A view of the south side of Talofofo Bay (line694237836).jpg",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/A_view_of_the_south_side_of_Talofofo_Bay_%28line694237836%29.jpg",
+        "thumbName": "A_view_of_the_south_side_of_Talofofo_Bay_%28line694237836%29.jpg",
+        "width": 4608, "height": 3456,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:A_view_of_the_south_side_of_Talofofo_Bay_(line694237836).jpg",
+        "artist": "Allen Shimada, NOAA", "source": "Wikimedia Commons", "license": "Public domain", "licenseUrl": "https://commons.wikimedia.org/wiki/File:A_view_of_the_south_side_of_Talofofo_Bay_(line694237836).jpg",
+        "alt": "Deep blue water in Talofofo Bay below green cliffs and a forested headland, with shrubs in the foreground.",
+        "focus": "50% 45%"
+      }
+    },
+    "talofofo-falls": {
+      "hero": {
+        "file": "P1020914 (256245170).jpg",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/P1020914_%28256245170%29.jpg",
+        "thumbName": "P1020914_%28256245170%29.jpg",
+        "width": 2560, "height": 1920,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:P1020914_(256245170).jpg",
+        "artist": "ryan harvey", "source": "Wikimedia Commons", "license": "CC BY-SA 2.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "alt": "White cascades of Talofofo Falls running over rock in a jungle ravine lined with palms.",
+        "focus": "50% 50%"
+      }
+    },
+    "merizo": {
+      "hero": {
+        "file": "Merizo Bell Tower.jpg",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Merizo_Bell_Tower.jpg",
+        "thumbName": "Merizo_Bell_Tower.jpg",
+        "width": 3024, "height": 4032,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Merizo_Bell_Tower.jpg",
+        "artist": "LittleT889", "source": "Wikimedia Commons", "license": "CC BY-SA 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "alt": "The old limestone bell tower in Malesso' under a blue sky, with the sea behind it and plantings at its base.",
+        "focus": "50% 40%"
+      }
+    },
+    "gaan": {
+      "hero": {
+        "file": "Artillery - War in the Pacific National Historical Park (Ga'an Point) - DSC00881.JPG",
+        "thumbBase": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Artillery_-_War_in_the_Pacific_National_Historical_Park_%28Ga%27an_Point%29_-_DSC00881.JPG",
+        "thumbName": "Artillery_-_War_in_the_Pacific_National_Historical_Park_%28Ga%27an_Point%29_-_DSC00881.JPG",
+        "width": 3240, "height": 4320,
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Artillery_-_War_in_the_Pacific_National_Historical_Park_(Ga'an_Point)_-_DSC00881.JPG",
+        "artist": "Daderot", "source": "Wikimedia Commons", "license": "CC0", "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "alt": "A WWII twin-barrel anti-aircraft gun on a concrete pad at Ga'an Point in Hågat, with jungle behind it.",
+        "focus": "60% 55%"
+      }
     }
   },
   "needed": {
     "inalahan-village": { "hero": "St. Joseph Church facade" },
-    "gaan": { "hero": "Ga'an Point" },
     "cetti": { "detail": "Attelong Acho hills" },
-    "merizo": { "hero": "Malesso' pier view" }
+    "fisheye": { "hero": "Fish Eye observatory and pier" },
+    "spmp": { "hero": "South Pacific Memorial Park" }
   },
   "declined": [
-    { "file": "MERIZO BELL TOWER MALESSO GUAM.jpg", "license": "CC0", "reason": "A seasonal float decoration fills most of the frame and the tower sits to one side, so it would misrepresent the stop." }
+    { "file": "MERIZO BELL TOWER MALESSO GUAM.jpg", "license": "CC0", "reason": "A seasonal float decoration fills most of the frame and the tower sits to one side, so it would misrepresent the stop." },
+    { "file": "Fish Eye look out (88705269).jpg", "license": "CC BY 2.0", "reason": "A dim underwater shot of the structure that does not read as the observatory." }
   ]
 }
