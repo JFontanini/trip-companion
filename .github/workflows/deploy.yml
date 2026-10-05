@@ -62,7 +62,17 @@ jobs:
       - name: Deploy hosting and rules
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.auth.outputs.credentials_file_path }}
-        run: npx --yes firebase-tools@13 deploy --only hosting:guam,firestore:rules,storage --project techsavvy-dad --non-interactive
+        # On failure, the last lines of the Firebase output go into an annotation, so the error is
+        # readable from the run summary and the checks API without downloading the full log.
+        run: |
+          set +e
+          npx --yes firebase-tools@13 deploy --only hosting:guam,firestore:rules,storage --project techsavvy-dad --non-interactive 2>&1 | tee deploy.out
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            msg=$(grep -v '^\s*$' deploy.out | tail -n 20 | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+            echo "::error title=Firebase deploy failed::$msg"
+          fi
+          exit $status
 
       - name: Verify the live site is this commit
         run: bin/check-deployed.sh "${{ steps.vars.outputs.live_url }}"
