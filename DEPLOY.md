@@ -9,6 +9,11 @@ Status 2026-10-05: steps 1.1 to 1.6 done. Firestore `(default)` in us-east1 (Sta
 bucket `techsavvy-dad.firebasestorage.app` in US-EAST1, Google sign-in on, `guam.techsavvy.dad`
 authorized, web app `Guam Coastal Circuit` registered.
 
+Status 2026-10-05, later: keyless deploy is set up. Workload identity pool `github-pool` and provider
+`github-provider` exist, the `deployer` service account holds the four roles, the Firebase browser key
+is restricted to the app's domains and Firebase APIs, `guam.techsavvy.dad` is verified, and the four
+repository variables are set with DEPLOY_ENABLED last. Cloud Functions are not deployed yet.
+
 1. Create project `techsavvy-dad` in the Firebase console. Analytics off.
 2. Upgrade to Blaze (pay as you go). Done 2026-10-05. Cloud Storage for new projects and scheduled
    functions both require it. Expected cost at family scale: effectively zero, but set a
